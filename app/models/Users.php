@@ -1,17 +1,20 @@
 <?php
 
 
-class User
+class Users
 {
-    public $id;
-    public $firstname;
-    public $lastname;
-    public $password;
-    public $email;
-    public $isAdmin;
+    private $id;
+    private $firstname;
+    private $lastname;
+    private $password;
+    private $email;
+    private $isAdmin;
+    private $secret;
+    private $createAt;
 
 
-    public function __construct($id, $firstname, $lastname,$email, $password,  $isAdmin)
+
+    public function __construct($id, $firstname, $lastname,$email, $password,  $isAdmin, $secret , $createAt)
     {
         $this->id = $id;
         $this->firstname = $firstname;
@@ -19,8 +22,9 @@ class User
         $this->password = $password;
         $this->email = $email;
         $this->isAdmin = $isAdmin;
+        $this->secret = $secret;
+        $this->createAt = $createAt;
     }
-
 
     public function getId()
     {
@@ -81,6 +85,26 @@ class User
     public function setIsAdmin($isAdmin): void
     {
         $this->role = $isAdmin;
+    }
+
+    public function getSecret()
+    {
+        return $this->secret;
+    }
+
+    public function setSecret($secret): void
+    {
+        $this->secret = $secret;
+    }
+
+    public function getCreateAt()
+    {
+        return $this->createAt;
+    }
+
+    public function setCreateAt($createAt): void
+    {
+        $this->createAt = $createAt;
     }
 
 

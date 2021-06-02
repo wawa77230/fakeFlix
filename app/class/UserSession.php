@@ -11,14 +11,19 @@ class UserSession
         }
     }
 
-    public function createUserSession($id, $firstName, $lastName, $email, $isAdmin)
+    public function createUserSession($id, $firstName, $lastName, $email, $isAdmin, $secret)
     {
         $_SESSION["user"] = ["id"=> $id,
             "firstName"=> $firstName,
             "lastName"=> $lastName,
             "email"=> $email,
-            "isAdmin"=> $isAdmin,
+            "isAdmin"=> $isAdmin
         ];
+
+        if (isset($_POST['auto'])){
+            setcookie('auth',$secret, time() + 364*24*3600, '/', null, false, true);
+        }
+
         $this->isAuthenticated();
     }
 
@@ -46,14 +51,14 @@ class UserSession
         if ($this->isAuthenticated()){
             header("Location:".URL."accueil");
         }
-        require_once "views/loginView.php";
         unset($_SESSION['alert']);
+
     }
 
     public function kill()
     {
         $_SESSION = [];
         session_destroy();
-        header("Location:".URL."authentification");
+        header("Location:".URL."connexion");
     }
 }

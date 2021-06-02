@@ -5,14 +5,16 @@ ob_start();
     <div id="login-body">
         <h1>S'inscrire</h1>
 
-        <form method="post" action="inscription">
+        <form method="post" action="inscription/create">
+            <input type="text" name="firstName" placeholder="Votre prénom" required />
+            <input type="text" name="lastName" placeholder="Votre nom" required />
             <input type="email" name="email" placeholder="Votre adresse email" required />
-            <input type="password" name="password" placeholder="Mot de passe" required />
-            <input type="password" name="confirmPassword" placeholder="Retapez votre mot de passe" required />
+            <input type="password" name="pwd" placeholder="Mot de passe" required />
+            <input type="password" name="pwd-check" placeholder="Retapez votre mot de passe" required />
             <button type="submit">S'inscrire</button>
         </form>
 
-        <p class="grey">Déjà sur Fakeflix ? <a href="connection">Connectez-vous</a>.</p>
+        <p class="grey">Déjà sur Fakeflix ? <a href="connexion">Connectez-vous</a>.</p>
     </div>
 
 

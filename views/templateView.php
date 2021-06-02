@@ -18,6 +18,7 @@
         <div id="brand"><img src="<?= URL ?>/public/img/logos/logo.png" alt="Fakeflix"></div>
     </header>
 
+
     <section>
         <?=$content?>
 
