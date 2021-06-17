@@ -1,6 +1,6 @@
 <?php
 require_once "Database.php";
-require_once "Users.php";
+require_once "User.php";
 
 class UserManager  extends  Database
 {
@@ -32,7 +32,7 @@ class UserManager  extends  Database
             $stmt->closeCursor();
 
             if ($result > 0){
-                $user = new Users($this->getBdd()->lastInsertId(), $firstName, $lastName, $email, $pwd, $isAdmin, $secret, $createAt);
+                $user = new User($this->getBdd()->lastInsertId(), $firstName, $lastName, $email, $pwd, $isAdmin, $secret, $createAt);
                 $this->addUser($user);
             }
         }
@@ -58,7 +58,7 @@ class UserManager  extends  Database
         $req->closeCursor();
 
         foreach ($users as $user){
-            $u = new Users($user['id'], $user['firstName'],$user['lastName'],$user['email'],$user['pwd'],$user['isAdmin'],$user['secret'], $user['createAt'],);
+            $u = new User($user['id'], $user['firstName'],$user['lastName'],$user['email'],$user['pwd'],$user['isAdmin'],$user['secret'], $user['createAt'],);
             $this->addUser($u);
         }
     }

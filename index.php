@@ -6,9 +6,11 @@ define("URL",str_replace("index.php","",(isset($_SERVER['HTTPS']) ? "https" : "h
 
 require_once "app/class/UserSession.php";
 require_once "app/controllers/UsersController.php";
+require_once "app/controllers/CategoryController.php";
 
 $user = new UserSession();
 $userController = new UsersController();
+$categoryController = new CategoryController();
 
 try {
     if ($user->isAuthenticated()){
@@ -17,11 +19,31 @@ try {
 //        $prestationController->showPrestations();
         }
         else{
+
         $url = explode("/",filter_var($_GET['page']),FILTER_SANITIZE_URL);
+        require './app/controllers/MoviesController.php';
+        $moviesController = new MoviesController();
 
             switch ($url[0]){
                 case "accueil":
                     require "views/homeView.php";
+                    break;
+                case "films":
+                    if (empty($url[1])){
+                        $moviesController->showMovies();
+                        break;
+                    }  else {
+                        throw  new Exception('La page n\'existe pas');
+                    }
+                    break;
+                case "film":
+                     if (!empty($url[1]) && ctype_digit($url[1])){
+                        $moviesController->showMovie($url[1]);
+                        break;
+                     }
+                     else {
+                         throw  new Exception('La page n\'existe pas');
+                     }
                     break;
             }
         }

@@ -1,13 +1,16 @@
-* {
+*, ::before, ::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
+  scroll-behavior: smooth;
   padding: 0;
   margin: 0;
   font-family: arial;
   height: 100%;
-  color: #999;
+  color: #919191;
 }
 
 body {
@@ -22,10 +25,6 @@ body {
   min-height: 100%;
 }
 
-header {
-  padding: 20px 0 0 50px;
-}
-
 header #brand img {
   height: 45px;
 }
@@ -33,16 +32,15 @@ header #brand img {
 footer {
   background-color: rgba(0, 0, 0, 0.7);
   padding: 30px;
-  margin-top: 100px;
 }
 
 footer p {
   margin-top: 0;
-  color: #999;
+  color: #919191;
 }
 footer a {
   font-size: 0.7em;
-  color: #999;
+  color: #919191;
   text-decoration: none;
   margin-right: 50px;
 }
@@ -146,6 +144,163 @@ button {
     text-align: center;
     padding-left: 20px;
   }
+}
+header {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 30px;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+}
+header nav {
+  color: white;
+  display: flex;
+  align-items: center;
+}
+header nav #logo {
+  width: 6.5em;
+  margin-right: 2em;
+}
+header nav .left-menu {
+  display: flex;
+  align-items: baseline;
+}
+header nav .left-menu p, header nav .left-menu a {
+  font-size: 18px;
+  text-decoration: none;
+  cursor: pointer;
+  margin: 0 1em;
+}
+header nav .left-menu p:hover, header nav .left-menu a:hover {
+  color: #db0000;
+}
+header nav .left-menu i {
+  text-decoration: none;
+}
+header nav .right-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: auto;
+}
+header nav .right-menu h5 {
+  cursor: pointer;
+}
+header nav .right-menu h5:hover {
+  color: #db0000;
+}
+header nav .right-menu .fa-search {
+  margin-right: 0.5em;
+}
+header nav .right-menu .user {
+  display: flex;
+  align-items: center;
+  margin: 0 19px 15px;
+}
+header nav .right-menu .user img {
+  width: 3em;
+  height: 3em;
+  margin-right: 1em;
+}
+
+main {
+  background: #0a0a0a;
+  padding: 0.6em 1em 2em;
+}
+main section {
+  padding-bottom: 1em;
+}
+main section h3 {
+  margin: 0;
+  font-weight: 200;
+  color: white;
+  font-size: 0.98em;
+}
+main section .multiple-items {
+  position: relative;
+  margin: 1em 0;
+}
+main section .multiple-items .fa-chevron-left {
+  cursor: pointer;
+  font-size: 1.2em;
+  color: #db0000;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  width: 40px;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main section .multiple-items .fa-chevron-right {
+  cursor: pointer;
+  color: #db0000;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 100;
+  width: 40px;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main section .multiple-items img {
+  margin: 0 0.15em;
+}
+main section .multiple-items img:focus {
+  outline-color: #db0000;
+}
+main section .tv-shows {
+  position: relative;
+}
+main section .tv-shows .fa-chevron-left {
+  cursor: pointer;
+  font-size: 1.2em;
+  color: #db0000;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  width: 40px;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main section .tv-shows .fa-chevron-right {
+  cursor: pointer;
+  color: #db0000;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 100;
+  width: 40px;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main section .tv-shows img {
+  height: 17em;
+  margin: 0.5em 0.1em;
+}
+main section .tv-shows img:focus {
+  outline-color: #db0000;
+}
+
+.img-list {
+  width: 100%;
+}
+
+.description {
+  color: #919191;
 }
 
 /*# sourceMappingURL=style.css.map */

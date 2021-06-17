@@ -1,15 +1,27 @@
-* {
+$main-color: rgb(219,0,0);
+$bcknd-clr: rgba(0,0,0,.7);
+$white: rgb(255,255,255);
+$black: rgb(0,0,0);
+$main-bck: rgb(10,10,10);
+$grey: rgb(145,145,145);
+
+*, ::before, ::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
+
 html {
+  scroll-behavior: smooth;
   padding: 0;
   margin: 0;
   font-family: arial;
   height: 100%;
-  color: #999;
+  color: $grey;
 }
 
 body {
+
   padding: 0;
   margin: 0;
   height: 100%;
@@ -21,9 +33,9 @@ body {
   min-height: 100%;
 }
 
-header {
-  padding: 20px 0 0 50px;
-}
+//header {
+//  padding: 20px 0 0 50px;
+//}
 
 header #brand img {
   height: 45px;
@@ -32,18 +44,18 @@ header #brand img {
 footer {
   background-color: rgba(0,0,0,.7);
   padding: 30px;
-  margin-top: 100px;
+  //margin-top: 100px;
 }
 
 footer  {
   p{
     margin-top: 0;
-    color: #999;
+    color: $grey;
 
   }
   a{
     font-size: 0.7em;
-    color: #999;
+    color: $grey;
     text-decoration: none;
     margin-right: 50px;
     :hover{
@@ -141,4 +153,167 @@ button {
 @media all and (max-width: 830px) {
   .container { width: 580px; }
   header { text-align: center; padding-left: 20px; }
+}
+
+
+//Navbar
+header{
+  background-color: rgba(0,0,0,.7);
+  padding: 30px;
+  //margin-bottom: 100px;
+
+  background-size:cover;
+  display:flex;
+  flex-direction:column;
+  nav{
+    color:$white;
+    display:flex;
+    align-items:center;
+    #logo{
+      width:6.5em;
+      margin-right:2em;
+    }
+    .left-menu{
+      display:flex;
+      align-items:baseline;
+      p, a{
+        font-size: 18px;
+        text-decoration: none;
+        cursor:pointer;
+        margin:0 1em;
+        &:hover{
+          color:$main-color;
+        }
+      }
+      i{
+        text-decoration: none;
+      }
+    }
+    .right-menu{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-left:auto;
+      h5{
+        cursor:pointer;
+        &:hover{
+          color:$main-color;
+        }
+      }
+      .fa-search{
+        margin-right:.50em;
+      }
+      .user{
+        display:flex;
+        align-items:center;
+        margin:0 19px 15px;
+        img{
+          width:3em;
+          height:3em;
+          margin-right:1em;
+        }
+      }
+    }
+  }
+}
+//Home page
+main{
+  background:$main-bck;
+  padding:.60em 1em 2em;
+  section{
+    padding-bottom:1em;
+    h3{
+      margin:0;
+      font-weight:200;
+      color:$white;
+      font-size:.98em;
+    }
+    .multiple-items{
+      position:relative;
+      margin:1em 0;
+      .fa-chevron-left{
+        cursor:pointer;
+        font-size:1.2em;
+        color:$main-color;
+        position:absolute;
+        top:0;
+        bottom:0;
+        left:0;
+        z-index:100;
+        width:40px;
+        background:linear-gradient(to right, rgba($black,.9),rgba($black,.8));
+        display:flex;
+        justify-content:center;
+        align-items:center;
+      }
+      .fa-chevron-right{
+        cursor:pointer;
+        color:$main-color;
+        position:absolute;
+        right:0;
+        top:0;
+        bottom:0;
+        z-index:100;
+        width:40px;
+        background:linear-gradient(to right, rgba($black,.9),rgba($black,.8));
+        display:flex;
+        justify-content:center;
+        align-items:center;
+      }
+      img{
+        margin:0 .15em;
+        &:focus{
+          outline-color:$main-color;
+        }
+      }
+    }
+    .tv-shows{
+      position:relative;
+      .fa-chevron-left{
+        cursor:pointer;
+        font-size:1.2em;
+        color:$main-color;
+        position:absolute;
+        top:0;
+        bottom:0;
+        left:0;
+        z-index:100;
+        width:40px;
+        background:linear-gradient(to right, rgba($black,.9),rgba($black,.8));
+        display:flex;
+        justify-content:center;
+        align-items:center;
+      }
+      .fa-chevron-right{
+        cursor:pointer;
+        color:$main-color;
+        position:absolute;
+        right:0;
+        top:0;
+        bottom:0;
+        z-index:100;
+        width:40px;
+        background:linear-gradient(to right, rgba($black,.9),rgba($black,.8));
+        display:flex;
+        justify-content:center;
+        align-items:center;
+      }
+      img{
+        height:17em;
+        margin:.50em .10em;
+        &:focus{
+          outline-color:$main-color;
+        }
+      }
+    }
+  }
+}
+//Vignettes liste
+.img-list{
+  width: 100%;
+}
+//MovieView page
+
+.description{
+  color: $grey;
 }
