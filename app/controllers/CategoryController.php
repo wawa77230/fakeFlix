@@ -21,7 +21,7 @@ class CategoryController
 
     public function getCategoryForMovie($id)
     {
-       return $this->categoryManager->getCategoryById($id)->getName();
+       return  $this->categoryManager->getCategoryNameById($id);
 
     }
 }

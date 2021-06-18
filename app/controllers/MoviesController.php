@@ -22,6 +22,8 @@ class MoviesController
     public function showMovie($id)
     {
         $movie = $this->moviesManager->getMovieById($id);
+        require_once "./app/controllers/CategoryController.php";
+        $category = new CategoryController();
         require "./views/movieView.php";
     }
 

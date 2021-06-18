@@ -16,7 +16,7 @@ ob_start();
                     <?php endfor;?>
                 </div>
                     <p class="infos"><?= $movie->getYear()?></p>
-                    <p class="infos"><?= $movie->getCategoryId()?></p>
+                    <p class="infos"><?= $category->getCategoryForMovie($movie->getCategoryId())?></p>
             </div>
             <p class="description"><?= $movie->getDescription()?></p>
         </div>

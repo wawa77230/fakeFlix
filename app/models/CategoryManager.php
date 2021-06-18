@@ -54,6 +54,17 @@ class CategoryManager extends Database
         throw new Exception("La catégorie n'existe pas");
     }
 
+    public function getCategoryNameById($id)
+    {
+        foreach ($this->categories as $category){
+            if ($category->getId() === $id){
+                return $category->getName();
+            }
+        }
+
+        throw new Exception("La catégorie n'existe pas");
+    }
+
 
 
     public function updateCategoryBd($id,$name)
