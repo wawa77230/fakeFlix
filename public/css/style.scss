@@ -71,6 +71,7 @@ a {
     text-decoration: underline;
   }
 }
+
 section {
   flex-grow: 1;
 }
@@ -316,4 +317,25 @@ main{
 
 .description{
   color: $grey;
+}
+
+span{
+  font-size: 1.5rem;
+}
+.red-star {
+  color: $main-color;
+}
+.grey-star {
+  color: $grey;
+}
+
+.infos{
+    margin-bottom: 0;
+    font-size: 1.5rem;
+    color: $grey;
+}
+
+iframe {
+  position: relative;
+  height: 100%; width: 100%;
 }

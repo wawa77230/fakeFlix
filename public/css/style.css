@@ -303,4 +303,28 @@ main section .tv-shows img:focus {
   color: #919191;
 }
 
+span {
+  font-size: 1.5rem;
+}
+
+.red-star {
+  color: #db0000;
+}
+
+.grey-star {
+  color: #919191;
+}
+
+.infos {
+  margin-bottom: 0;
+  font-size: 1.5rem;
+  color: #919191;
+}
+
+iframe {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
 /*# sourceMappingURL=style.css.map */

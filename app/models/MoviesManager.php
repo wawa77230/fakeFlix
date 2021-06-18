@@ -11,7 +11,7 @@ class MoviesManager extends Database
         $this->movies[] = $movie;
     }
 
-    public function addMovieDb($name, $rank, $description, $year, $picture, $iframe, $categoryId)
+    public function addMovieDb($name, $rank, $description, $year, $picture, $iframe, $categoryId )
     {
         $req= "
                 INSERT INTO movies(name, `rank`, description, year, picture, iframe,categoryId)

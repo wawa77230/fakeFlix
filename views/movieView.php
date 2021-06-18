@@ -6,16 +6,23 @@ ob_start();
     <div class="container row mt-5 mb-5 justify-content-between">
         <div class="col-4">
             <h1 class="text-center text-white"><?= $movie->getName()?></h1>
-            <div class="row justify-content-around ">
-                <p><?= $movie->getRank()?></p>
-                <p><?= $movie->getYear()?></p>
-                <p><?= $category->getCategoryForMovie($movie->getCategoryId())?></p>
+            <div class="row justify-content-around  align-items-center">
+                <div>
+                    <?php for ($i =$movie->getRank(); $i > 0; $i-- ):?>
+                        <span class="red-star">★</span>
+                    <?php endfor;?>
+                    <?php for ($j = 5 - $movie->getRank(); $j > 0; $j-- ):?>
+                        <span class="grey-star">★</span>
+                    <?php endfor;?>
+                </div>
+                    <p class="infos"><?= $movie->getYear()?></p>
+                    <p class="infos"><?= $movie->getCategoryId()?></p>
             </div>
             <p class="description"><?= $movie->getDescription()?></p>
         </div>
 
         <div class="col-7">
-            <iframe  width="100%" height="80%"
+            <iframe
                     src="<?= $movie->getIframe()?>"
                     title="YouTube video player" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write;

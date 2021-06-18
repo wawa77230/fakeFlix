@@ -106,4 +106,5 @@ class Movie
     {
         $this->categoryId = $categoryId;
     }
+
 }
