@@ -41,7 +41,7 @@ class MoviesManager extends Database
         $req->closeCursor();
 
         foreach ($movies as $m){
-            $m = new Movie($m['id'], $m['name'],$m['rank'],$m['description'],$m['year'],$m['picture'],$m['iframe'], $m['categoryId']);
+            $m = new Movie($m['id'], htmlspecialchars($m['name']),$m['rank'],htmlspecialchars($m['description']),$m['year'],$m['picture'],htmlspecialchars($m['iframe']), $m['categoryId']);
             $this->addMovie($m);
         }
     }
@@ -57,6 +57,19 @@ class MoviesManager extends Database
                 return $movie;
             }
         }
+
+        throw new Exception("Le film n'existe pas");
+    }
+
+    public function getMovieByCatId($id)
+    {
+        $movies = [];
+        foreach ($this->movies as $movie){
+            if ($movie->getCategoryId() === $id){
+                 $movies[] = $movie ;
+            }
+        }
+        return $movies;
 
         throw new Exception("Le film n'existe pas");
     }

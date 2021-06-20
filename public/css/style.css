@@ -30,6 +30,7 @@ header #brand img {
 }
 
 footer {
+  bottom: 0;
   background-color: rgba(0, 0, 0, 0.7);
   padding: 30px;
 }
@@ -49,7 +50,7 @@ footer a :hover {
 }
 
 a {
-  color: white;
+  color: black;
   text-decoration: none;
 }
 a :hover {
@@ -167,6 +168,7 @@ header nav .left-menu {
 }
 header nav .left-menu p, header nav .left-menu a {
   font-size: 18px;
+  color: white;
   text-decoration: none;
   cursor: pointer;
   margin: 0 1em;
@@ -295,8 +297,9 @@ main section .tv-shows img:focus {
   outline-color: #db0000;
 }
 
-.img-list {
-  width: 100%;
+.thumbnail {
+  height: 142px;
+  width: 252px;
 }
 
 .description {
@@ -317,7 +320,7 @@ span {
 
 .infos {
   margin-bottom: 0;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #919191;
 }
 
@@ -325,6 +328,28 @@ iframe {
   position: relative;
   height: 100%;
   width: 100%;
+}
+
+.category {
+  border: solid;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.backlink {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  margin: 0 1em;
+}
+.backlink:hover {
+  color: #db0000;
+  text-decoration: none;
+}
+
+.img-list img {
+  max-width: 200px;
+  max-height: 142px;
 }
 
 /*# sourceMappingURL=style.css.map */

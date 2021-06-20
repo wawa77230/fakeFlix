@@ -55,6 +55,14 @@ class UserSession
 
     }
 
+    public function singIn(){
+        if (!$this->isAuthenticated()){
+            header("Location:".URL."inscription");
+        }else{
+            require 'views/singIn.php';
+        }
+    }
+
     public function kill()
     {
         $_SESSION = [];

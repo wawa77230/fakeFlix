@@ -42,8 +42,15 @@ header #brand img {
 }
 
 footer {
+  //position: relative;
+
+
+
+  bottom: 0;
   background-color: rgba(0,0,0,.7);
   padding: 30px;
+
+
   //margin-top: 100px;
 }
 
@@ -65,7 +72,7 @@ footer  {
 }
 
 a {
-  color: white;
+  color: $black;
   text-decoration: none;
   :hover {
     text-decoration: underline;
@@ -179,6 +186,7 @@ header{
       align-items:baseline;
       p, a{
         font-size: 18px;
+        color: $white;
         text-decoration: none;
         cursor:pointer;
         margin:0 1em;
@@ -309,10 +317,11 @@ main{
     }
   }
 }
-//Vignettes liste
-.img-list{
-  width: 100%;
+.thumbnail {
+  height: 142px;
+  width: 252px;
 }
+
 //MovieView page
 
 .description{
@@ -331,11 +340,37 @@ span{
 
 .infos{
     margin-bottom: 0;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: $grey;
 }
 
 iframe {
   position: relative;
   height: 100%; width: 100%;
+}
+
+.category{
+  border: solid;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+//ErrorPage
+.backlink{
+  color: $white;
+    text-decoration: none;
+    cursor:pointer;
+    margin:0 1em;
+    &:hover{
+      color:$main-color;
+      text-decoration: none;
+
+    }
+
+}
+
+//List page
+.img-list img{
+  max-width: 200px;
+  max-height: 142px;
 }

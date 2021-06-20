@@ -14,6 +14,8 @@ class MoviesController
 
     public function showMovies(){
         $movies = $this->moviesManager->getMovies();
+        require_once "./app/controllers/CategoryController.php";
+        $category = new CategoryController();
 
         require "./views/moviesView.php";
         unset($_SESSION['alert']);

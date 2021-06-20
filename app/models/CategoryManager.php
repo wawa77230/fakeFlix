@@ -34,7 +34,7 @@ class CategoryManager extends Database
         $req->closeCursor();
 
         foreach ($categories as $c){
-            $c = new Category($c['id'], $c['name']);
+            $c = new Category($c['id'], htmlspecialchars($c['name']));
             $this->addCategory($c);
         }
     }

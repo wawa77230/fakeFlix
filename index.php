@@ -7,16 +7,18 @@ define("URL",str_replace("index.php","",(isset($_SERVER['HTTPS']) ? "https" : "h
 require_once "app/class/UserSession.php";
 require_once "app/controllers/UsersController.php";
 require_once "app/controllers/CategoryController.php";
+require_once './app/controllers/HomeController.php';
+
 
 $user = new UserSession();
 $userController = new UsersController();
 $categoryController = new CategoryController();
+$homeController = new HomeController();
 
 try {
     if ($user->isAuthenticated()){
         if (empty($_GET['page'])){
-            require 'views/homeView.php';
-//        $prestationController->showPrestations();
+            $homeController->showMoviesByCat();
         }
         else{
 
@@ -26,7 +28,8 @@ try {
 
             switch ($url[0]){
                 case "accueil":
-                    require "views/homeView.php";
+                    //retirer accueil du chemin
+                    $homeController->showMoviesByCat();
                     break;
                 case "films":
                     if (empty($url[1])){
@@ -51,7 +54,6 @@ try {
     else {
             if (empty($_GET['page'])){
                 require 'views/loginView.php';
-//        $prestationController->showPrestations();
             }
             else {
                 $url = explode("/",filter_var($_GET['page']),FILTER_SANITIZE_URL);
@@ -59,8 +61,7 @@ try {
                 switch ($url[0]){
                 case "inscription":
                     if (empty($url[1])){
-                        $user->connection();
-                        require 'views/singIn.php';
+                        $user->singIn();
                     }
                     else if($url[1] === "create"){
                         $userController->addUserValidation();

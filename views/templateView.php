@@ -11,6 +11,11 @@
 
     <link rel="icon" type="image/pngn" href="<?= URL ?>/public/img/logos/favicon.png">
 
+    <?php if (isset($links) && !empty($links)):?>
+        <?php foreach ($links as $link): ?>
+            <?= $link?>
+        <?php endforeach;?>
+    <?php endif;?>
     <script src="https://kit.fontawesome.com/1901af9c76.js" crossorigin="anonymous"></script>
 
     <title><?= $title?></title>
@@ -18,12 +23,12 @@
 <body>
     <header>
         <nav>
-        <div id="brand"><a href="accueil"><img src="<?= URL ?>/public/img/logos/logo.png" alt="Fakeflix"></a></div>
+        <div id="brand"><a href="<?= URL?>accueil"><img src="<?= URL ?>/public/img/logos/logo.png" alt="Fakeflix"></a></div>
         <?php if ( !empty($_SESSION['user'])):?>
             <div class="left-menu">
                 <p>Browse&nbsp;<i class="fa fa-caret-down"></i></p>
                 <?php if ($_SESSION['user']['isAdmin']):?>
-                    <a href="films">Ajouter un film&nbsp;<i class="fa fa-plus" aria-hidden="true"></i></a>
+                    <a href="<?= URL?>films">Ajouter un film&nbsp;<i class="fa fa-plus" aria-hidden="true"></i></a>
                 <?php endif;?>
                 <p>DVD</p>
             </div>
@@ -44,7 +49,6 @@
     <main>
         <section>
             <?=$content?>
-
         </section>
     </main>
 
@@ -71,7 +75,12 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
 -->
 <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
-    <script src="<?= URL ?>public/js/index.js"></script>
+
+
+    <?php if (isset($scripts) && !empty($scripts)):?>
+        <?php foreach ($scripts as $script): ?>
+            <?= $script?>
+        <?php endforeach;?>
+    <?php endif;?>
 </body>
 </html>

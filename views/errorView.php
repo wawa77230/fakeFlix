@@ -2,9 +2,9 @@
 ob_start();
 ?>
     <div class="text-center mt-5">
-        <?= $msg?>
-<!--        <a href="--><?//=URL?><!--accueil" class="button">Retour</a>-->
-        <input type='button' value='Retour' name='bnom' onClick='javascript:history.back();'>
+        <h1 class="grey"><?= $msg?></h1>
+        <a href="#" onClick='javascript:history.back();' class="backlink">Retour</a>
+<!--        <input type='button' value='Retour' name='bnom' >-->
     </div>
 <?php
 $content =ob_get_clean();

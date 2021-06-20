@@ -4,7 +4,7 @@
 ob_start();
 ?>
     <div class="container row mt-5 mb-5 justify-content-between">
-        <div class="col-4">
+        <div class="col-5">
             <h1 class="text-center text-white"><?= $movie->getName()?></h1>
             <div class="row justify-content-around  align-items-center">
                 <div>
@@ -16,7 +16,7 @@ ob_start();
                     <?php endfor;?>
                 </div>
                     <p class="infos"><?= $movie->getYear()?></p>
-                    <p class="infos"><?= $category->getCategoryForMovie($movie->getCategoryId())?></p>
+                    <p class="infos category"><?= $category->getCategoryForMovie($movie->getCategoryId())?></p>
             </div>
             <p class="description"><?= $movie->getDescription()?></p>
         </div>
