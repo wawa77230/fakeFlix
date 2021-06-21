@@ -3,6 +3,9 @@
 ob_start();
 ?>
 <div class="mt-5 mb-5">
+    <div class="row justify-content-end">
+        <a href="#" class="btn btn-success mb-5"><i class="fas fa-plus"></i>&nbsp;Ajouter un film</a>
+    </div>
     <table >
         <thead>
         <tr class="text-center">
@@ -20,7 +23,7 @@ ob_start();
         <?php if ($movies):?>
             <?php foreach ($movies as $movie):?>
             <tr class="text-center">
-                <th><a href="film/<?= $movie->getId()?>"><?= $movie->getName()?></a></th>
+                <th><a href="<?= URL ?>film/<?= $movie->getId()?>"><?= $movie->getName()?></a></th>
                 <th><?= $category->getCategoryForMovie($movie->getCategoryId())?></th>
                 <td><?= $movie->getRank()?></td>
                 <td><?= substr($movie->getDescription(),0,20).'...'?></td>
@@ -45,8 +48,8 @@ ob_start();
 $content =ob_get_clean();
 $title = "Films";
 $h1 = "Films";
-$scripts = ["<script src='https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js'></script>",
-            "<script src='public/js/dataTables.js'></script>"   ];
-$links = ["<link rel='stylesheet' href='https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css'> "];
+//$scripts = ["<script src='https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js'></script>",
+//            "<script src='public/js/dataTables.js'></script>"   ];
+//$links = ["<link rel='stylesheet' href='https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css'> "];
 
 require "templateView.php";
