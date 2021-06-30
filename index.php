@@ -3,6 +3,8 @@
 //Permet de repartir depuis la racine
 define("URL",str_replace("index.php","",(isset($_SERVER['HTTPS']) ? "https" : "http").
     "://$_SERVER[HTTP_HOST]$_SERVER[PHP_SELF]"));
+//define('app/', __DIR__);
+define("PATH",__DIR__."/app/");
 
 require_once "app/class/UserSession.php";
 require_once "app/controllers/UsersController.php";
@@ -14,6 +16,7 @@ $user = new UserSession();
 $userController = new UsersController();
 $categoryController = new CategoryController();
 $homeController = new HomeController();
+$url = explode("/",filter_var($_GET['page']),FILTER_SANITIZE_URL);
 
 try {
     if ($user->isAuthenticated()){
@@ -22,7 +25,6 @@ try {
         }
         else{
 
-        $url = explode("/",filter_var($_GET['page']),FILTER_SANITIZE_URL);
         require './app/controllers/MoviesController.php';
         $moviesController = new MoviesController();
 
@@ -35,18 +37,31 @@ try {
                     if (empty($url[1])){
                         $moviesController->showMovies();
                         break;
-                    }  else {
+                    }elseif ($url[1] === "c"){
+                        $moviesController->createMovie();
+                    }elseif ($url[1] === "validation"){
+                        $moviesController->addMovieValidation();
+                    }elseif ($url[1] === "u"){
+                        $moviesController->updateMovie($url[2]);
+                    }elseif ($url[1] === "updateValidation"){
+                        $moviesController->updateMovieValidation();
+
+                    }
+                    else {
                         throw  new Exception('La page n\'existe pas');
                     }
                     break;
                 case "film":
                      if (!empty($url[1]) && ctype_digit($url[1])){
                         $moviesController->showMovie($url[1]);
-                        break;
                      }
                      else {
                          throw  new Exception('La page n\'existe pas');
                      }
+                    break;
+                case 'ajax':
+                    var_dump('coucou');
+                    var_dump($_POST);
                     break;
             }
         }
@@ -89,6 +104,7 @@ try {
 
         }
     }
+
 
 }
 catch (Exception $e){

@@ -11,11 +11,11 @@ class MoviesManager extends Database
         $this->movies[] = $movie;
     }
 
-    public function addMovieDb($name, $rank, $description, $year, $picture, $iframe, $categoryId )
+    public function addMovieDb($name, $rank,$description, $year, $picture, $iframe, $categoryId )
     {
         $req= "
                 INSERT INTO movies(name, `rank`, description, year, picture, iframe,categoryId)
-                                    VALUES  (:name, :rank, :description, :year, :picture, :iframe, :categoryId)";
+                                    VALUES  (:name,:rank, :description, :year, :picture, :iframe, :categoryId)";
         $stmt = $this->getBdd()->prepare($req);
         $result = $stmt->execute([
             "name"=> $name,
@@ -80,7 +80,7 @@ class MoviesManager extends Database
     {
         $req ="UPDATE movies
                SET name = :name,
-                   'rank' = :rank,
+                   rank = :rank,
                    description = :description,
                    year = :year,
                    picture = :picture,

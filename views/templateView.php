@@ -47,6 +47,8 @@
     </header>
 
     <main>
+        <h1 class="text-center"><?= $h1?></h1>
+
         <section>
             <?=$content?>
         </section>

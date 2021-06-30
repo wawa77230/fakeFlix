@@ -64,6 +64,18 @@ section {
 h1 {
   font-size: 2em;
   margin: 0 0 30px 0;
+  color: white;
+}
+
+.form {
+  background-color: white;
+  margin: 3rem 0;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.form-error {
+  color: #E50914;
 }
 
 input[type=email], input[type=password], input[type=text] {
