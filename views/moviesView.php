@@ -33,7 +33,9 @@ ob_start();
                 <td><?= $movie->getIframe()?></td>
                 <td class="btn-group">
                     <a href="<?=URL?>films/u/<?= $movie->getId()?>" class="btn btn-primary">Modifier</a>
-                    <a href="" class="btn btn-danger">Supprimer</a>
+                    <form action="<?=URL?>films/d/<?= $movie->getId()?>" method="post" onSubmit="return confirm('Voulez-vous vraiment supprimer ce film ?');">
+                        <button type="submit" name="remove" class="btn btn-danger">Supprimer</button>
+                    </form>
                 </td>
             </tr>
             <?php endforeach;?>

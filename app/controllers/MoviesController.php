@@ -118,6 +118,23 @@ class MoviesController extends TemplatingTools
         require "./views/movies/createMovieView.php";
     }
 
+    public function deleteMovie($id)
+    {
+        //Oblige à passer par la methode POST pour supprimer un film bien que l'id soit envoyé par l'url
+        if (isset($_POST['remove'])){
+            $title =$this->moviesManager->getMovieById($id)->getName();
+
+            $this->moviesManager->deletePrestationBd($id);
+
+        }
+
+//        $_SESSION['alert'] = [
+//            "type" => "success",
+//            "msg" => "Suppression de <strong>".$title."</strong> réalisé."
+//        ];
+
+        header("Location:".URL."films");
+    }
 
 
 }

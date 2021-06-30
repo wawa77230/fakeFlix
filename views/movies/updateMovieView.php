@@ -35,7 +35,7 @@ ob_start()
             <div class="form-group">
                     <h3>Image :</h3>
                     <?php if($movie->getPicture()):?>
-                        <img src="<?= URL ?>../public/images/movies/<?=$movie->getPicture()?>" alt="<?=$movie->getName()?>">
+                        <img class="thumbnail" src="<?= URL ?>./public/img/movies/<?=$movie->getPicture()?>" alt="<?=$movie->getName()?>">
                     <?php endif;?>
             </div>
             <div class="form-group">

@@ -45,7 +45,8 @@ try {
                         $moviesController->updateMovie($url[2]);
                     }elseif ($url[1] === "updateValidation"){
                         $moviesController->updateMovieValidation();
-
+                    }elseif ($url[1] === "d"){
+                        $moviesController->deleteMovie($url[2]);
                     }
                     else {
                         throw  new Exception('La page n\'existe pas');
