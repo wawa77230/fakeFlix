@@ -3,34 +3,37 @@
 //Permet de repartir depuis la racine
 define("URL",str_replace("index.php","",(isset($_SERVER['HTTPS']) ? "https" : "http").
     "://$_SERVER[HTTP_HOST]$_SERVER[PHP_SELF]"));
-//define('app/', __DIR__);
+
 define("PATH",__DIR__."/app/");
 
 require_once "app/class/UserSession.php";
 require_once "app/controllers/UsersController.php";
-require_once "app/controllers/CategoryController.php";
-require_once './app/controllers/HomeController.php';
-
 
 $user = new UserSession();
 $userController = new UsersController();
-$categoryController = new CategoryController();
-$homeController = new HomeController();
-$url = explode("/",filter_var($_GET['page']),FILTER_SANITIZE_URL);
 
 try {
-    if ($user->isAuthenticated()){
+    if (isset($user) && $user->isAuthenticated()){
+        require_once './app/controllers/HomeController.php';
+        $homeController = new HomeController();
+
         if (empty($_GET['page'])){
             $homeController->showMoviesByCat();
         }
         else{
 
+        $url = explode("/",filter_var($_GET['page']),FILTER_SANITIZE_URL);
+
         require './app/controllers/MoviesController.php';
+        require_once "app/controllers/CategoryController.php";
         $moviesController = new MoviesController();
+        $categoryController = new CategoryController();
+
 
             switch ($url[0]){
                 case "accueil":
                     //retirer accueil du chemin
+                    var_dump($_SESSION);
                     $homeController->showMoviesByCat();
                     break;
                 case "films":
@@ -64,6 +67,16 @@ try {
                     var_dump('coucou');
                     var_dump($_POST);
                     break;
+
+                case "authentification":
+                    if (empty($url[1])){
+                        $user->connection();
+                    }elseif ($url[1] === "logout"){
+                        $user->kill();
+                    }else {
+                        throw  new Exception('La page n\'existe pas');
+                    }
+                    break;
             }
         }
     }
@@ -94,10 +107,14 @@ try {
                     break;
 
                 case "authentification":
-
                     if (empty($url[1])){
+                        $user->connection();
+                    }elseif ($url[1] === "login"){
                         $userController->authentification();
+                    }else {
+                        throw  new Exception('La page n\'existe pas');
                     }
+                    break;
 //                      else if($url[1] === "login"){
 //                    $userController->authentification();
 //                }

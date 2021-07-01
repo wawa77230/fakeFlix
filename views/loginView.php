@@ -5,7 +5,7 @@ ob_start();
     <div id="login-body">
         <h1>S'identifier</h1>
 
-        <form method="post" action="authentification">
+        <form method="post" action="authentification/login">
             <input type="email" name="email" placeholder="Votre adresse email" required />
             <input type="password" name="pwd" placeholder="Mot de passe" required />
             <button type="submit">S'identifier</button>

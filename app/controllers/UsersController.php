@@ -15,9 +15,7 @@ class UsersController
     }
 
     public function authentification(){
-//        var_dump('authentification');
         if ($_POST){
-
             $email = $_POST['email'];
             $pwd = $_POST['pwd'];
             $this->userManager->findByEmailAndCheckPassword($email, $pwd);

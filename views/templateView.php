@@ -24,7 +24,7 @@
     <header>
         <nav>
         <div id="brand"><a href="<?= URL?>accueil"><img src="<?= URL ?>/public/img/logos/logo.png" alt="Fakeflix"></a></div>
-        <?php if ( !empty($_SESSION['user'])):?>
+        <?php if (!empty($_SESSION['user'])):?>
             <div class="left-menu">
                 <p>Browse&nbsp;<i class="fa fa-caret-down"></i></p>
                 <?php if ($_SESSION['user']['isAdmin']):?>
@@ -39,7 +39,8 @@
                 </form>
                 <div class="user">
                     <img class="user-img" src="<?= URL ?>/public/img/site/avatar.png"/>
-                    <h5><?= $_SESSION['user']['firstName']?>&nbsp;<i class="fa fa-caret-down"></i></h5>
+                    <h4><?= $_SESSION['user']['firstName']?></h4>
+                    <a href="<?= URL?>authentification/logout" class="logout" onclick="return confirm('Êtes vous sûrs de vouloir vous déconnecter ?');"><i class="fas fa-unlink"></i></a>
                 </div>
             </div>
         <?php endif;?>

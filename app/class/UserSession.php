@@ -13,7 +13,9 @@ class UserSession
 
     public function createUserSession($id, $firstName, $lastName, $email, $isAdmin, $secret)
     {
-        $_SESSION["user"] = ["id"=> $id,
+        $_SESSION["user"] = [
+            "webSite"=> 'fakeFlix',
+            "id"=> $id,
             "firstName"=> $firstName,
             "lastName"=> $lastName,
             "email"=> $email,
@@ -36,30 +38,37 @@ class UserSession
 
     public function isAuthenticated()
     {
-        return isset($_SESSION["user"]);
+        if ($_SESSION["user"]["webSite"] === 'fakeFlix'){
+            return isset($_SESSION["user"]);
+        }else {
+            return false;
+        }
     }
 
-    public function isAdmin():bool
-    {
-        if ($_SESSION["user"]["isAdmin"]){
-            return true;
-        }
-        return false;
-    }
     public function connection()
     {
         if ($this->isAuthenticated()){
             header("Location:".URL."accueil");
+        }else{
+            header("Location:".URL."authentification/login");
         }
         unset($_SESSION['alert']);
 
+    }
+
+    public function isAdmin():bool
+    {
+        if ($_SESSION["user"]["isAdmin"] && $_SESSION["user"]["webSite"] === 'fakeFlix'){
+            return true;
+        }
+        return false;
     }
 
     public function singIn(){
         if (!$this->isAuthenticated()){
             header("Location:".URL."inscription");
         }else{
-            require 'views/singIn.php';
+            header("Location:".URL."accueil");
         }
     }
 

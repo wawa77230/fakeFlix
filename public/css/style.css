@@ -216,6 +216,10 @@ header nav .right-menu .user img {
   height: 3em;
   margin-right: 1em;
 }
+header nav .right-menu .logout i {
+  color: white;
+  margin-left: 10px;
+}
 
 main {
   background: #0a0a0a;

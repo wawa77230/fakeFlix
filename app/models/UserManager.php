@@ -96,16 +96,17 @@ class UserManager  extends  Database
                     return $this->users[$i];
                 }
             }else{
-                $_SESSION['alert'] = [
-                    "type" => "danger",
-                    "msg" => "L'utilisateur n'existe pas"
-                ];
-
-                header("Location:".URL."prestations");
+//                $_SESSION['alert'] = [
+//                    "type" => "danger",
+//                    "msg" => "L'utilisateur n'existe pas"
+//                ];
+                var_dump('rediction');
+                die();
+                header("Location:".URL."authentification");
             }
         }
         ///////////////
-        throw new Exception("L'utilisateur n'existe pas");
+//        throw new Exception("L'utilisateur n'existe pas");
     }
 
 
