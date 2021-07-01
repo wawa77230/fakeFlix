@@ -29,7 +29,6 @@ try {
         $moviesController = new MoviesController();
         $categoryController = new CategoryController();
 
-
             switch ($url[0]){
                 case "accueil":
                     //retirer accueil du chemin
@@ -83,13 +82,13 @@ try {
         }
     }
     else {
-            if (empty($_GET['page'])){
-                $user->redirection();
-            }
-            else {
-                $url = explode("/",filter_var($_GET['page']),FILTER_SANITIZE_URL);
+        if (empty($_GET['page'])){
+            $user->redirection();
+        }
+        else {
+            $url = explode("/",filter_var($_GET['page']),FILTER_SANITIZE_URL);
 
-                switch ($url[0]){
+            switch ($url[0]){
                 case "inscription":
                     if (empty($url[1])){
                         $user->singIn();
@@ -103,7 +102,6 @@ try {
                     }
                     break;
 
-//                    A modifier repétitif
                 case "connexion":
                     require 'views/loginView.php';
                     break;
@@ -118,10 +116,8 @@ try {
                     }
                     break;
 
-                    default : throw  new Exception('La page n\'existe pas');
-
-                }
-
+                default : throw  new Exception('La page n\'existe pas');
+            }
         }
     }
 
