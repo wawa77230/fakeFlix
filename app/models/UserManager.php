@@ -90,19 +90,10 @@ class UserManager  extends  Database
         for ($i = 0; $i< count($this->users);$i++){
             if ($this->users[$i]->getEmail() === $email)
             {
-
                 if (password_verify($pwd, $this->users[$i]->getPassword()))
                 {
                     return $this->users[$i];
                 }
-            }else{
-//                $_SESSION['alert'] = [
-//                    "type" => "danger",
-//                    "msg" => "L'utilisateur n'existe pas"
-//                ];
-                var_dump('rediction');
-                die();
-                header("Location:".URL."authentification");
             }
         }
         ///////////////

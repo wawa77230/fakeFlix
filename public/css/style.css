@@ -122,6 +122,9 @@ button {
 .grey {
   color: #777;
 }
+.grey a {
+  color: white;
+}
 
 .alert {
   padding: 10px;

@@ -13,7 +13,7 @@ $user = new UserSession();
 $userController = new UsersController();
 
 try {
-    if (isset($user) && $user->isAuthenticated()){
+    if ($user->isAuthenticated()){
         require_once './app/controllers/HomeController.php';
         $homeController = new HomeController();
 
@@ -33,7 +33,6 @@ try {
             switch ($url[0]){
                 case "accueil":
                     //retirer accueil du chemin
-                    var_dump($_SESSION);
                     $homeController->showMoviesByCat();
                     break;
                 case "films":
@@ -77,12 +76,15 @@ try {
                         throw  new Exception('La page n\'existe pas');
                     }
                     break;
+
+                default : throw  new Exception('La page n\'existe pas');
+
             }
         }
     }
     else {
             if (empty($_GET['page'])){
-                require 'views/loginView.php';
+                $user->redirection();
             }
             else {
                 $url = explode("/",filter_var($_GET['page']),FILTER_SANITIZE_URL);
@@ -115,10 +117,10 @@ try {
                         throw  new Exception('La page n\'existe pas');
                     }
                     break;
-//                      else if($url[1] === "login"){
-//                    $userController->authentification();
-//                }
-            }
+
+                    default : throw  new Exception('La page n\'existe pas');
+
+                }
 
         }
     }

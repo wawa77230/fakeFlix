@@ -16,22 +16,31 @@ class UsersController
 
     public function authentification(){
         if ($_POST){
+
             $email = $_POST['email'];
             $pwd = $_POST['pwd'];
-            $this->userManager->findByEmailAndCheckPassword($email, $pwd);
 
-            $id = $this->userManager->findByEmailAndCheckPassword($email, $pwd)->getId();
-            $firstName = $this->userManager->findByEmailAndCheckPassword($email, $pwd)->getFirstName();
-            $lastName = $this->userManager->findByEmailAndCheckPassword($email, $pwd)->getLastName();
-            $isAdmin = $this->userManager->findByEmailAndCheckPassword($email, $pwd)->getIsAdmin();
-            $secret = $this->userManager->findByEmailAndCheckPassword($email, $pwd)->getSecret();
+            if ($this->userManager->findByEmailAndCheckPassword($email, $pwd)){
 
-            $this->userSession->createUserSession($id, $firstName, $lastName, $email, $isAdmin, $secret );
-            header("Location:".URL."accueil");
 
+                $id = $this->userManager->findByEmailAndCheckPassword($email, $pwd)->getId();
+                $firstName = $this->userManager->findByEmailAndCheckPassword($email, $pwd)->getFirstName();
+                $lastName = $this->userManager->findByEmailAndCheckPassword($email, $pwd)->getLastName();
+                $isAdmin = $this->userManager->findByEmailAndCheckPassword($email, $pwd)->getIsAdmin();
+                $secret = $this->userManager->findByEmailAndCheckPassword($email, $pwd)->getSecret();
+
+                $this->userSession->createUserSession($id, $firstName, $lastName, $email, $isAdmin, $secret );
+                header("Location:".URL."accueil");
+            }else{
+                //                $_SESSION['alert'] = [
+//                    "type" => "danger",
+//                    "msg" => "L'utilisateur n'existe pas"
+//                ];
+                $this->userSession->redirection();
+            }
         }
         else{
-            header("Location:".URL."authentification");
+            $this->userSession->redirection();
         }
     }
 
@@ -61,7 +70,7 @@ class UsersController
 
             //Si il n'y a pas d'erreur cet header sera renvoyé !!!!!!!!!!!!
             if (isset($_SESSION['alert'])){
-                header("Location:".URL."connexion");
+                $this->userSession->redirection();
             }
 
         }

@@ -29,31 +29,49 @@ class UserSession
         $this->isAuthenticated();
     }
 
-    public function isConnected()
-    {
-        if (!$this->isAuthenticated()){
-            $this->connection();
-        }
-    }
+//    public function isConnected()
+//    {
+//        if (!$this->isAuthenticated()){
+//            $this->connection();
+//        }else{
+//            return true;
+//        }
+//    }
+
+//
 
     public function isAuthenticated()
     {
-        if ($_SESSION["user"]["webSite"] === 'fakeFlix'){
+        if (isset($_SESSION["user"]) && $_SESSION["user"]["webSite"] === 'fakeFlix'){
             return isset($_SESSION["user"]);
         }else {
             return false;
+//            $this::redirection();
+
         }
+//        return isset($_SESSION["user"]);
+
     }
+
+//    public function connection()
+//    {
+//        if ($this->isAuthenticated()){
+//            header("Location:".URL."accueil");
+//        }else{
+//            header("Location:".URL."authentification/login");
+//        }
+//        unset($_SESSION['alert']);
+//
+//    }
 
     public function connection()
     {
         if ($this->isAuthenticated()){
             header("Location:".URL."accueil");
-        }else{
-            header("Location:".URL."authentification/login");
         }
-        unset($_SESSION['alert']);
+        $this::redirection();
 
+        unset($_SESSION['alert']);
     }
 
     public function isAdmin():bool
@@ -65,17 +83,21 @@ class UserSession
     }
 
     public function singIn(){
-        if (!$this->isAuthenticated()){
-            header("Location:".URL."inscription");
-        }else{
+        if ($this->isAuthenticated()){
             header("Location:".URL."accueil");
+        }else{
+            require 'views/singIn.php';
         }
+    }
+
+    public function redirection(){
+        header("Location:".URL."connexion");
     }
 
     public function kill()
     {
         $_SESSION = [];
         session_destroy();
-        header("Location:".URL."connexion");
+        $this::redirection();
     }
 }
