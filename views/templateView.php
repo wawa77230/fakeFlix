@@ -34,9 +34,18 @@
             </div>
 
             <div class="right-menu">
-                <form action="recherche" method="get">
-                    <input type="text" placeholder="&#61447; Rechercher">
+
+                <?php if ($_GET['page'] != "recherche"):?>
+                    <form action="recherche" method="get">
+                    <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <button class="btn btn-outline-light" id="submit" type="submit"><i class="fas fa-search"></i></button>
+                            </div>
+                            <input type="text" id="search" name="search" value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']): ''?>" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" required>
+                    </div>
                 </form>
+                <?php endif;?>
+
                 <div class="user">
                     <img class="user-img" src="<?= URL ?>/public/img/site/avatar.png"/>
                     <h4><?= $_SESSION['user']['firstName']?></h4>

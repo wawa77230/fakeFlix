@@ -1,19 +1,15 @@
 <?php
-require_once PATH."models/MoviesManager.php";
+require_once PATH."models/MoviesManagerByAjax.php";
 require_once PATH."models/CategoryManager.php";
-require_once PATH."class/TemplatingTools.php";
 
-
-
-class MoviesController extends TemplatingTools
+class MoviesControllerByAjax
 {
     private $moviesManager;
     private $categoryManager;
 
     public function __construct()
     {
-        $this->moviesManager = new MoviesManager();
-        $this->moviesManager->findAllMovies();
+        $this->moviesManager = new MoviesManagerByAjax();
 
         $this->categoryManager = new CategoryManager();
         $this->categoryManager->findAllCategories();
@@ -136,8 +132,12 @@ class MoviesController extends TemplatingTools
         header("Location:".URL."films");
     }
 
-    public function search(){
-        require "./views/searchView.php";
+    public function search($query){
+
+        $query = trim(htmlspecialchars($query));
+        $this->moviesManager->findAllMoviesByName($query);
+
+        echo $this->moviesManager->getMovies();
     }
 
 

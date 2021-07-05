@@ -3,7 +3,7 @@ require_once "Database.php";
 require_once "Movie.php";
 
 
-class MoviesManager extends Database
+class MoviesManagerByAjax extends Database
 {
     private $movies; // Tableau des prestations
 
@@ -34,9 +34,14 @@ class MoviesManager extends Database
         }
     }
 
-    public function findAllMovies(){
-        $req = $this->getBdd()->prepare("SELECT id, name, `rank`, description, year, picture, iframe, categoryId FROM movies");
-        $req->execute();
+    public function findAllMoviesByName($query){
+
+        $req = $this->getBdd()->prepare("SELECT id, name, `rank`, description, year, picture, iframe, categoryId
+                                         FROM movies
+                                         WHERE name  LIKE ?
+                                          ");
+        $req->execute(["$query%"]);
+//        $req->execute(["%$query%"]);
         $movies = $req->fetchAll(PDO::FETCH_ASSOC);
         $req->closeCursor();
 
@@ -47,7 +52,18 @@ class MoviesManager extends Database
     }
 
     public function getMovies(){
-        return $this->movies;
+
+        $movies = null;
+        if (isset($this->movies)){
+            foreach ($this->movies as $movie){
+                $m = ["id" => $movie->getId(),
+                      "name" => $movie->getName(),
+                      "picture" => URL.'public/img/movies/'.$movie->getPicture()
+                ];
+                $movies[]= $m;
+            }
+        }
+        return json_encode($movies);
     }
 
     public function getMovieById($id)
@@ -66,7 +82,7 @@ class MoviesManager extends Database
         $movies = [];
         foreach ($this->movies as $movie){
             if ($movie->getCategoryId() === $id){
-                 $movies[] = $movie ;
+                $movies[] = $movie ;
             }
         }
         return $movies;

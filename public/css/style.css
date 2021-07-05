@@ -223,6 +223,10 @@ header nav .right-menu .logout i {
   color: white;
   margin-left: 10px;
 }
+header nav .right-menu .logout i:hover {
+  color: #db0000;
+  text-decoration: none;
+}
 
 main {
   background: #0a0a0a;
@@ -369,6 +373,45 @@ iframe {
 .img-list img {
   max-width: 200px;
   max-height: 142px;
+}
+
+/* Anim loader */
+.loader {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.point {
+  margin: 0px 5px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #f1f1f1;
+  animation: monte 0.3s alternate infinite;
+}
+
+.point:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.point:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.point:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes monte {
+  100% {
+    transform: translateY(-30px);
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
