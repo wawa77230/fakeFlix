@@ -3,29 +3,42 @@
 
 window.onload = function() {
 
-    const btnSubmit = document.querySelector('#submit');
+    const div = document.createElement('div');
+    div.classList = 'mt-3 mb-2';
+    div.setAttribute('id','resp');
+
     const loading = document.querySelector('.loader');
     const result = document.querySelector('#result');
+    const inputForm = document.querySelector('#search');
+    const h1 = document.querySelector('h1');
+
+
 
 
     function getMovies(e){
-        console.log('Query')
+        refreshContent();
+        loading.style.display = "flex";
+
+
         e.preventDefault();
         const search = document.querySelector('#search').value;
-        fetch(`ajax/query/${search}`)
-            .then(response => response.json())
-            .then((allMovies)=> {
-                // console.log(allMovies)
-                let movies = allMovies.movies;
 
-                createCard(movies);
+        //Afin d'éviter de récupérer toutes les entrées de la base de donnée
+        if (search.length > 0) {
+            fetch(`ajax/query/${search}`)
+                .then(response => response.json())
+                .then((allMovies)=> {
+                    createCard(allMovies);
+                    h1.innerText = `Résultat : ${search}`;
+                    document.title = `Résultat | ${search}`;
 
-                loading.style.display = "none";
+                    loading.style.display = "none";
 
+                }).catch((error)=> {
+                createCard(null)
             })
+        }
 
-        // console.log('wééééé');
-        // console.log(search);
     }
 
     function getMoviesByGETMethod(){
@@ -43,8 +56,6 @@ window.onload = function() {
 
     function createCard(arr){
 
-        const div = document.createElement('div');
-        div.classList = 'mt-3 mb-2 resp';
 
         if (arr != null ) {
         div.classList.add('card-deck');
@@ -92,9 +103,12 @@ window.onload = function() {
     }
 
     function refreshContent(){
-        if (document.getElementsByClassName('result')){
-            document.getElementById('resp').innerHTML ="";
 
+        if (result && (inputForm.value.length > 0 || div) ){
+            div.innerHTML ="";
+            if (resp){
+                resp.classList.remove('card-deck');
+            }
         }
     }
 
@@ -102,5 +116,5 @@ window.onload = function() {
     getMoviesByGETMethod();
 
     //Déclenché lors d'une requete depuis l'input de la page de recherche
-    btnSubmit.addEventListener('keyup',getMovies);
+    inputForm.addEventListener('keyup',getMovies);
 }

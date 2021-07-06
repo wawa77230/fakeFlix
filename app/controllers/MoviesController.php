@@ -137,6 +137,7 @@ class MoviesController extends TemplatingTools
     }
 
     public function search(){
+        //Les data sont renvoyés en ajax depuis le script searchMoviesByAjax.js
         require "./views/searchView.php";
     }
 

@@ -71,7 +71,7 @@ try {
                     if ($url[1] === "search"){
                         $moviesByAjax->search($url[2]);
                     }elseif ($url[1] === "query"){
-                        echo 'coucou';
+                        $moviesByAjax->search($url[2]);
                     }
                     break;
 
