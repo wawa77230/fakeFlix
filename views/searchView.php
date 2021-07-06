@@ -1,8 +1,7 @@
 <?php
 ob_start();
 ?>
-    <div class="text-center mt-5">
-        <div class="container">
+    <div class="text-center mt-5 container">
             <form action="recherche" method="get">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -11,7 +10,6 @@ ob_start();
                     <input type="text" id="search" name="search" value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']): ''?>" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" required>
                 </div>
             </form>
-        </div>
 
         <!-- Loader -->
         <div class="loader">
@@ -20,8 +18,10 @@ ob_start();
             <div class="point"></div>
         </div>
 
-        <div id="result">
+        <div id="result" class="mt-5">
         </div>
+
+
 
     </div>
 <?php

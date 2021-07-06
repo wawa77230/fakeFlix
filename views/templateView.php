@@ -36,7 +36,7 @@
             <div class="right-menu">
 
                 <?php if ($_GET['page'] != "recherche"):?>
-                    <form action="recherche" method="get">
+                    <form action="<?= URL?>recherche" method="get">
                     <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <button class="btn btn-outline-light" id="submit" type="submit"><i class="fas fa-search"></i></button>

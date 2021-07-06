@@ -79,9 +79,6 @@ a {
   }
 }
 
-section {
-  flex-grow: 1;
-}
 
 h1 {
   font-size: 2em;
@@ -254,9 +251,11 @@ header{
 //Home page
 main{
   background:$main-bck;
-  padding:.60em 1em 2em;
+  padding:0.60em 1em 2em;
   section{
+    flex-grow: 1;
     padding-bottom:1em;
+    min-height: auto;
     h3{
       margin:0;
       font-weight:200;
@@ -437,3 +436,14 @@ iframe {
     transform: translateY(-30px);
   }
 }
+//
+//#result{
+//
+//      &:hover{
+//      color:$main-color;
+//        h5{
+//          text-decoration: none;
+//        }
+//      }
+//
+//}

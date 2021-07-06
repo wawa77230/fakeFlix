@@ -57,10 +57,6 @@ a :hover {
   text-decoration: underline;
 }
 
-section {
-  flex-grow: 1;
-}
-
 h1 {
   font-size: 2em;
   margin: 0 0 30px 0;
@@ -233,7 +229,9 @@ main {
   padding: 0.6em 1em 2em;
 }
 main section {
+  flex-grow: 1;
   padding-bottom: 1em;
+  min-height: auto;
 }
 main section h3 {
   margin: 0;

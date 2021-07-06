@@ -37,6 +37,8 @@ window.onload = function() {
                 }).catch((error)=> {
                 createCard(null)
             })
+        }else{
+            loading.style.display = "none";
         }
 
     }
@@ -58,22 +60,24 @@ window.onload = function() {
 
 
         if (arr != null ) {
-        div.classList.add('card-deck');
+        div.classList = 'card-group row justify-content-around';
             for (let i = 0; i < arr.length; i++) {
 
 
                 const card = document.createElement('div');
-                card.classList = 'card mb-4' ;
+                card.classList = 'card mb-4 thumbnail text-white' ;
+                //Retire les bordures blanche des card de la class Bootstrap
+                card.style.border = "none";
 
-                const cardBody = document.createElement('div')
-                cardBody.classList = 'card-body';
-
-                const txtCard = document.createElement('h5');
-                txtCard.innerText = arr[i].name;
+                // const cardBody = document.createElement('div')
+                // cardBody.classList = 'card-body';
+                //
+                // const txtCard = document.createElement('h5');
+                // txtCard.innerText = arr[i].name;
 
 
                 const imgCard = document.createElement('img');
-                imgCard.classList = 'card-img-top';
+                imgCard.classList = 'card-img-top thumbnail';
                 imgCard.src = arr[i].picture;
 
 
@@ -84,10 +88,11 @@ window.onload = function() {
                 linkPage.appendChild(card);
                 card.appendChild(imgCard);
 
-                card.appendChild(cardBody);
+                // card.appendChild(cardBody);
 
-                cardBody.appendChild(txtCard);
+                // cardBody.appendChild(txtCard);
                 div.appendChild(linkPage);
+                // div.appendChild(card);
 
             }
         }else {
