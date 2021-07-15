@@ -85,6 +85,10 @@ try {
                     }
                     break;
 
+                case "test":
+                    require "./views/testView.php";
+                    break;
+
                 default : throw  new Exception('La page n\'existe pas');
 
             }

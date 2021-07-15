@@ -25,10 +25,6 @@ body {
   min-height: 100%;
 }
 
-header #brand img {
-  height: 45px;
-}
-
 footer {
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.7);
@@ -151,79 +147,185 @@ button {
   .container {
     width: 580px;
   }
-
-  header {
-    text-align: center;
-    padding-left: 20px;
-  }
 }
-header {
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 30px;
+.header {
+  padding: 10px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 3;
   background-size: cover;
-  display: flex;
-  flex-direction: column;
-}
-header nav {
   color: white;
-  display: flex;
-  align-items: center;
+  /*display: flex;*/
+  /*justify-content: space-between;*/
+  /*align-items: center;*/
+  /*flex-direction: row;*/
+  /*padding: 10px;*/
 }
-header nav #logo {
-  width: 6.5em;
-  margin-right: 2em;
+.header li {
+  padding: 0px 10px;
 }
-header nav .left-menu {
-  display: flex;
-  align-items: baseline;
-}
-header nav .left-menu p, header nav .left-menu a {
-  font-size: 18px;
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
-  margin: 0 1em;
-}
-header nav .left-menu p:hover, header nav .left-menu a:hover {
+.header a:hover, .header li:hover {
   color: #db0000;
 }
-header nav .left-menu i {
-  text-decoration: none;
-}
-header nav .right-menu {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-left: auto;
-}
-header nav .right-menu h5 {
-  cursor: pointer;
-}
-header nav .right-menu h5:hover {
-  color: #db0000;
-}
-header nav .right-menu .fa-search {
-  margin-right: 0.5em;
-}
-header nav .right-menu .user {
-  display: flex;
-  align-items: center;
-  margin: 0 19px 15px;
-}
-header nav .right-menu .user img {
+.header img {
   width: 3em;
   height: 3em;
-  margin-right: 1em;
 }
-header nav .right-menu .logout i {
+.header .logout i {
   color: white;
   margin-left: 10px;
 }
-header nav .right-menu .logout i:hover {
+.header .logout i:hover {
   color: #db0000;
   text-decoration: none;
 }
+.header .user, .header .user h4 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.header h4:hover {
+  color: #db0000;
+}
 
+/*#brand{*/
+/*    width: 20%;*/
+/*}*/
+.header ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+}
+
+.header li a {
+  display: block;
+  text-decoration: none;
+}
+
+.header li a:hover,
+.header .menu-btn:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.header .logo {
+  color: #fff;
+  display: block;
+  float: left;
+  font-size: 1.5em;
+  padding: 12px 20px;
+  text-decoration: none;
+}
+
+.header .menu {
+  clear: both;
+  max-height: 0;
+  transition: max-height 0.2s ease-out;
+}
+
+/* menu icon */
+.header .menu-icon {
+  cursor: pointer;
+  display: inline-block;
+  float: right;
+  padding: 28px 20px;
+  position: relative;
+  user-select: none;
+}
+
+.header .menu-icon .navicon {
+  background: #fff;
+  display: block;
+  height: 2px;
+  position: relative;
+  transition: background 0.2s ease-out;
+  width: 18px;
+}
+
+.header .menu-icon .navicon:before,
+.header .menu-icon .navicon:after {
+  background: #fff;
+  content: "";
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all 0.2s ease-out;
+  width: 100%;
+}
+
+.header .menu-icon .navicon:before {
+  top: 5px;
+}
+
+.header .menu-icon .navicon:after {
+  top: -5px;
+}
+
+/* menu btn */
+.header .menu-btn {
+  display: none;
+}
+
+.header .menu-btn:checked ~ .menu {
+  max-height: 340px;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon {
+  background: transparent;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:before {
+  transform: rotate(-45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:after {
+  transform: rotate(45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+  top: 0;
+}
+
+/* Responsive */
+@media only screen and (max-width: 768px) {
+  .header ul {
+    background-color: #fff;
+  }
+
+  .header li a {
+    padding: 15px;
+    border-bottom: 1px dotted #ddd;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .menu-wrapper {
+    line-height: 55px;
+    width: 100%;
+  }
+
+  .header li {
+    float: left;
+  }
+
+  .header .logo {
+    line-height: 1;
+  }
+
+  .header li a {
+    color: #fff;
+  }
+
+  .header .menu {
+    clear: none;
+    float: right;
+    max-height: none;
+  }
+
+  .header .menu-icon {
+    display: none;
+  }
+}
 main {
   background: #0a0a0a;
   padding: 0.6em 1em 2em;

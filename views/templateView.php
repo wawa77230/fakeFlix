@@ -21,41 +21,50 @@
     <title><?= $title?></title>
 </head>
 <body>
-    <header>
-        <nav>
-        <div id="brand"><a href="<?= URL?>accueil"><img src="<?= URL ?>/public/img/logos/logo.png" alt="Fakeflix"></a></div>
+
+
+<!---->
+<div class="menu-wrapper">
+    <header class="header">
+        <a href="<?= URL?>accueil" class="logo">Fakefilx</a>
+        <input class="menu-btn" type="checkbox" id="menu-btn" />
+        <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
         <?php if (!empty($_SESSION['user'])):?>
-            <div class="left-menu">
-                <p>Browse&nbsp;<i class="fa fa-caret-down"></i></p>
-                <?php if ($_SESSION['user']['isAdmin']):?>
-                    <a href="<?= URL?>films">Ajouter un film&nbsp;<i class="fa fa-plus" aria-hidden="true"></i></a>
-                <?php endif;?>
-                <p>DVD</p>
-            </div>
 
-            <div class="right-menu">
-
+        <ul class="menu">
+            <li>
                 <?php if ($_GET['page'] != "recherche"):?>
                     <form action="<?= URL?>recherche" method="get">
-                    <div class="input-group mb-3">
+                        <div class="input-group mb-3" id="search-container">
                             <div class="input-group-prepend">
                                 <button class="btn btn-outline-light" id="submit" type="submit"><i class="fas fa-search"></i></button>
                             </div>
                             <input type="text" id="search" name="search" value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']): ''?>" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" required>
-                    </div>
-                </form>
+                        </div>
+                    </form>
                 <?php endif;?>
-
+            </li>
+            <?php if ($_SESSION['user']['isAdmin']):?>
+            <li><a href="<?= URL?>films">Ajouter un film&nbsp;<i class="fa fa-plus" aria-hidden="true"></i></a></li>
+            <?php endif;?>
+            <li>
                 <div class="user">
-                    <img class="user-img" src="<?= URL ?>/public/img/site/avatar.png"/>
-                    <h4><?= $_SESSION['user']['firstName']?></h4>
+                    <img class="user-img" src="<?= URL ?>/public/img/site/avatar.png" alt="avatar"/>
+                    <h4>
+                        <?= $_SESSION['user']['firstName']?>
+                    </h4>
                     <a href="<?= URL?>authentification/logout" class="logout" onclick="return confirm('Êtes vous sûrs de vouloir vous déconnecter ?');"><i class="fas fa-unlink"></i></a>
                 </div>
-            </div>
-        <?php endif;?>
-        </nav>
-    </header>
+            </li>
+        </ul>
 
+        <?php endif;?>
+
+    </header>
+</div>
+
+<!---->
+<!---->
     <main>
         <h1 class="text-center"><?= $h1?></h1>
 
