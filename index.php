@@ -61,9 +61,18 @@ try {
                          throw  new Exception('La page n\'existe pas');
                      }
                     break;
-                case 'ajax':
-                    var_dump('coucou');
-                    var_dump($_POST);
+                case "recherche":
+                    $moviesController->search();
+                    break;
+                case "ajax":
+
+                    require_once "app/controllers/MoviesControllerByAjax.php";
+                    $moviesByAjax = new MoviesControllerByAjax();
+                    if ($url[1] === "search"){
+                        $moviesByAjax->search($url[2]);
+                    }elseif ($url[1] === "query"){
+                        $moviesByAjax->search($url[2]);
+                    }
                     break;
 
                 case "authentification":

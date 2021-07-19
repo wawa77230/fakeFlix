@@ -30,6 +30,7 @@
                     <a class="navbar-brand" href="<?= URL ?>accueil">
                        <img src="<?= URL ?>/public/img/logos/logo.png"  width="100" height="30" alt="Fakeflix">
                     </a>
+                    <?php if (!empty($_SESSION['user'])):?>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -46,11 +47,20 @@
                                     Films
                                 </a>
                                 <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Ajouter</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Liste des films</a>
+                                    <?php if ($_SESSION['user']['isAdmin']):?>
+                                        <a class="dropdown-item" href="#">Ajouter</a>
+                                        <a class="dropdown-item" href="#">Liste des films</a>
+                                        <div class="dropdown-divider"></div>
+                                    <?php endif;?>
+                                        <a class="dropdown-item" href="#">Comédie</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Actions</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Déssin animé</a>
+                                        <div class="dropdown-divider"></div>
                                 </div>
                             </li>
+
 
         <!--                    <li class="nav-item">-->
         <!--                        <a class="nav-link" href="#">Link</a>-->
@@ -72,6 +82,7 @@
                         </ul>
 
                         <div class="row col-5 row justify-content-around align-items-center">
+                            <?php if ($_GET['page'] != "recherche"  && isset($_GET['page']) ):?>
                             <form action="<?= URL?>recherche" method="get">
                                 <div class="input-group mb-3" id="search-container">
                                     <div class="input-group-prepend">
@@ -80,6 +91,7 @@
                                     <input type="text" id="search" name="search" value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']): ''?>" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" required>
                                 </div>
                             </form>
+                            <?php endif;?>
                             <div class="row align-items-center">
                                 <img class="user-img" src="<?= URL ?>/public/img/site/avatar.png"  width="50" height="50"/>
                                     <p id="user-name" class="align-items-center"><?= $_SESSION['user']['firstName']?></p>
@@ -89,6 +101,7 @@
                         </div>
 
                     </div>
+                    <?php endif?>
 
                 </nav>
 
