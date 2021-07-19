@@ -167,6 +167,12 @@ button {
   margin: 0 auto;
 }
 
+@media all and (min-width: 1031px) {
+  nav{
+    padding: 2rem!important;
+  }
+}
+
 @media all and (max-width: 1030px) {
   .container { width: 800px; }
 }
@@ -179,27 +185,35 @@ button {
 
 //Navbar
 
-
+header{
+  padding-left: 0;
+}
 nav{
-
   color: $white;
-  a{
+  li,a {
     color: $white;
-    :hover{
-      color: $main-color;
+      :hover{
+              color: $main-color!important;
+            }
     }
+
+  .nav-link{
+    font-size: 1.5rem;
   }
-  li a{
-    color: $white;
-    :hover{
-      color: $main-color;
-    }
-  }
-  #userName{
+
+  #user-name{
     font-size: 1.5rem;
     margin-bottom: 0;
   }
-  #search{
+
+  //.navbar-nav li a{
+  //  color: $white;
+  //  :hover{
+  //    color: $main-color;
+  //  }
+  //}
+
+  #search-container{
     margin-bottom: 0!important;
   }
 

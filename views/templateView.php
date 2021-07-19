@@ -45,7 +45,7 @@
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Films
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="#">Ajouter</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="#">Liste des films</a>
@@ -72,12 +72,17 @@
                         </ul>
 
                         <div class="row col-5 row justify-content-around align-items-center">
-                            <form class="form-inline my-2 my-lg-0  align-items-center" action="recherche" method="get">
-                                <input type="text" id="search" placeholder="&#61447; Rechercher">
+                            <form action="<?= URL?>recherche" method="get">
+                                <div class="input-group mb-3" id="search-container">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-outline-light" id="submit" type="submit"><i class="fas fa-search"></i></button>
+                                    </div>
+                                    <input type="text" id="search" name="search" value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']): ''?>" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" required>
+                                </div>
                             </form>
                             <div class="row align-items-center">
                                 <img class="user-img" src="<?= URL ?>/public/img/site/avatar.png"  width="50" height="50"/>
-                                    <p id="userName" class="align-items-center"><?= $_SESSION['user']['firstName']?></p>
+                                    <p id="user-name" class="align-items-center"><?= $_SESSION['user']['firstName']?></p>
                                     &nbsp;
                                     <a href="<?= URL?>authentification/logout" class="logout" onclick="return confirm('Êtes vous sûrs de vouloir vous déconnecter ?');"><i class="fas fa-unlink"></i></a>
                             </div>

@@ -142,6 +142,11 @@ button {
   margin: 0 auto;
 }
 
+@media all and (min-width: 1031px) {
+  nav {
+    padding: 2rem !important;
+  }
+}
 @media all and (max-width: 1030px) {
   .container {
     width: 800px;
@@ -157,26 +162,27 @@ button {
     padding-left: 20px;
   }
 }
+header {
+  padding-left: 0;
+}
+
 nav {
   color: white;
 }
-nav a {
+nav li, nav a {
   color: white;
 }
-nav a :hover {
-  color: #db0000;
+nav li :hover, nav a :hover {
+  color: #db0000 !important;
 }
-nav li a {
-  color: white;
+nav .nav-link {
+  font-size: 1.5rem;
 }
-nav li a :hover {
-  color: #db0000;
-}
-nav #userName {
+nav #user-name {
   font-size: 1.5rem;
   margin-bottom: 0;
 }
-nav #search {
+nav #search-container {
   margin-bottom: 0 !important;
 }
 
