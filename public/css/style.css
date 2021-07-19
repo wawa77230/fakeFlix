@@ -25,10 +25,6 @@ body {
   min-height: 100%;
 }
 
-header #brand img {
-  height: 45px;
-}
-
 footer {
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.7);
@@ -161,67 +157,27 @@ button {
     padding-left: 20px;
   }
 }
-header {
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 30px;
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-}
-header nav {
+nav {
   color: white;
-  display: flex;
-  align-items: center;
 }
-header nav #logo {
-  width: 6.5em;
-  margin-right: 2em;
-}
-header nav .left-menu {
-  display: flex;
-  align-items: baseline;
-}
-header nav .left-menu p, header nav .left-menu a {
-  font-size: 18px;
+nav a {
   color: white;
-  text-decoration: none;
-  cursor: pointer;
-  margin: 0 1em;
 }
-header nav .left-menu p:hover, header nav .left-menu a:hover {
+nav a :hover {
   color: #db0000;
 }
-header nav .left-menu i {
-  text-decoration: none;
+nav li a {
+  color: white;
 }
-header nav .right-menu {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-left: auto;
-}
-header nav .right-menu h5 {
-  cursor: pointer;
-}
-header nav .right-menu h5:hover {
+nav li a :hover {
   color: #db0000;
 }
-header nav .right-menu .fa-search {
-  margin-right: 0.5em;
+nav #userName {
+  font-size: 1.5rem;
+  margin-bottom: 0;
 }
-header nav .right-menu .user {
-  display: flex;
-  align-items: center;
-  margin: 0 19px 15px;
-}
-header nav .right-menu .user img {
-  width: 3em;
-  height: 3em;
-  margin-right: 1em;
-}
-header nav .right-menu .logout i {
-  color: white;
-  margin-left: 10px;
+nav #search {
+  margin-bottom: 0 !important;
 }
 
 main {

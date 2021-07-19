@@ -37,10 +37,6 @@ body {
 //  padding: 20px 0 0 50px;
 //}
 
-header #brand img {
-  height: 45px;
-}
-
 footer {
   //position: relative;
 
@@ -182,70 +178,102 @@ button {
 
 
 //Navbar
-header{
-  background-color: rgba(0,0,0,.7);
-  padding: 30px;
-  //margin-bottom: 100px;
 
-  background-size:cover;
-  display:flex;
-  flex-direction:column;
-  nav{
-    color:$white;
-    display:flex;
-    align-items:center;
-    #logo{
-      width:6.5em;
-      margin-right:2em;
-    }
-    .left-menu{
-      display:flex;
-      align-items:baseline;
-      p, a{
-        font-size: 18px;
-        color: $white;
-        text-decoration: none;
-        cursor:pointer;
-        margin:0 1em;
-        &:hover{
-          color:$main-color;
-        }
-      }
-      i{
-        text-decoration: none;
-      }
-    }
-    .right-menu{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-left:auto;
-      h5{
-        cursor:pointer;
-        &:hover{
-          color:$main-color;
-        }
-      }
-      .fa-search{
-        margin-right:.50em;
-      }
-      .user{
-        display:flex;
-        align-items:center;
-        margin:0 19px 15px;
-        img{
-          width:3em;
-          height:3em;
-          margin-right:1em;
-        }
-      }
-      .logout i{
-        color: $white;
-        margin-left: 10px;
-      }
+
+nav{
+
+  color: $white;
+  a{
+    color: $white;
+    :hover{
+      color: $main-color;
     }
   }
+  li a{
+    color: $white;
+    :hover{
+      color: $main-color;
+    }
+  }
+  #userName{
+    font-size: 1.5rem;
+    margin-bottom: 0;
+  }
+  #search{
+    margin-bottom: 0!important;
+  }
+
 }
+//header{
+//
+//  #brand img {
+//    height: 45px;
+//  }
+//  background-color: rgba(0,0,0,.7);
+//  padding: 30px;
+//  //margin-bottom: 100px;
+//
+//  background-size:cover;
+//  display:flex;
+//  flex-direction:column;
+//  nav{
+//    color:$white;
+//    display:flex;
+//    align-items:center;
+//    #logo{
+//      width:6.5em;
+//      margin-right:2em;
+//    }
+//    .left-menu{
+//      display:flex;
+//      align-items:baseline;
+//      p, a{
+//        font-size: 18px;
+//        color: $white;
+//        text-decoration: none;
+//        cursor:pointer;
+//        margin:0 1em;
+//        &:hover{
+//          color:$main-color;
+//        }
+//      }
+//      i{
+//        text-decoration: none;
+//      }
+//    }
+//    .right-menu{
+//      display:flex;
+//      justify-content:space-between;
+//      align-items:center;
+//      margin-left:auto;
+//      h5{
+//        cursor:pointer;
+//        &:hover{
+//          color:$main-color;
+//        }
+//      }
+//      .fa-search{
+//        margin-right:.50em;
+//      }
+//      .user{
+//        display:flex;
+//        align-items:center;
+//        margin:0 19px 15px;
+//        img{
+//          width:3em;
+//          height:3em;
+//          margin-right:1em;
+//        }
+//      }
+//      .logout i{
+//        color: $white;
+//        margin-left: 10px;
+//      }
+//    }
+//  }
+//}
+
+
 //Home page
 main{
   background:$main-bck;

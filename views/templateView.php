@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
     <link rel="stylesheet" href="<?= URL ?>public/css/style.css">
 
     <link rel="icon" type="image/pngn" href="<?= URL ?>/public/img/logos/favicon.png">
@@ -22,86 +25,68 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="<?= URL?>accueil">
-                <img src="<?= URL ?>/public/img/logos/logo.png"  width="30" height="30" alt="Fakeflix"><
-            </a>
+<!--                add class navbar-transparent-->
+                <nav class="navbar navbar-expand-lg ">
+                    <a class="navbar-brand" href="<?= URL ?>accueil">
+                       <img src="<?= URL ?>/public/img/logos/logo.png"  width="100" height="30" alt="Fakeflix">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-            <?php if (!empty($_SESSION['user'])):?>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <?php if ($_SESSION['user']['isAdmin']):?>
-                    <li class="nav-item active">
+                        <ul class="navbar-nav mr-auto">
+        <!--                    <li class="nav-item active">-->
+        <!--                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>-->
+        <!--                    </li>-->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Films
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Ajouter</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Liste des films</a>
+                                </div>
+                            </li>
 
-<!--                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>-->
-                        <a class="nav-link" href="<?= URL?>films">Ajouter un film&nbsp;<i class="fa fa-plus" aria-hidden="true"></i></a>
+        <!--                    <li class="nav-item">-->
+        <!--                        <a class="nav-link" href="#">Link</a>-->
+        <!--                    </li>-->
+        <!--                    <li class="nav-item dropdown">-->
+        <!--                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+        <!--                            Dropdown-->
+        <!--                        </a>-->
+        <!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+        <!--                            <a class="dropdown-item" href="#">Action</a>-->
+        <!--                            <a class="dropdown-item" href="#">Another action</a>-->
+        <!--                            <div class="dropdown-divider"></div>-->
+        <!--                            <a class="dropdown-item" href="#">Something else here</a>-->
+        <!--                        </div>-->
+        <!--                    </li>-->
+        <!--                    <li class="nav-item">-->
+        <!--                        <a class="nav-link disabled" href="#">Disabled</a>-->
+        <!--                    </li>-->
+                        </ul>
 
-                    </li>
-                    <?php endif;?>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                        <div class="row col-5 row justify-content-around align-items-center">
+                            <form class="form-inline my-2 my-lg-0  align-items-center" action="recherche" method="get">
+                                <input type="text" id="search" placeholder="&#61447; Rechercher">
+                            </form>
+                            <div class="row align-items-center">
+                                <img class="user-img" src="<?= URL ?>/public/img/site/avatar.png"  width="50" height="50"/>
+                                    <p id="userName" class="align-items-center"><?= $_SESSION['user']['firstName']?></p>
+                                    &nbsp;
+                                    <a href="<?= URL?>authentification/logout" class="logout" onclick="return confirm('Êtes vous sûrs de vouloir vous déconnecter ?');"><i class="fas fa-unlink"></i></a>
+                            </div>
                         </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                    </li>
-                    <li class="nav-item">
-                        <img class="user-img" src="<?= URL ?>/public/img/site/avatar.png"/>
-                        <h4><?= $_SESSION['user']['firstName']?></h4>
-                        <a href="<?= URL?>authentification/logout" class="logout" onclick="return confirm('Êtes vous sûrs de vouloir vous déconnecter ?');"><i class="fas fa-unlink"></i></a>
 
-                    </li>
-                </ul>
-                <form action="recherche" method="get" class="form-inline my-2 my-lg-0">
-                    <input type="text" placeholder="&#61447; Rechercher">
+                    </div>
 
-<!--                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
-<!--                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
-                </form>
-            </div>
-            <?php endif;?>
+                </nav>
 
-        </nav>
-        <nav>
-        <div id="brand"><a href="<?= URL?>accueil"><img src="<?= URL ?>/public/img/logos/logo.png" alt="Fakeflix"></a></div>
-        <?php if (!empty($_SESSION['user'])):?>
-            <div class="left-menu">
-                <p>Browse&nbsp;<i class="fa fa-caret-down"></i></p>
-                <?php if ($_SESSION['user']['isAdmin']):?>
-                    <a href="<?= URL?>films">Ajouter un film&nbsp;<i class="fa fa-plus" aria-hidden="true"></i></a>
-                <?php endif;?>
-                <p>DVD</p>
-            </div>
-
-            <div class="right-menu">
-                <form action="recherche" method="get">
-                    <input type="text" placeholder="&#61447; Rechercher">
-                </form>
-                <div class="user">
-                    <img class="user-img" src="<?= URL ?>/public/img/site/avatar.png"/>
-                    <h4><?= $_SESSION['user']['firstName']?></h4>
-                    <a href="<?= URL?>authentification/logout" class="logout" onclick="return confirm('Êtes vous sûrs de vouloir vous déconnecter ?');"><i class="fas fa-unlink"></i></a>
-                </div>
-            </div>
-        <?php endif;?>
-        </nav>
-    </header>
 
     <main>
         <h1 class="text-center"><?= $h1?></h1>
