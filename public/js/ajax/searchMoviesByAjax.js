@@ -16,12 +16,14 @@ window.onload = function() {
 
 
     function getMovies(e){
+
         refreshContent();
         loading.style.display = "flex";
 
 
         e.preventDefault();
         const search = document.querySelector('#search').value;
+
 
         //Afin d'éviter de récupérer toutes les entrées de la base de donnée
         if (search.length > 0) {
@@ -37,7 +39,8 @@ window.onload = function() {
                 }).catch((error)=> {
                 createCard(null)
             })
-        }else{
+        }else {
+ addBootstrapNavBar
             loading.style.display = "none";
         }
 
@@ -92,7 +95,6 @@ window.onload = function() {
 
                 // cardBody.appendChild(txtCard);
                 div.appendChild(linkPage);
-                // div.appendChild(card);
 
             }
         }else {

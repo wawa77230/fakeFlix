@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
     <link rel="stylesheet" href="<?= URL ?>public/css/style.css">
 
     <link rel="icon" type="image/pngn" href="<?= URL ?>/public/img/logos/favicon.png">
@@ -22,39 +25,116 @@
 </head>
 <body>
     <header>
-        <nav>
-        <div id="brand"><a href="<?= URL?>accueil"><img src="<?= URL ?>/public/img/logos/logo.png" alt="Fakeflix"></a></div>
-        <?php if (!empty($_SESSION['user'])):?>
-            <div class="left-menu">
-                <p>Browse&nbsp;<i class="fa fa-caret-down"></i></p>
-                <?php if ($_SESSION['user']['isAdmin']):?>
-                    <a href="<?= URL?>films">Ajouter un film&nbsp;<i class="fa fa-plus" aria-hidden="true"></i></a>
-                <?php endif;?>
-                <p>DVD</p>
-            </div>
+<!--                add class navbar-transparent-->
+        <nav class="navbar  navbar-expand-lg ">
+                    <a class="navbar-brand" href="<?= URL ?>accueil">
+                       <img src="<?= URL ?>/public/img/logos/logo.png"  width="100" height="30" alt="Fakeflix">
+                    </a>
+                    <?php if (!empty($_SESSION['user'])):?>
 
-            <div class="right-menu">
 
-                <?php if ($_GET['page'] != "recherche"):?>
-                    <form action="<?= URL?>recherche" method="get">
-                    <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <button class="btn btn-outline-light" id="submit" type="submit"><i class="fas fa-search"></i></button>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon ">
+                            <i class="fas fa-bars "></i>
+                        </span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
+                        <ul class="navbar-nav mr-auto">
+        <!--                    <li class="nav-item active">-->
+        <!--                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>-->
+        <!--                    </li>-->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Films
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <?php if ($_SESSION['user']['isAdmin']):?>
+                                        <a class="dropdown-item" href="<?= URL?>films/c">Ajouter</a>
+                                        <a class="dropdown-item" href="<?= URL?>films">Liste des films</a>
+<!--                                        <div class="dropdown-divider"></div>-->
+                                    <?php endif;?>
+                                        <a class="dropdown-item" href="#">Comédie</a>
+<!--                                        <div class="dropdown-divider"></div>-->
+                                        <a class="dropdown-item" href="#">Actions</a>
+<!--                                        <div class="dropdown-divider"></div>-->
+                                        <a class="dropdown-item" href="#">Déssin animé</a>
+                                </div>
+                            </li>
+
+                            <?php if ($_SESSION['user']['isAdmin']):?>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Utilisateur
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="<?= URL?>films/c">Ajouter</a>
+                                        <a class="dropdown-item" href="<?= URL?>films">Liste des utilisateurs</a>
+                                </div>
+                            </li>
+                            <?php endif;?>
+
+                            <?php if ($_SESSION['user']['isAdmin']):?>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Catégories
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="<?= URL?>films/c">Ajouter</a>
+                                        <a class="dropdown-item" href="<?= URL?>films">Liste des catégories</a>
+                                    </div>
+                                </li>
+                            <?php endif;?>
+
+
+
+                            <!--                    <li class="nav-item">-->
+        <!--                        <a class="nav-link" href="#">Link</a>-->
+        <!--                    </li>-->
+        <!--                    <li class="nav-item dropdown">-->
+        <!--                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+        <!--                            Dropdown-->
+        <!--                        </a>-->
+        <!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+        <!--                            <a class="dropdown-item" href="#">Action</a>-->
+        <!--                            <a class="dropdown-item" href="#">Another action</a>-->
+        <!--                            <div class="dropdown-divider"></div>-->
+        <!--                            <a class="dropdown-item" href="#">Something else here</a>-->
+        <!--                        </div>-->
+        <!--                    </li>-->
+        <!--                    <li class="nav-item">-->
+        <!--                        <a class="nav-link disabled" href="#">Disabled</a>-->
+        <!--                    </li>-->
+                        </ul>
+
+                        <div class="row col-xl-6 col-lg-7 col-md-8 row justify-content-between align-items-center" id="user-portal">
+
+                            <?php if (empty($_GET['page']) || $_GET['page'] != "recherche" ):?>
+                            <form action="<?= URL?>recherche" method="get">
+                                <div class="input-group mb-3" id="search-container">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-outline-light" id="submit" type="submit"><i class="fas fa-search"></i></button>
+                                    </div>
+                                    <input type="text" id="search" name="search" value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']): ''?>" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" required>
+                                </div>
+                            </form>
+                            <?php endif;?>
+                            <div class="row align-items-center">
+                                <img class="user-img" src="<?= URL ?>/public/img/site/avatar.png"  width="50" height="50"/>
+                                    <p id="user-name" class="align-items-center"><?= $_SESSION['user']['firstName']?></p>
+                                    &nbsp;
+                                    <a href="<?= URL?>authentification/logout" class="logout" onclick="return confirm('Êtes vous sûrs de vouloir vous déconnecter ?');"><i class="fas fa-unlink"></i></a>
                             </div>
-                            <input type="text" id="search" name="search" value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']): ''?>" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" required>
-                    </div>
-                </form>
-                <?php endif;?>
+                        </div>
 
-                <div class="user">
-                    <img class="user-img" src="<?= URL ?>/public/img/site/avatar.png"/>
-                    <h4><?= $_SESSION['user']['firstName']?></h4>
-                    <a href="<?= URL?>authentification/logout" class="logout" onclick="return confirm('Êtes vous sûrs de vouloir vous déconnecter ?');"><i class="fas fa-unlink"></i></a>
-                </div>
-            </div>
-        <?php endif;?>
-        </nav>
+                    </div>
+                    <?php endif?>
+
+                </nav>
     </header>
+
 
     <main>
         <h1 class="text-center"><?= $h1?></h1>
@@ -76,11 +156,24 @@
 <!-- Optional JavaScript; choose one of the two! -->
 
 <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<!--    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>-->
 <!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
-<!-- Option 2: Separate Popper and Bootstrap JS -->
+
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>-->
+<!--        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>-->
+<!--        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>-->
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+        <!-- Option 2: Separate Popper and Bootstrap JS -->
 <!--
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

@@ -25,10 +25,6 @@ body {
   min-height: 100%;
 }
 
-header #brand img {
-  height: 45px;
-}
-
 footer {
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.7);
@@ -85,18 +81,6 @@ input[type=email], input[type=password], input[type=text] {
   margin-bottom: 15px;
 }
 
-button {
-  background-color: #E50914;
-  color: white;
-  padding: 15px;
-  width: 100%;
-  font-size: 1em;
-  font-weight: bold;
-  border-radius: 5px;
-  border: 0;
-  cursor: pointer;
-}
-
 #option {
   color: #b3b3b3;
   margin-top: 10px;
@@ -142,9 +126,24 @@ button {
   margin: 0 auto;
 }
 
-@media all and (max-width: 1030px) {
+@media all and (min-width: 1031px) {
+  nav {
+    padding: 2rem !important;
+  }
+  nav .nav-link {
+    font-size: 1.5rem;
+  }
+}
+@media all and (max-width: 1150px) {
   .container {
     width: 800px;
+  }
+
+  nav {
+    padding: 1.5rem !important;
+  }
+  nav .nav-link {
+    font-size: 1.2rem;
   }
 }
 @media all and (max-width: 830px) {
@@ -156,68 +155,50 @@ button {
     text-align: center;
     padding-left: 20px;
   }
+
+  nav {
+    padding: 1rem !important;
+  }
 }
 header {
+  padding-left: 0;
+}
+
+nav {
+  color: white;
+}
+nav li, nav a {
+  color: white;
+}
+nav li :hover, nav a :hover {
+  color: #db0000 !important;
+}
+nav .navbar-toggler {
+  background-color: black;
+  border-color: #919191;
+}
+nav .navbar-toggler i {
+  color: white;
+}
+nav #user-name {
+  font-size: 1.5rem;
+  margin-bottom: 0;
+}
+nav #search-container {
+  margin-bottom: 0 !important;
+}
+nav .dropdown-menu {
   background-color: rgba(0, 0, 0, 0.7);
-  padding: 30px;
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
 }
-header nav {
+nav .dropdown-menu a {
   color: white;
-  display: flex;
-  align-items: center;
 }
-header nav #logo {
-  width: 6.5em;
-  margin-right: 2em;
+nav .dropdown-menu a :hover {
+  color: #db0000 !important;
+  background-color: rgba(0, 0, 0, 0.7);
 }
-header nav .left-menu {
-  display: flex;
-  align-items: baseline;
-}
-header nav .left-menu p, header nav .left-menu a {
-  font-size: 18px;
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
-  margin: 0 1em;
-}
-header nav .left-menu p:hover, header nav .left-menu a:hover {
-  color: #db0000;
-}
-header nav .left-menu i {
-  text-decoration: none;
-}
-header nav .right-menu {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-left: auto;
-}
-header nav .right-menu h5 {
-  cursor: pointer;
-}
-header nav .right-menu h5:hover {
-  color: #db0000;
-}
-header nav .right-menu .fa-search {
-  margin-right: 0.5em;
-}
-header nav .right-menu .user {
-  display: flex;
-  align-items: center;
-  margin: 0 19px 15px;
-}
-header nav .right-menu .user img {
-  width: 3em;
-  height: 3em;
-  margin-right: 1em;
-}
-header nav .right-menu .logout i {
-  color: white;
-  margin-left: 10px;
+.dropdown-item nav .dropdown-menu:hover {
+  background-color: transparent !important;
 }
 header nav .right-menu .logout i:hover {
   color: #db0000;
@@ -237,7 +218,7 @@ main section h3 {
   margin: 0;
   font-weight: 200;
   color: white;
-  font-size: 0.98em;
+  font-size: 1.8em;
 }
 main section .multiple-items {
   position: relative;
