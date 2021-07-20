@@ -64,7 +64,11 @@ try {
                 case "recherche":
                     $moviesController->search();
                     break;
-                case "ajax":
+                case 'test':
+                    require "views/testView.php";
+                    break;
+
+                    case "ajax":
 
                     require_once "app/controllers/MoviesControllerByAjax.php";
                     $moviesByAjax = new MoviesControllerByAjax();

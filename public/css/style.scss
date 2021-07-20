@@ -187,6 +187,11 @@ button {
 
 header{
   padding-left: 0;
+  //button{
+  //  background-color: $black!important;
+  //  border-color: $black !important;
+
+  //}
 }
 nav{
   color: $white;
@@ -196,7 +201,14 @@ nav{
               color: $main-color!important;
             }
     }
+  .navbar-toggler {
+    background-color: $white;
+    border-color: $grey;
+    //span{
+    //  background-color: grey;
+    //}
 
+  }
   .nav-link{
     font-size: 1.5rem;
   }
@@ -206,17 +218,24 @@ nav{
     margin-bottom: 0;
   }
 
-  //.navbar-nav li a{
-  //  color: $white;
-  //  :hover{
-  //    color: $main-color;
-  //  }
-  //}
 
   #search-container{
     margin-bottom: 0!important;
   }
 
+  .dropdown-menu {
+    background-color: $bcknd-clr;
+    a {
+      color: $white;
+      :hover{
+        color: $main-color!important;
+        background-color: $bcknd-clr;
+      }
+    }
+    .dropdown-item &:hover{
+      background-color: transparent!important;
+    }
+  }
 }
 //header{
 //
@@ -298,7 +317,8 @@ main{
       margin:0;
       font-weight:200;
       color:$white;
-      font-size:.98em;
+      font-size:1.8em
+      //font-size:.98em;
     }
     .multiple-items{
       position:relative;

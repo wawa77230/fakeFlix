@@ -175,6 +175,10 @@ nav li, nav a {
 nav li :hover, nav a :hover {
   color: #db0000 !important;
 }
+nav .navbar-toggler {
+  background-color: white;
+  border-color: #919191;
+}
 nav .nav-link {
   font-size: 1.5rem;
 }
@@ -184,6 +188,19 @@ nav #user-name {
 }
 nav #search-container {
   margin-bottom: 0 !important;
+}
+nav .dropdown-menu {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+nav .dropdown-menu a {
+  color: white;
+}
+nav .dropdown-menu a :hover {
+  color: #db0000 !important;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.dropdown-item nav .dropdown-menu:hover {
+  background-color: transparent !important;
 }
 
 main {
@@ -197,7 +214,7 @@ main section h3 {
   margin: 0;
   font-weight: 200;
   color: white;
-  font-size: 0.98em;
+  font-size: 1.8em;
 }
 main section .multiple-items {
   position: relative;
@@ -331,45 +348,6 @@ iframe {
 .img-list img {
   max-width: 200px;
   max-height: 142px;
-}
-
-/* Anim loader */
-.loader {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 200px;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.point {
-  margin: 0px 5px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: #f1f1f1;
-  animation: monte 0.3s alternate infinite;
-}
-
-.point:nth-child(1) {
-  animation-delay: 0.1s;
-}
-
-.point:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.point:nth-child(3) {
-  animation-delay: 0.3s;
-}
-
-@keyframes monte {
-  100% {
-    transform: translateY(-30px);
-  }
 }
 
 /*# sourceMappingURL=style.css.map */
