@@ -26,7 +26,7 @@
 <body>
     <header>
 <!--                add class navbar-transparent-->
-        <nav class="navbar navbar-expand-lg ">
+        <nav class="navbar  navbar-expand-lg ">
                     <a class="navbar-brand" href="<?= URL ?>accueil">
                        <img src="<?= URL ?>/public/img/logos/logo.png"  width="100" height="30" alt="Fakeflix">
                     </a>
@@ -34,7 +34,9 @@
 
 
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+                        <span class="navbar-toggler-icon ">
+                            <i class="fas fa-bars "></i>
+                        </span>
                     </button>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -107,7 +109,7 @@
         <!--                    </li>-->
                         </ul>
 
-                        <div class="row col-5 row justify-content-around align-items-center">
+                        <div class="row col-xl-6 col-lg-7 col-md-8 row justify-content-between align-items-center" id="user-portal">
 
                             <?php if (empty($_GET['page']) || $_GET['page'] != "recherche" ):?>
                             <form action="<?= URL?>recherche" method="get">

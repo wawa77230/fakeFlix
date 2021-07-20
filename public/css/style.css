@@ -85,18 +85,6 @@ input[type=email], input[type=password], input[type=text] {
   margin-bottom: 15px;
 }
 
-button {
-  background-color: #E50914;
-  color: white;
-  padding: 15px;
-  width: 100%;
-  font-size: 1em;
-  font-weight: bold;
-  border-radius: 5px;
-  border: 0;
-  cursor: pointer;
-}
-
 #option {
   color: #b3b3b3;
   margin-top: 10px;
@@ -146,10 +134,20 @@ button {
   nav {
     padding: 2rem !important;
   }
+  nav .nav-link {
+    font-size: 1.5rem;
+  }
 }
-@media all and (max-width: 1030px) {
+@media all and (max-width: 1150px) {
   .container {
     width: 800px;
+  }
+
+  nav {
+    padding: 1.5rem !important;
+  }
+  nav .nav-link {
+    font-size: 1.2rem;
   }
 }
 @media all and (max-width: 830px) {
@@ -160,6 +158,10 @@ button {
   header {
     text-align: center;
     padding-left: 20px;
+  }
+
+  nav {
+    padding: 1rem !important;
   }
 }
 header {
@@ -176,11 +178,11 @@ nav li :hover, nav a :hover {
   color: #db0000 !important;
 }
 nav .navbar-toggler {
-  background-color: white;
+  background-color: black;
   border-color: #919191;
 }
-nav .nav-link {
-  font-size: 1.5rem;
+nav .navbar-toggler i {
+  color: white;
 }
 nav #user-name {
   font-size: 1.5rem;

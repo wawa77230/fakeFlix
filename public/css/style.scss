@@ -108,17 +108,17 @@ input[type="email"], input[type="password"], input[type="text"] {
 
 
 //
-button {
-  background-color: #E50914;
-  color: white;
-  padding: 15px;
-  width: 100%;
-  font-size: 1em;
-  font-weight: bold;
-  border-radius: 5px;
-  border: 0;
-  cursor: pointer;
-}
+//button {
+//  background-color: #E50914;
+//  color: white;
+//  padding: 15px;
+//  width: 100%;
+//  font-size: 1em;
+//  font-weight: bold;
+//  border-radius: 5px;
+//  border: 0;
+//  cursor: pointer;
+//}
 
 #option {
   color: #b3b3b3;
@@ -170,16 +170,28 @@ button {
 @media all and (min-width: 1031px) {
   nav{
     padding: 2rem!important;
+    .nav-link{
+      font-size: 1.5rem;
+    }
   }
 }
 
-@media all and (max-width: 1030px) {
+@media all and (max-width: 1150px) {
   .container { width: 800px; }
+  nav{
+    padding: 1.5rem!important;
+    .nav-link{
+      font-size: 1.2rem;
+    }
+  }
 }
 
 @media all and (max-width: 830px) {
   .container { width: 580px; }
   header { text-align: center; padding-left: 20px; }
+  nav{
+    padding: 1rem!important;
+  }
 }
 
 
@@ -202,17 +214,13 @@ nav{
             }
     }
   .navbar-toggler {
-    background-color: $white;
+    background-color: $black;
     border-color: $grey;
-    //span{
-    //  background-color: grey;
-    //}
+    i{
+      color: $white;
+    }
 
   }
-  .nav-link{
-    font-size: 1.5rem;
-  }
-
   #user-name{
     font-size: 1.5rem;
     margin-bottom: 0;
