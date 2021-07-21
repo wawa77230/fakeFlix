@@ -175,10 +175,10 @@
 
 
     <!--Script SweetAlert 2    -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="sweetalert2.all.min.js"></script>
 
 
-    <script src="<?= URL?>public/js/index.js"></script>
 
         <!-- Option 2: Separate Popper and Bootstrap JS -->
 <!--

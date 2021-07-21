@@ -407,8 +407,11 @@ span {
   color: #919191;
 }
 
-iframe {
-  position: relative;
+#video {
+  height: 400px;
+  margin-bottom: 2rem;
+}
+#video iframe {
   height: 100%;
   width: 100%;
 }

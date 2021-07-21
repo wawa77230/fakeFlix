@@ -520,11 +520,15 @@ span{
     font-size: 1.2rem;
     color: $grey;
 }
-
-iframe {
-  position: relative;
-  height: 100%; width: 100%;
+#video{
+  height: 400px;
+  margin-bottom: 2rem;
+  iframe {
+    //position: relative;
+    height: 100%; width: 100%;
+  }
 }
+
 
 .category{
   border: solid;

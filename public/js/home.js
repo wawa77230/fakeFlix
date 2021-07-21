@@ -16,9 +16,10 @@ window.onload = function() {
         prevArrow: '<i class="fa fa-chevron-left"></i>'
     });
 
+    let img = $('img');
+    img.css('cursor','pointer');
 
-
-    $('img').click( function (){
+    img.click( function (){
 
         //Récuperation de l'url afin de faire la redirection au click
         let url = this.attributes["data-url"].value;
