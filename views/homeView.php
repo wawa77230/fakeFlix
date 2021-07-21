@@ -3,11 +3,12 @@ ob_start();
 ?>
 
     <?php foreach ($categories as $category):?>
+
         <h3><?= $category->getName()?></h3>
 
         <div class="multiple-items">
             <?php foreach ($movies->getMovieByCatId($category->getId()) as $movie):?>
-                <a href="<?= URL?>/film/<?= $movie->getId()?>"><img class="thumbnail" src="./public/img/movies/<?= $movie->getPicture()?>" alt="<?= $movie->getName()?>" /></a>
+                <img src="./public/img/movies/<?= $movie->getPicture()?>" alt="<?= $movie->getName()?>" data-url="<?= URL ?>film/<?= $movie->getId()?>"/>
 <!--                <img class="thumbnail" src="https://www.whats-on-netflix.com/wp-content/uploads/2015/11/ftwd-featured.jpg"/>-->
 <!--                <img src="https://pmcdeadline2.files.wordpress.com/2014/06/house-of-cards-seaosn-2__140603234815.jpg"/>-->
 <!--                <img src="http://www.underbellyofsunshine.com/wp-content/uploads/2015/04/Bojack%20Horseman.jpg"/>-->
@@ -19,11 +20,17 @@ ob_start();
     <?php endforeach;?>
 <?php
 $content =ob_get_clean();
-//var_dump($_SESSION);
-//var_dump($_COOKIE['auth']);
+
 $title = "Accueil";
 $h1 = "Accueil";
+
+
+$indexJsScript = "<script src='%spublic/js/home.js'></script>";
+$indexJsScript = sprintf($indexJsScript ,URL);
+
 $scripts = ["<script src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js'></script>",
-            "<script src='public/js/index.js'></script>"];
+            $indexJsScript];
 
 require "templateView.php";
+
+//slick-track

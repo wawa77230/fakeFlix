@@ -46,7 +46,7 @@
         <!--                    <li class="nav-item active">-->
         <!--                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>-->
         <!--                    </li>-->
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown ">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Films
                                 </a>
@@ -109,11 +109,11 @@
         <!--                    </li>-->
                         </ul>
 
-                        <div class="row col-xl-6 col-lg-7 col-md-8 row justify-content-between align-items-center" id="user-portal">
+                        <div class="row col-xl-6 col-lg-7 col-12  justify-content-between align-items-center" id="user-portal">
 
                             <?php if (empty($_GET['page']) || $_GET['page'] != "recherche" ):?>
-                            <form action="<?= URL?>recherche" method="get">
-                                <div class="input-group mb-3" id="search-container">
+                            <form action="<?= URL?>recherche" method="get" class="col-12 col-sm-7">
+                                <div class="input-group " id="search-container">
                                     <div class="input-group-prepend">
                                         <button class="btn btn-outline-light" id="submit" type="submit"><i class="fas fa-search"></i></button>
                                     </div>
@@ -121,7 +121,7 @@
                                 </div>
                             </form>
                             <?php endif;?>
-                            <div class="row align-items-center">
+                            <div class="row align-items-center" id="user">
                                 <img class="user-img" src="<?= URL ?>/public/img/site/avatar.png"  width="50" height="50"/>
                                     <p id="user-name" class="align-items-center"><?= $_SESSION['user']['firstName']?></p>
                                     &nbsp;
@@ -146,10 +146,12 @@
 
     <footer>
         <div class="container">
-            <p>Des questions ? Appelez le 0800 917 813</p>
-            <a href="#">Conditions des cartes cadeaux</a>
-            <a href="#">Conditions d'utilisation</a>
-            <a href="#">Déclaration de confidentialité</a>
+            <p class="text-center">Des questions ? Appelez le 0800 917 813</p>
+            <div id="us">
+                <a href="#">Conditions des cartes cadeaux</a>
+                <a href="#">Conditions d'utilisation</a>
+                <a href="#">Déclaration de confidentialité</a>
+            </div>
         </div>
     </footer>
 
@@ -172,6 +174,11 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 
+    <!--Script SweetAlert 2    -->
+    <script src="sweetalert2.all.min.js"></script>
+
+
+    <script src="<?= URL?>public/js/index.js"></script>
 
         <!-- Option 2: Separate Popper and Bootstrap JS -->
 <!--
