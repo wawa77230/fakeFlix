@@ -26,8 +26,10 @@ try {
 
         require './app/controllers/MoviesController.php';
         require_once "app/controllers/CategoryController.php";
+        require_once "app/controllers/UsersController.php";
         $moviesController = new MoviesController();
         $categoryController = new CategoryController();
+        $usersController = new UsersController();
 
             switch ($url[0]){
                 case "accueil":
@@ -61,6 +63,14 @@ try {
                          throw  new Exception('La page n\'existe pas');
                      }
                     break;
+                case "utilisateurs":
+                    if (empty($url[1])){
+                        $usersController->showUsers();
+                    }else {
+                        throw  new Exception('La page n\'existe pas');
+                    }
+                    break;
+
                 case "recherche":
                     $moviesController->search();
                     break;

@@ -52,13 +52,13 @@ class UserManager  extends  Database
     }
 
     public function findAllUsers(){
-        $req = $this->getBdd()->prepare("SELECT id, firstName,lastName,email,pwd,isAdmin,secret, createAt FROM users");
+        $req = $this->getBdd()->prepare("SELECT id, firstName,lastName,email,pwd,isAdmin,secret, DATE_FORMAT(createAt, '%d/%m/%Y')as createAt,  isBlocked  FROM users");
         $req->execute();
         $users = $req->fetchAll(PDO::FETCH_ASSOC);
         $req->closeCursor();
 
         foreach ($users as $user){
-            $u = new User($user['id'], $user['firstName'],$user['lastName'],$user['email'],$user['pwd'],$user['isAdmin'],$user['secret'], $user['createAt'],);
+            $u = new User($user['id'], $user['firstName'],$user['lastName'],$user['email'],$user['pwd'],$user['isAdmin'],$user['secret'], $user['createAt'],  $user['isBlocked']);
             $this->addUser($u);
         }
     }
@@ -90,9 +90,12 @@ class UserManager  extends  Database
         for ($i = 0; $i< count($this->users);$i++){
             if ($this->users[$i]->getEmail() === $email)
             {
-                if (password_verify($pwd, $this->users[$i]->getPassword()))
+//              Vérifie si le mot de passe et que le compte utilisateur n'est pas bloqué
+                if (password_verify($pwd, $this->users[$i]->getPassword()) && !$this->users[$i]->getIsBlocked)
                 {
                     return $this->users[$i];
+                }else{
+                            throw new Exception("Votre compte est suspendu");
                 }
             }
         }

@@ -11,6 +11,8 @@ $grey: rgb(145,145,145);
   padding: 0;
 }
 
+
+
 html {
   scroll-behavior: smooth;
   padding: 0;
@@ -61,6 +63,18 @@ h1 {
 
 .form-error {
   color: #E50914;
+}
+
+button {
+  background-color: #E50914;
+  color: white;
+  padding: 15px;
+  width: 100%;
+  font-size: 1em;
+  font-weight: bold;
+  border-radius: 5px;
+  border: 0;
+  cursor: pointer;
 }
 
 input[type="email"], input[type="password"], input[type="text"] {
@@ -155,7 +169,7 @@ input[type="email"], input[type="password"], input[type="text"] {
     font-size: 1.7em;
   }
   h3{
-    font-size: 1.5em;
+    font-size: 2em;
   }
 }
 @media screen and (min-width: 830px) {
@@ -198,7 +212,7 @@ input[type="email"], input[type="password"], input[type="text"] {
 //.container { width: 580px; }
 header { text-align: center; padding-left: 20px; }
 nav{
-  padding: 1rem!important;
+  padding: 3rem!important;
   .nav-link{
     font-size: 1.2rem;
   }
@@ -222,7 +236,7 @@ h1{
   font-size: 1.4em;
 }
 h3{
-  font-size: 1.2em;
+  font-size: 1.6em;
 }
 #us{
   display: block;

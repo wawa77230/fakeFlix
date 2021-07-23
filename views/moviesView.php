@@ -7,7 +7,7 @@ ob_start();
             <i class="fas fa-plus"></i>&nbsp;Ajouter un film
         </a>
 
-    <table >
+    <table class="table table-striped table-bordered bg-light">
         <thead>
         <tr class="text-center">
             <th scope="col">Nom</th>

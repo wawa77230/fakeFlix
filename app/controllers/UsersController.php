@@ -1,6 +1,6 @@
 <?php
-require_once "./app/models/UserManager.php";
-require_once "./app/class/UserSession.php";
+require_once PATH."models/UserManager.php";
+require_once PATH."class/UserSession.php";
 
 class UsersController
 {
@@ -92,6 +92,12 @@ class UsersController
 //        ];
 //
 //        header("Location:".URL."prestations");
+    }
+
+    public function showUsers(){
+        $users = $this->userManager->getUsers();
+        require "./views/usersListView.php";
+//        unset($_SESSION['alert']);
     }
 
 }

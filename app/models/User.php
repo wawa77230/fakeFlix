@@ -11,10 +11,10 @@ class User
     private $isAdmin;
     private $secret;
     private $createAt;
+    private $isBlocked;
 
 
-
-    public function __construct($id, $firstname, $lastname,$email, $password,  $isAdmin, $secret , $createAt)
+    public function __construct($id, $firstname, $lastname,$email, $password,  $isAdmin, $secret , $createAt, $isBlocked)
     {
         $this->id = $id;
         $this->firstname = $firstname;
@@ -24,6 +24,7 @@ class User
         $this->isAdmin = $isAdmin;
         $this->secret = $secret;
         $this->createAt = $createAt;
+        $this->isBlocked = $isBlocked;
     }
 
     public function getId()
@@ -107,5 +108,14 @@ class User
         $this->createAt = $createAt;
     }
 
+    public function getIsBlocked()
+    {
+        return $this->isBlocked;
+    }
+
+    public function setIsBlocked($isBlocked): void
+    {
+        $this->isBlocked = $isBlocked;
+    }
 
 }
