@@ -2,7 +2,7 @@
 require_once PATH."models/UserManager.php";
 require_once PATH."class/UserSession.php";
 
-class UsersController
+class UsersController extends TemplatingTools
 {
     private $userManager;
     private $userSession;
@@ -30,18 +30,17 @@ class UsersController
                 $secret = $this->userManager->findByEmailAndCheckPassword($email, $pwd)->getSecret();
 
                 $this->userSession->createUserSession($id, $firstName, $lastName, $email, $isAdmin, $secret );
-                header("Location:".URL."accueil");
+
+                $this->flagBag('success',$_POST['name'], 'addUser');
+
+                //L'utilisateur peut se connecter avec ses nouveaux identifiants
             }else{
-                //                $_SESSION['alert'] = [
-//                    "type" => "danger",
-//                    "msg" => "L'utilisateur n'existe pas"
-//                ];
-                $this->userSession->redirection();
+                $this->flagBag('danger',$_POST['name'], 'errorUser');
+                //L'utilisateur est informé d'une mauvaise saisie ou que son compte n'existe pas
             }
         }
-        else{
-            $this->userSession->redirection();
-        }
+        $this->userSession->redirection();
+
     }
 
     public function addUserValidation()

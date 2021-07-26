@@ -151,7 +151,7 @@ try {
                     if (empty($url[1])){
                         $user->singIn();
                     }
-                    else if($url[1] === "create"){
+                    else if($url[1] === "creation"){
                         $userController->addUserValidation();
                         header("Location:".URL."connexion");
                     }

@@ -25,7 +25,7 @@ class MoviesController extends TemplatingTools
         $categories = $this->categoryManager;
 
         require "./views/moviesView.php";
-//        unset($_SESSION['alert']);
+        unset($_SESSION['alert']);
     }
 
     public function showMoviesByCategorie($catId)
@@ -69,11 +69,14 @@ class MoviesController extends TemplatingTools
 
             $this->moviesManager->addMovieDb($_POST['name'],$_POST['rank'],$_POST['description'],$_POST['year'],$nameImage,$_POST['iframe'],$_POST['categoryId']);
 
-            header("Location:".URL."films");
+            $this->flagBag('success',$_POST['name'], 'add');
 
+            header("Location:".URL."films");
         }
-        else
-            var_dump('Ajouter erreur');
+        else{
+            $this->flagBag('danger','Probléme rencontré lors de la validation !!');
+            header("Location:".URL."films/u/".$_POST['id']);
+        }
     }
 
     public function updateMovie($id)
@@ -113,12 +116,13 @@ class MoviesController extends TemplatingTools
 
             $this->moviesManager->updateMovieBd($_POST['id'],$_POST['name'],$_POST['rank'],$_POST['description'],$_POST['year'],$nameImage,$_POST['iframe'],$_POST['categoryId']);
 
+            $this->flagBag('success',$_POST['name'], 'update');
             header("Location:".URL."films");
-
         }
-        else
-            var_dump('Ajouter erreur');
-
+        else{
+            $this->flagBag('danger', 'Erreur lors de la modification de'.$_POST['name'].'!');
+            header("Location:".URL."films/u/".$_POST['id']);
+        }
     }
 
     public function createMovie()
@@ -137,11 +141,7 @@ class MoviesController extends TemplatingTools
 
         }
 
-//        $_SESSION['alert'] = [
-//            "type" => "success",
-//            "msg" => "Suppression de <strong>".$title."</strong> réalisé."
-//        ];
-
+        $this->flagBag('success',$_POST['name'], 'remove');
         header("Location:".URL."films");
     }
 

@@ -12,8 +12,6 @@ class CategoryController extends TemplatingTools
         $this->categoryManager->findAllCategories();
     }
 
-
-
     public function showCategories(){
         $categories = $this->categoryManager->getCategories();
 
@@ -37,9 +35,10 @@ class CategoryController extends TemplatingTools
 
             $this->flagBag('success',$_POST['name'], 'add');
             header("Location:".URL."categories");
-        }
-        else
+        }else{
             $this->flagBag('danger','Probléme rencontré lors de la validation !!');
+            header("Location:".URL."categories/c");
+        }
     }
 
     public function updateCategory($id)
@@ -56,11 +55,10 @@ class CategoryController extends TemplatingTools
             $this->categoryManager->addCategoryDb($_POST['name']);
 
             $this->flagBag('success',$_POST['name'], 'update');
-
             header("Location:".URL."categories");
         }else
             $this->flagBag('danger', 'Erreur lors de la modification de'.$_POST['name'].'!');
-            header("Location:".URL."categorie/".$_POST['id']);
+            header("Location:".URL."categorie/u/".$_POST['id']);
     }
 
     public function createCategory()

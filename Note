@@ -1,7 +1,13 @@
-//Formatage image en Php
-https://stackoverflow.com/questions/12757005/php-resize-image-on-or-before-upload
 
 format
 600 /338
 ou
 996/562
+
+Ajouter du code pour changer les categories dans les movies lorque ceux ci sont effacéés.
+Créer les jointure SQL avec les contrainte
+Corriger les datables
+Ajouter un warning pour la création d'un user
+Corriger les redirection lorsque user connecté et non connecté
+Ajouter FormValidator dans la page de connection
+Créer une fonction qui recuperer le Iframe brut et qui garde seulement le link

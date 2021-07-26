@@ -5,7 +5,12 @@ ob_start();
     <div id="login-body">
         <h1>S'identifier</h1>
 
-        <form method="post" action="authentification/login">
+        <form method="post" action="<?= URL ?>authentification/login">
+            <?php if (isset($_SESSION['alert'])):?>
+                <div class="alert alert-<?=$_SESSION['type']?> text-center text-dark" role="alert">
+                    <?=$_SESSION['msg']?>
+                </div>
+            <?php endif;?>
             <input type="email" name="email" placeholder="Votre adresse email" required />
             <input type="password" name="pwd" placeholder="Mot de passe" required />
             <button type="submit">S'identifier</button>

@@ -44,6 +44,12 @@ class TemplatingTools
                         case 'update':
                             $msg = "Modification de <strong>".$message."</strong> réalisée." ;
                             break;
+                        case 'addUser':
+                            $msg = "Bienvenue <strong>".$message."</strong> ! Vous pouvez à présent vous connecter." ;
+                            break;
+                        case 'errorUser':
+                            $msg = "Utilisateur inconnu !" ;
+                            break;
                     }
                 }
                 break;
