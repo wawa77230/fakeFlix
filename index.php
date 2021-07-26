@@ -75,14 +75,26 @@ try {
                     $moviesController->search();
                     break;
                 case "ajax":
+                    if($url[1] === "movies"){
 
-                    require_once "app/controllers/MoviesControllerByAjax.php";
-                    $moviesByAjax = new MoviesControllerByAjax();
-                    if ($url[1] === "search"){
-                        $moviesByAjax->search($url[2]);
-                    }elseif ($url[1] === "query"){
-                        $moviesByAjax->search($url[2]);
+                        require_once "app/controllers/MoviesControllerByAjax.php";
+                        $moviesByAjax = new MoviesControllerByAjax();
+                        if ($url[2] === "search"){
+                            $moviesByAjax->search($url[3]);
+                        }elseif ($url[2] === "query"){
+                            $moviesByAjax->search($url[3]);
+                        }
+                    }elseif ($url[1] === "users") {
+
+                        require_once "app/controllers/UsersControllerByAjax.php";
+                        $usersByAjax = new UsersControllerByAjax();
+                        if ($url[2] === "updateAdminStatus"){
+                            $usersByAjax->changeAdminStatus();
+                        }elseif ($url[2] === "updateIsBlockedStatus"){
+                            $usersByAjax->changeIsBlockedStatus();
+                        }
                     }
+
                     break;
 
                 case "authentification":

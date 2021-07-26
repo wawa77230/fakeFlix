@@ -173,7 +173,7 @@ input[type="email"], input[type="password"], input[type="text"] {
   }
 }
 @media screen and (min-width: 830px) {
-  .container { width: 800px!important; }
+  //.container { width: 800px!important; }
 
   li{
     display: flex;
@@ -379,8 +379,7 @@ nav{
 main{
   background:$main-bck;
   padding:.60em 1em 2em;
-  .container{
-  }
+
   section{
     padding-bottom:1em;
     h3{

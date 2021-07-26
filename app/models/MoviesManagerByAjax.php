@@ -11,28 +11,28 @@ class MoviesManagerByAjax extends Database
         $this->movies[] = $movie;
     }
 
-    public function addMovieDb($name, $rank,$description, $year, $picture, $iframe, $categoryId )
-    {
-        $req= "
-                INSERT INTO movies(name, `rank`, description, year, picture, iframe,categoryId)
-                                    VALUES  (:name,:rank, :description, :year, :picture, :iframe, :categoryId)";
-        $stmt = $this->getBdd()->prepare($req);
-        $result = $stmt->execute([
-            "name"=> $name,
-            "rank"=> $rank,
-            "description"=> $description,
-            "year"=> $year,
-            "picture"=> $picture,
-            "iframe"=> $iframe,
-            "categoryId"=> $categoryId,
-        ]);
-        $stmt->closeCursor();
-
-        if ($result > 0){
-            $movie = new Movie($this->getBdd()->lastInsertId(), $name, $rank, $description, $year, $picture, $iframe, $categoryId);
-            $this->addMovie($movie);
-        }
-    }
+//    public function addMovieDb($name, $rank,$description, $year, $picture, $iframe, $categoryId )
+//    {
+//        $req= "
+//                INSERT INTO movies(name, `rank`, description, year, picture, iframe,categoryId)
+//                                    VALUES  (:name,:rank, :description, :year, :picture, :iframe, :categoryId)";
+//        $stmt = $this->getBdd()->prepare($req);
+//        $result = $stmt->execute([
+//            "name"=> $name,
+//            "rank"=> $rank,
+//            "description"=> $description,
+//            "year"=> $year,
+//            "picture"=> $picture,
+//            "iframe"=> $iframe,
+//            "categoryId"=> $categoryId,
+//        ]);
+//        $stmt->closeCursor();
+//
+//        if ($result > 0){
+//            $movie = new Movie($this->getBdd()->lastInsertId(), $name, $rank, $description, $year, $picture, $iframe, $categoryId);
+//            $this->addMovie($movie);
+//        }
+//    }
 
     public function findAllMoviesByName($query){
 
@@ -77,55 +77,55 @@ class MoviesManagerByAjax extends Database
         throw new Exception("Le film n'existe pas");
     }
 
-    public function getMovieByCatId($id)
-    {
-        $movies = [];
-        foreach ($this->movies as $movie){
-            if ($movie->getCategoryId() === $id){
-                $movies[] = $movie ;
-            }
-        }
-        return $movies;
+//    public function getMovieByCatId($id)
+//    {
+//        $movies = [];
+//        foreach ($this->movies as $movie){
+//            if ($movie->getCategoryId() === $id){
+//                $movies[] = $movie ;
+//            }
+//        }
+//        return $movies;
+//
+//        throw new Exception("Le film n'existe pas");
+//    }
 
-        throw new Exception("Le film n'existe pas");
-    }
 
 
-
-    public function updateMovieBd($id,$name, $rank, $description, $year, $picture, $iframe, $categoryId)
-    {
-        $req ="UPDATE movies
-               SET name = :name,
-                   rank = :rank,
-                   description = :description,
-                   year = :year,
-                   picture = :picture,
-                   iframe = :iframe,
-                   categoryId = :categoryId
-               WHERE id = :id   ";
-        $stmt= $this->getBdd()->prepare($req);
-        $result = $stmt->execute([
-            "name"=> $name,
-            "rank"=> $rank,
-            "description"=> $description,
-            "year"=> $year,
-            "picture"=> $picture,
-            "iframe"=> $iframe,
-            "categoryId"=> $categoryId,
-            "id"=> $id
-        ]);
-        $stmt->closeCursor();
-
-        if ($result > 0){
-            $this->getMovieById($id)->setName($name);
-            $this->getMovieById($id)->setRank($rank);
-            $this->getMovieById($id)->setDescription($description);
-            $this->getMovieById($id)->setYear($year);
-            $this->getMovieById($id)->setPicture($picture);
-            $this->getMovieById($id)->setIframe($iframe);
-            $this->getMovieById($id)->setCategoryId($categoryId);
-        }
-    }
+//    public function updateMovieBd($id,$name, $rank, $description, $year, $picture, $iframe, $categoryId)
+//    {
+//        $req ="UPDATE movies
+//               SET name = :name,
+//                   rank = :rank,
+//                   description = :description,
+//                   year = :year,
+//                   picture = :picture,
+//                   iframe = :iframe,
+//                   categoryId = :categoryId
+//               WHERE id = :id   ";
+//        $stmt= $this->getBdd()->prepare($req);
+//        $result = $stmt->execute([
+//            "name"=> $name,
+//            "rank"=> $rank,
+//            "description"=> $description,
+//            "year"=> $year,
+//            "picture"=> $picture,
+//            "iframe"=> $iframe,
+//            "categoryId"=> $categoryId,
+//            "id"=> $id
+//        ]);
+//        $stmt->closeCursor();
+//
+//        if ($result > 0){
+//            $this->getMovieById($id)->setName($name);
+//            $this->getMovieById($id)->setRank($rank);
+//            $this->getMovieById($id)->setDescription($description);
+//            $this->getMovieById($id)->setYear($year);
+//            $this->getMovieById($id)->setPicture($picture);
+//            $this->getMovieById($id)->setIframe($iframe);
+//            $this->getMovieById($id)->setCategoryId($categoryId);
+//        }
+//    }
 
     public function deletePrestationBd($id)
     {

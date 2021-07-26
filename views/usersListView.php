@@ -23,7 +23,7 @@ ob_start();
                 <td>
                     <form>
                         <div class="custom-control custom-switch">
-                            <input type="checkbox" <?= $user->getIsAdmin()? "checked": '' ?> class="custom-control-input" id="adminSwitch<?= $user->getId()?>">
+                            <input type="checkbox" <?= $user->getIsAdmin()? "checked": '' ?> class="custom-control-input" id="adminSwitch<?= $user->getId()?>" data-id="<?= $user->getId()?>" data-url="users/updateAdminStatus" data-status="<?=$user->getIsAdmin()?>" >
                             <label class="custom-control-label" for="adminSwitch<?= $user->getId()?>"></label>
                         </div>
                     </form>
@@ -31,14 +31,14 @@ ob_start();
                 <td>
                     <form>
                         <div class="custom-control custom-switch">
-                            <input type="checkbox" <?= $user->getIsBlocked()? "checked": '' ?> class="custom-control-input" id="statusSwitch<?= $user->getId()?>">
+                            <input type="checkbox" <?= $user->getIsBlocked()? "checked": '' ?> class="custom-control-input" id="statusSwitch<?= $user->getId()?>" data-id="<?= $user->getId()?>" data-url="users/updateIsBlockedStatus" data-status="<?=$user->getIsBlocked()?>">
                             <label class="custom-control-label" for="statusSwitch<?= $user->getId()?>"></label>
                         </div>
                     </form>
                 </td>
                 <td>
                     <form action="<?=URL?>utilisateurs/d/<?= $user->getId()?>" method="post">
-                        <button type="submit" name="remove" class="btn btn-danger col-6"><i class="far fa-trash-alt"></i> Supprimer</button>
+                        <button type="submit" name="remove" class="btn btn-danger"><i class="far fa-trash-alt"></i> Supprimer</button>
                     </form>
                 </td>
             </tr>
@@ -56,14 +56,14 @@ $h1 = "Utilisateurs";
 $dataTableScript = "<script src='%spublic/js/dataTables.js'></script>";
 $dataTableScript = sprintf($dataTableScript,URL);
 
-
+$updateByAjaxScript = "<script src='%spublic/js/ajax/updateStatusByAjax.js'></script>";
+$updateByAjaxScript = sprintf($updateByAjaxScript,URL);
 
 $links = ["<link rel='stylesheet' href='https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css'> "];
 
 
 $scripts = ["<script src='https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js'></script>",
-    $dataTableScript,
-];
+    $dataTableScript, $updateByAjaxScript];
 
 
 require "templateView.php";

@@ -151,10 +151,6 @@ input[type=email], input[type=password], input[type=text] {
   }
 }
 @media screen and (min-width: 830px) {
-  .container {
-    width: 800px !important;
-  }
-
   li {
     display: flex;
     justify-content: center;

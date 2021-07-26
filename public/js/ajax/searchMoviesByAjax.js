@@ -27,7 +27,7 @@ window.onload = function() {
 
         //Afin d'éviter de récupérer toutes les entrées de la base de donnée
         if (search.length > 0) {
-            fetch(`ajax/query/${search}`)
+            fetch(`ajax/movies/query/${search}`)
                 .then(response => response.json())
                 .then((allMovies)=> {
                     createCard(allMovies);
@@ -40,7 +40,6 @@ window.onload = function() {
                 createCard(null)
             })
         }else {
- addBootstrapNavBar
             loading.style.display = "none";
         }
 
@@ -49,7 +48,7 @@ window.onload = function() {
     function getMoviesByGETMethod(){
 
         const search = document.querySelector('#search').value;
-        fetch(`ajax/search/${search}`)
+        fetch(`ajax/movies/search/${search}`)
             .then(response => response.json())
             .then((allMovies)=> {
                 createCard(allMovies);
