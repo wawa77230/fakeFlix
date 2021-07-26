@@ -39,7 +39,6 @@ try {
                 case "films":
                     if (empty($url[1])){
                         $moviesController->showMovies();
-                        break;
                     }elseif ($url[1] === "c"){
                         $moviesController->createMovie();
                     }elseif ($url[1] === "validation"){
@@ -55,6 +54,34 @@ try {
                         throw  new Exception('La page n\'existe pas');
                     }
                     break;
+                case "categories":
+                    if (empty($url[1])){
+                        $categoryController->showCategories();
+                    }elseif ($url[1] === "c"){
+                        $categoryController->createCategory();
+                    }elseif ($url[1] === "validation"){
+                        $categoryController->addCategoryValidation();
+                    }elseif ($url[1] === "u"){
+                        $categoryController->updateCategory($url[2]);
+                    }elseif ($url[1] === "updateValidation"){
+                        $categoryController->updateCategoryValidation();
+                    }elseif ($url[1] === "d"){
+                        $categoryController->deleteCategory($url[2]);
+                    }
+                    else {
+                        throw  new Exception('La page n\'existe pas');
+                    }
+                    break;
+
+                case "categorie":
+                    if (!empty($url[1]) && ctype_digit($url[1])){
+                        $moviesController->showMoviesByCategorie($url[1]);
+                    }
+                    else {
+                        throw  new Exception('La page n\'existe pas');
+                    }
+                    break;
+
                 case "film":
                      if (!empty($url[1]) && ctype_digit($url[1])){
                         $moviesController->showMovie($url[1]);

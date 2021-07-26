@@ -60,7 +60,7 @@ ob_start()
             <input type="text" hidden name="id" value="<?= $movie->getId() ?>">
 
             <div class="form-group">
-                <button type="submit" name="insert" id="insert"  class="btn btn-success btn-block">Modifier</button>
+                <button type="submit" class="btn btn-success btn-block">Modifier</button>
             </div>
         </form>
 

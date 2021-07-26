@@ -56,11 +56,13 @@
                                         <a class="dropdown-item" href="<?= URL?>films">Liste des films</a>
 <!--                                        <div class="dropdown-divider"></div>-->
                                     <?php endif;?>
-                                        <a class="dropdown-item" href="#">Comédie</a>
+                                    <?php foreach ($categories as $category):?>
+                                        <a class="dropdown-item" href="<?=URL?>categorie/<?= $category->getId()?>"><?= $category->getName()?></a>
+                                        <div class="dropdown-divider"></div>
+<!--                                        <a class="dropdown-item" href="#">Actions</a>-->
 <!--                                        <div class="dropdown-divider"></div>-->
-                                        <a class="dropdown-item" href="#">Actions</a>
-<!--                                        <div class="dropdown-divider"></div>-->
-                                        <a class="dropdown-item" href="#">Déssin animé</a>
+<!--                                        <a class="dropdown-item" href="#">Déssin animé</a>-->
+                                    <?php endforeach;?>
                                 </div>
                             </li>
 
@@ -82,8 +84,8 @@
                                         Catégories
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="<?= URL?>films/c">Ajouter</a>
-                                        <a class="dropdown-item" href="<?= URL?>films">Liste des catégories</a>
+                                        <a class="dropdown-item" href="<?= URL?>categories/c">Ajouter</a>
+                                        <a class="dropdown-item" href="<?= URL?>categories">Liste des catégories</a>
                                     </div>
                                 </li>
                             <?php endif;?>
@@ -137,7 +139,9 @@
 
 
     <main>
-        <h1 class="text-center"><?= $h1?></h1>
+        <?php if (!isset($_GET['page'])  || $_GET['page'] != 'accueil'):?>
+        <h1 class="text-center mb-5 mt-5"><?= $h1?></h1>
+        <?php endif;?>
 
         <section>
             <?=$content?>

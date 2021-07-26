@@ -25,7 +25,16 @@ class MoviesController extends TemplatingTools
         $categories = $this->categoryManager;
 
         require "./views/moviesView.php";
-        unset($_SESSION['alert']);
+//        unset($_SESSION['alert']);
+    }
+
+    public function showMoviesByCategorie($catId)
+    {
+        $categorieName = $this->categoryManager->getCategoryById($catId)->getName();
+
+        $movies = $this->moviesManager->getMovieByCatId($catId);
+
+        require "./views/movieByCategoryView.php";
     }
 
     public function showMovie($id)
@@ -124,7 +133,7 @@ class MoviesController extends TemplatingTools
         if (isset($_POST['remove'])){
             $title =$this->moviesManager->getMovieById($id)->getName();
 
-            $this->moviesManager->deletePrestationBd($id);
+            $this->moviesManager->deleteMovieBd($id);
 
         }
 
