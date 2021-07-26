@@ -33,4 +33,3 @@ $scripts = ["<script src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/
 
 require "templateView.php";
 
-//slick-track

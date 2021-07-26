@@ -49,7 +49,7 @@ ob_start()
             </div>
 
             <div class="form-group">
-                <button type="submit" name="insert" id="insert"  class="btn btn-success btn-block">Ajouter </button>
+                <button type="submit" class="btn btn-success btn-block">Ajouter </button>
             </div>
         </form>
 

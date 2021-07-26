@@ -111,7 +111,7 @@ class MoviesManager extends Database
         }
     }
 
-    public function deletePrestationBd($id)
+    public function deleteMovieBd($id)
     {
         $req="DELETE FROM movies WHERE id = :idMovie";
         $stmt = $this->getBdd()->prepare($req);

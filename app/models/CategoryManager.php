@@ -10,11 +10,10 @@ class CategoryManager extends Database
         $this->categories[] = $category;
     }
 
-    public function addCategoryDb($name, $rank, $description, $year, $picture, $iframe, $categoryId)
+    public function addCategoryDb($name)
     {
-        $req= "
-                INSERT INTO categories(name)
-                                    VALUES  (:name)";
+        $req= " INSERT INTO categories(name)
+                VALUES  (:name)";
         $stmt = $this->getBdd()->prepare($req);
         $result = $stmt->execute([
             "name"=> $name,
@@ -84,7 +83,7 @@ class CategoryManager extends Database
         }
     }
 
-    public function deletePrestationBd($id)
+    public function deleteCategoryBd($id)
     {
         $req="DELETE FROM categories WHERE id = :idCategory";
         $stmt = $this->getBdd()->prepare($req);
