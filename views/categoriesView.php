@@ -7,6 +7,12 @@ ob_start();
             <i class="fas fa-plus"></i>&nbsp;Ajouter une catégorie
         </a>
 
+        <?php if (isset($_SESSION['alert'])):?>
+            <div class="alert alert-<?=$_SESSION['type']?> text-center text-dark" role="alert">
+                <?=$_SESSION['msg']?>
+            </div>
+        <?php endif;?>
+
         <table class="table table-striped table-bordered bg-light" >
             <thead>
             <tr class="text-center">

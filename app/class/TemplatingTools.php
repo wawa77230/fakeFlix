@@ -28,6 +28,40 @@ class TemplatingTools
 
     }
 
+    public function flagBag($type, $message, $action =null ){
+
+        switch ($type){
+            case 'success':
+                if ($action){
+                    switch ($action){
+
+                        case 'add':
+                            $msg = "Ajout de <strong>".$message."</strong> réalisé.";
+                            break;
+                        case 'remove':
+                            $msg = "Suppression de <strong>".$message."</strong> réalisée." ;
+                            break;
+                        case 'update':
+                            $msg = "Modification de <strong>".$message."</strong> réalisée." ;
+                            break;
+                    }
+                }
+                break;
+            case 'danger':
+                $msg = $message;
+
+        }
+
+        $_SESSION["alert"] = [
+            "type"=> $type,
+            "msg" => $msg
+        ];
+
+        return $_SESSION['alert'];
+
+
+    }
+
 
 
 }
