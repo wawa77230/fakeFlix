@@ -2,7 +2,7 @@
 require_once PATH."models/CategoryManager.php";
 
 
-class CategoryController
+class CategoryController extends TemplatingTools
 {
     private $categoryManager;
 
@@ -18,7 +18,8 @@ class CategoryController
         $categories = $this->categoryManager->getCategories();
 
         require "./views/categoriesView.php";
-//        unset($_SESSION['alert']);
+        //Permet de supprimer les alertes gardées en session aprés les redirections du CRUD
+        unset($_SESSION['alert']);
     }
 
     public function getCategoryForMovie($id)
@@ -34,10 +35,11 @@ class CategoryController
 
             $this->categoryManager->addCategoryDb($_POST['name']);
 
+            $this->flagBag('success',$_POST['name'], 'add');
             header("Location:".URL."categories");
         }
         else
-            var_dump('Ajouter erreur');
+            $this->flagBag('danger','Probléme rencontré lors de la validation !!');
     }
 
     public function updateCategory($id)
@@ -53,10 +55,12 @@ class CategoryController
 
             $this->categoryManager->addCategoryDb($_POST['name']);
 
+            $this->flagBag('success',$_POST['name'], 'update');
+
             header("Location:".URL."categories");
         }else
-            var_dump('Ajouter erreur');
-
+            $this->flagBag('danger', 'Erreur lors de la modification de'.$_POST['name'].'!');
+            header("Location:".URL."categorie/".$_POST['id']);
     }
 
     public function createCategory()
@@ -72,13 +76,8 @@ class CategoryController
             $title =$this->categoryManager->getCategoryById($id)->getName();
 
             $this->categoryManager->deleteCategoryBd($id);
-
+            $this->flagBag('success',$_POST['name'], 'remove');
         }
-
-//        $_SESSION['alert'] = [
-//            "type" => "success",
-//            "msg" => "Suppression de <strong>".$title."</strong> réalisé."
-//        ];
 
         header("Location:".URL."categories");
     }

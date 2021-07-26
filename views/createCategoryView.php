@@ -2,7 +2,6 @@
 ob_start()
 ?>
     <div class="form container">
-
         <form action="<?= URL?>categories/validation" method="post"  data-validate>
             <div class="form-group">
                 <label for="name">Nom</label>
