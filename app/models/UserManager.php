@@ -26,13 +26,13 @@ class UserManager  extends  Database
                 "pwd"=> $pwd,
                 "isAdmin"=> $isAdmin,
                 "secret"=> $secret,
-                "createAt" => $createAt
+                "createAt" => $createAt,
 
             ]);
             $stmt->closeCursor();
 
             if ($result > 0){
-                $user = new User($this->getBdd()->lastInsertId(), $firstName, $lastName, $email, $pwd, $isAdmin, $secret, $createAt);
+                $user = new User($this->getBdd()->lastInsertId(), $firstName, $lastName, $email, $pwd, $isAdmin, $secret, $createAt, 0);
                 $this->addUser($user);
             }
         }
@@ -69,38 +69,15 @@ class UserManager  extends  Database
 
     public function findByEmailAndCheckPassword($email, $pwd)
     {
-//        foreach ($this->users as $user){
-//            if ($user->getEmail() === $email){
-//                if (password_verify($pwd, $user->getPassword()))
-//                {
-//                    return $user;
-//                }else{
-//                    $_SESSION['alert'] = [
-//                        "type" => "danger",
-//                        "msg" => "L'utilisateur n'existe pas"
-//                    ];
-//                    die();
-//                }
-//                header("Location:".URL."prestations");
-//
-//            }
-//        }
-//        A verifier
 
-        for ($i = 0; $i< count($this->users);$i++){
-            if ($this->users[$i]->getEmail() === $email)
-            {
-//              Vérifie si le mot de passe et que le compte utilisateur n'est pas bloqué
-                if (password_verify($pwd, $this->users[$i]->getPassword()) && !$this->users[$i]->getIsBlocked)
+        foreach ($this->users as $user){
+            if ($user->getEmail() === $email){
+                if (password_verify($pwd, $user->getPassword()))
                 {
-                    return $this->users[$i];
-                }else{
-                            throw new Exception("Votre compte est suspendu");
+                    return $user;
                 }
             }
         }
-        ///////////////
-//        throw new Exception("L'utilisateur n'existe pas");
     }
 
 

@@ -25,13 +25,14 @@ class MoviesController extends TemplatingTools
         $categories = $this->categoryManager;
 
         require "./views/moviesView.php";
-        unset($_SESSION['alert']);
+
+        //Permet de supprimer les alertes gardées en session aprés les redirections du CRUD
+        $this->removeFlashBag();
     }
 
     public function showMoviesByCategorie($catId)
     {
         $categorieName = $this->categoryManager->getCategoryById($catId)->getName();
-
         $movies = $this->moviesManager->getMovieByCatId($catId);
 
         require "./views/movieByCategoryView.php";
@@ -69,13 +70,13 @@ class MoviesController extends TemplatingTools
 
             $this->moviesManager->addMovieDb($_POST['name'],$_POST['rank'],$_POST['description'],$_POST['year'],$nameImage,$_POST['iframe'],$_POST['categoryId']);
 
-            $this->flagBag('success',$_POST['name'], 'add');
 
+            $this->flashBag('success',$_POST['name'], 'add');
             header("Location:".URL."films");
         }
         else{
-            $this->flagBag('danger','Probléme rencontré lors de la validation !!');
-            header("Location:".URL."films/u/".$_POST['id']);
+            $this->flashBag('danger','Probléme rencontré lors de la validation !!');
+            header("Location:".URL."films/c");
         }
     }
 
@@ -85,6 +86,8 @@ class MoviesController extends TemplatingTools
         $movie = $this->moviesManager->getMovieById($id);
 
         require "./views/movies/updateMovieView.php";
+        //Permet de supprimer les alertes gardées en session aprés les redirections du CRUD
+        $this->removeFlashBag();
     }
 
     public function updateMovieValidation()
@@ -123,12 +126,16 @@ class MoviesController extends TemplatingTools
             $this->flagBag('danger', 'Erreur lors de la modification de'.$_POST['name'].'!');
             header("Location:".URL."films/u/".$_POST['id']);
         }
+
     }
 
     public function createMovie()
     {
         $categories = $this->categoryManager->getCategories();
+
         require "./views/movies/createMovieView.php";
+        //Permet de supprimer les alertes gardées en session aprés les redirections du CRUD
+        $this->removeFlashBag();
     }
 
     public function deleteMovie($id)
@@ -138,10 +145,8 @@ class MoviesController extends TemplatingTools
             $title =$this->moviesManager->getMovieById($id)->getName();
 
             $this->moviesManager->deleteMovieBd($id);
-
+            $this->flashBag('success',$title, 'remove');
         }
-
-        $this->flagBag('success',$_POST['name'], 'remove');
         header("Location:".URL."films");
     }
 

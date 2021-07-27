@@ -4,8 +4,8 @@ ob_start()
     <div class="form container">
         <form action="<?= URL?>categories/validation" method="post"  data-validate>
             <?php if (isset($_SESSION['alert'])):?>
-                <div class="alert alert-<?=$_SESSION['type']?> text-center text-dark" role="alert">
-                    <?=$_SESSION['msg']?>
+                <div class="alert alert-<?=$_SESSION['alert']['type']?> text-center text-dark" role="alert">
+                    <?=$_SESSION['alert']['msg']?>
                 </div>
             <?php endif;?>
             <div class="form-group">

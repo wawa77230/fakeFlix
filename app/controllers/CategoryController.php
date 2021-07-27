@@ -17,7 +17,7 @@ class CategoryController extends TemplatingTools
 
         require "./views/categoriesView.php";
         //Permet de supprimer les alertes gardées en session aprés les redirections du CRUD
-        unset($_SESSION['alert']);
+        $this->removeFlashBag();
     }
 
     public function getCategoryForMovie($id)
@@ -33,18 +33,21 @@ class CategoryController extends TemplatingTools
 
             $this->categoryManager->addCategoryDb($_POST['name']);
 
-            $this->flagBag('success',$_POST['name'], 'add');
+            $this->flashBag('success',$_POST['name'], 'add');
             header("Location:".URL."categories");
-        }else{
-            $this->flagBag('danger','Probléme rencontré lors de la validation !!');
-            header("Location:".URL."categories/c");
         }
+        else
+            $this->flashBag('danger','Probléme rencontré lors de la validation !!');
+            header("Location:".URL."categories/c");
     }
 
     public function updateCategory($id)
     {
         $category = $this->categoryManager->getCategoryById($id);
+
         require "./views/updateCategoryView.php";
+        //Permet de supprimer les alertes gardées en session aprés les redirections du CRUD
+        $this->removeFlashBag();
     }
 
     public function updateCategoryValidation()
@@ -54,17 +57,20 @@ class CategoryController extends TemplatingTools
 
             $this->categoryManager->addCategoryDb($_POST['name']);
 
-            $this->flagBag('success',$_POST['name'], 'update');
+            $this->flashBag('success',$_POST['name'], 'update');
             header("Location:".URL."categories");
         }else
-            $this->flagBag('danger', 'Erreur lors de la modification de'.$_POST['name'].'!');
+            $this->flashBag('danger', 'Erreur lors de la modification de'.$_POST['name'].'!');
             header("Location:".URL."categorie/u/".$_POST['id']);
     }
 
     public function createCategory()
     {
         $category = $this->categoryManager->getCategories();
+
         require "./views/createCategoryView.php";
+        //Permet de supprimer les alertes gardées en session aprés les redirections du CRUD
+        $this->removeFlashBag();
     }
 
     public function deleteCategory($id)
@@ -74,9 +80,8 @@ class CategoryController extends TemplatingTools
             $title =$this->categoryManager->getCategoryById($id)->getName();
 
             $this->categoryManager->deleteCategoryBd($id);
-            $this->flagBag('success',$_POST['name'], 'remove');
+            $this->flashBag('success',$title, 'remove');
         }
-
         header("Location:".URL."categories");
     }
 }

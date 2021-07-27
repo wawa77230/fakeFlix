@@ -6,8 +6,8 @@ define("URL",str_replace("index.php","",(isset($_SERVER['HTTPS']) ? "https" : "h
 
 define("PATH",__DIR__."/app/");
 
-require_once "app/class/UserSession.php";
-require_once "app/controllers/UsersController.php";
+require_once PATH."class/UserSession.php";
+require_once PATH."controllers/UsersController.php";
 
 $user = new UserSession();
 $userController = new UsersController();
@@ -125,9 +125,10 @@ try {
                     break;
 
                 case "authentification":
-                    if (empty($url[1])){
-                        $user->connection();
-                    }elseif ($url[1] === "logout"){
+//                    if (empty($url[1])){
+//                        $user->connection();
+//                    }else
+                        if ($url[1] === "logout"){
                         $user->kill();
                     }else {
                         throw  new Exception('La page n\'existe pas');

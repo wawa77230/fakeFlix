@@ -28,7 +28,7 @@ class TemplatingTools
 
     }
 
-    public function flagBag($type, $message, $action =null ){
+    public function flashBag($type, $message, $action =null ){
 
         switch ($type){
             case 'success':
@@ -47,25 +47,22 @@ class TemplatingTools
                         case 'addUser':
                             $msg = "Bienvenue <strong>".$message."</strong> ! Vous pouvez à présent vous connecter." ;
                             break;
-                        case 'errorUser':
-                            $msg = "Utilisateur inconnu !" ;
-                            break;
                     }
                 }
                 break;
             case 'danger':
                 $msg = $message;
-
         }
 
         $_SESSION["alert"] = [
             "type"=> $type,
             "msg" => $msg
         ];
-
         return $_SESSION['alert'];
+    }
 
-
+    public function removeFlashBag(){
+        unset($_SESSION['alert']);
     }
 
 

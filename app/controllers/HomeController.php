@@ -1,7 +1,7 @@
 <?php
 
-require_once "./app/models/MoviesManager.php";
-require_once "./app/models/CategoryManager.php";
+require_once PATH."models/MoviesManager.php";
+require_once PATH."models/CategoryManager.php";
 
 class HomeController
 {

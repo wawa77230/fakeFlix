@@ -6,11 +6,13 @@ ob_start();
         <h1>S'inscrire</h1>
 
         <form method="post" action="<?= URL?>inscription/creation" data-validate>
+
             <?php if (isset($_SESSION['alert'])):?>
-                <div class="alert alert-<?=$_SESSION['type']?> text-center text-dark" role="alert">
-                    <?=$_SESSION['msg']?>
+                <div class="alert alert-<?=$_SESSION['alert']['type']?> text-center text-dark" role="alert">
+                    <?=$_SESSION['alert']['msg']?>
                 </div>
             <?php endif;?>
+
             <input type="text" name="firstName" placeholder="Votre prénom" required data-minlength="2"/>
             <input type="text" name="lastName" placeholder="Votre nom" required data-minlength="2" />
             <input type="email" name="email" placeholder="Votre adresse email" required data-minlength="5"/>
