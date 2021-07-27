@@ -71,7 +71,7 @@ class UserSession
         }
         $this::redirection();
 
-        unset($_SESSION['alert']);
+//        unset($_SESSION['alert']);
     }
 
     public function isAdmin():bool
@@ -92,6 +92,8 @@ class UserSession
 
     public function redirection(){
         header("Location:".URL."connexion");
+//        unset($_SESSION['alert']);
+        //Ajouter redirection si connecté
     }
 
     public function kill()

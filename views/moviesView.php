@@ -7,6 +7,12 @@ ob_start();
             <i class="fas fa-plus"></i>&nbsp;Ajouter un film
         </a>
 
+    <?php if (isset($_SESSION['alert'])):?>
+        <div class="alert alert-<?=$_SESSION['alert']['type']?> text-center text-dark" role="alert">
+            <?=$_SESSION['alert']['msg']?>
+        </div>
+    <?php endif;?>
+
     <table >
         <thead>
         <tr class="text-center">

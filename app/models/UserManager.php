@@ -69,33 +69,26 @@ class UserManager  extends  Database
 
     public function findByEmailAndCheckPassword($email, $pwd)
     {
-//        foreach ($this->users as $user){
-//            if ($user->getEmail() === $email){
-//                if (password_verify($pwd, $user->getPassword()))
-//                {
-//                    return $user;
-//                }else{
-//                    $_SESSION['alert'] = [
-//                        "type" => "danger",
-//                        "msg" => "L'utilisateur n'existe pas"
-//                    ];
-//                    die();
-//                }
-//                header("Location:".URL."prestations");
-//
-//            }
-//        }
-//        A verifier
 
-        for ($i = 0; $i< count($this->users);$i++){
-            if ($this->users[$i]->getEmail() === $email)
-            {
-                if (password_verify($pwd, $this->users[$i]->getPassword()))
+        foreach ($this->users as $user){
+            if ($user->getEmail() === $email){
+                if (password_verify($pwd, $user->getPassword()))
                 {
-                    return $this->users[$i];
+                    return $user;
                 }
             }
         }
+//        A verifier
+
+//        for ($i = 0; $i< count($this->users);$i++){
+//            if ($this->users[$i]->getEmail() === $email)
+//            {
+//                if (password_verify($pwd, $this->users[$i]->getPassword()))
+//                {
+//                    return $this->users[$i];
+//                }
+//            }
+//        }
         ///////////////
 //        throw new Exception("L'utilisateur n'existe pas");
     }

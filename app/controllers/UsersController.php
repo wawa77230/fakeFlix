@@ -1,8 +1,9 @@
 <?php
-require_once "./app/models/UserManager.php";
-require_once "./app/class/UserSession.php";
+require_once PATH."models/UserManager.php";
+require_once PATH."class/UserSession.php";
+require_once PATH."class/TemplatingTools.php";
 
-class UsersController
+class UsersController extends TemplatingTools
 {
     private $userManager;
     private $userSession;
@@ -15,13 +16,13 @@ class UsersController
     }
 
     public function authentification(){
+
         if ($_POST){
 
             $email = $_POST['email'];
             $pwd = $_POST['pwd'];
 
             if ($this->userManager->findByEmailAndCheckPassword($email, $pwd)){
-
 
                 $id = $this->userManager->findByEmailAndCheckPassword($email, $pwd)->getId();
                 $firstName = $this->userManager->findByEmailAndCheckPassword($email, $pwd)->getFirstName();
@@ -30,24 +31,30 @@ class UsersController
                 $secret = $this->userManager->findByEmailAndCheckPassword($email, $pwd)->getSecret();
 
                 $this->userSession->createUserSession($id, $firstName, $lastName, $email, $isAdmin, $secret );
+
+
                 header("Location:".URL."accueil");
             }else{
-                //                $_SESSION['alert'] = [
-//                    "type" => "danger",
-//                    "msg" => "L'utilisateur n'existe pas"
-//                ];
+
+                $this->flashBag('danger','Utilisateur inconnu !');
+
+                //A supprimer quand redirection faite
                 $this->userSession->redirection();
+
             }
-        }
-        else{
+        }else{
+            $this->flashBag('danger','Un problème est survenu lors de votre authentification, veuillez réessayer ulterieurement.');
+            //A supprimer quand redirection faite
             $this->userSession->redirection();
+
         }
+
+        //Futur redirection pour toute situation
+//        $this->userSession->redirection();
     }
 
     public function addUserValidation()
     {
-
-
         if(isset($_POST["firstName"]) && strlen(trim($_POST["firstName"]))>=2
             && isset($_POST["lastName"]) && strlen(trim($_POST["lastName"]))>=2
             && isset($_POST["email"]) && filter_var($_POST["email"],FILTER_VALIDATE_EMAIL)
@@ -64,34 +71,14 @@ class UsersController
             $createAt = date("Y-m-d H:i:s");
             $secret = password_hash(random_int(0,1000),PASSWORD_DEFAULT);
 
-//            var_dump($isAdmin);
-//            die();
+//
             $this->userManager->addUserDb($firstName, $lastName, $email, $password, $isAdmin, $secret, $createAt);
+            $this->flashBag('success',$firstName, 'addUser');
 
-            //Si il n'y a pas d'erreur cet header sera renvoyé !!!!!!!!!!!!
-            if (isset($_SESSION['alert'])){
-                $this->userSession->redirection();
-            }
-
+        }else{
+            $this->flashBag('danger','Un problème est survenu lors de la création de votre profil! Veuillez réessayer ulterieurement.');
         }
 
-//        if ($_POST['hour'] === '#'? $_POST['hour']= '00': $_POST['hour'] )
-//            if ($_POST['minute'] === '#'? $_POST['minute']= '00': $_POST['minute'] )
-//                $duration = $_POST['hour'].':'.$_POST['minute'].':00';
-//
-//
-//        $file = $_FILES['image'];
-//        $directory = "public/images/";
-//        $nameImage = $this->addImage($file, $directory);
-//
-//        $this->prestationManager->addPrestationDb($_POST['title'],$_POST['description'],$_POST['price'],$duration,$nameImage);
-
-//        $_SESSION['alert'] = [
-//            "type" => "success",
-//            "msg" => "Ajout de <strong>".$_POST['title']."</strong> réalisé."
-//        ];
-//
-//        header("Location:".URL."prestations");
+        $this->userSession->redirection();
     }
-
 }
