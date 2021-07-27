@@ -165,6 +165,10 @@ try {
                     require 'views/loginView.php';
                     break;
 
+//                case "accueil":
+//                    $user->redirection();
+//                    break;
+
                 case "authentification":
                     if (empty($url[1])){
                         $user->connection();
@@ -179,8 +183,6 @@ try {
             }
         }
     }
-
-
 }
 catch (Exception $e){
     $msg = $e->getMessage();

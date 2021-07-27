@@ -32,9 +32,6 @@ class UsersController extends TemplatingTools
 
                 $this->userSession->createUserSession($id, $firstName, $lastName, $email, $isAdmin, $secret );
 
-                $this->flashBag('success',$_POST['name'], 'addUser');
-
-                //L'utilisateur peut se connecter avec ses nouveaux identifiants
                 header("Location:".URL."accueil");
             }else{
                 $this->flashBag('danger','Utilisateur inconnu !');
@@ -42,6 +39,7 @@ class UsersController extends TemplatingTools
                 //L'utilisateur est informé d'une mauvaise saisie ou que son compte n'existe pas
                 //A supprimer quand redirection faite
                 $this->userSession->redirection();
+                $this->removeFlashBag();
             }
         }else{
             $this->flashBag('danger','Un problème est survenu lors de votre authentification, veuillez réessayer ulterieurement.');
@@ -77,7 +75,6 @@ class UsersController extends TemplatingTools
         }else{
             $this->flashBag('danger','Un problème est survenu lors de la création de votre profil! Veuillez réessayer ulterieurement.');
         }
-
         $this->userSession->redirection();
     }
 

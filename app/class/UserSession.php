@@ -26,19 +26,8 @@ class UserSession
             setcookie('auth',$secret, time() + 364*24*3600, '/', null, false, true);
         }
 
-        $this->isAuthenticated();
+        $this::isAuthenticated();
     }
-
-//    public function isConnected()
-//    {
-//        if (!$this->isAuthenticated()){
-//            $this->connection();
-//        }else{
-//            return true;
-//        }
-//    }
-
-//
 
     public function isAuthenticated()
     {
@@ -46,40 +35,29 @@ class UserSession
             return isset($_SESSION["user"]);
         }else {
             return false;
-//            $this::redirection();
 
         }
-//        return isset($_SESSION["user"]);
 
     }
-
-//    public function connection()
-//    {
-//        if ($this->isAuthenticated()){
-//            header("Location:".URL."accueil");
-//        }else{
-//            header("Location:".URL."authentification/login");
-//        }
-//        unset($_SESSION['alert']);
-//
-//    }
 
     public function connection()
     {
         if ($this->isAuthenticated()){
             header("Location:".URL."accueil");
+        }else{
+            $this::redirection();
         }
-        $this::redirection();
-
-//        unset($_SESSION['alert']);
     }
 
     public function isAdmin():bool
     {
         if ($_SESSION["user"]["isAdmin"] && $_SESSION["user"]["webSite"] === 'fakeFlix'){
             return true;
+        }else{
+            throw  new Exception('La page n\'existe pas');
+
+//            return false;
         }
-        return false;
     }
 
     public function singIn(){
@@ -91,8 +69,13 @@ class UserSession
     }
 
     public function redirection(){
-        header("Location:".URL."connexion");
-//        unset($_SESSION['alert']);
+
+        if ($this->isAuthenticated()){
+            header("Location:".URL."accueil");
+        }else{
+            header("Location:".URL."connexion");
+            //        unset($_SESSION['alert']);
+        }
         //Ajouter redirection si connecté
     }
 

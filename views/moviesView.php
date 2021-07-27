@@ -13,7 +13,7 @@ ob_start();
         </div>
     <?php endif;?>
 
-    <table class="table table table-striped table-bordered">
+    <table class="table table table-striped table-bordered text-center">
         <thead>
         <tr class="text-center">
             <th scope="col">Nom</th>
@@ -29,7 +29,7 @@ ob_start();
         <tbody>
         <?php if ($movies):?>
             <?php foreach ($movies as $movie):?>
-            <tr class="text-center">
+            <tr>
                 <th><a href="<?= URL ?>film/<?= $movie->getId()?>"><?= $movie->getName()?></a></th>
                 <th><?= $categories->getCategoryNameById($movie->getCategoryId())?></th>
                 <td><?= $movie->getRank()?></td>
@@ -37,7 +37,7 @@ ob_start();
                 <td><?= $movie->getYear()?></td>
                 <td class="img-list" ><img src="./public/img/movies/<?= $movie->getPicture()?>" alt="<?= $movie->getName()?>" class="thumbnail"></td>
                 <td><?= $movie->getIframe()?></td>
-                <td class="btn-group">
+                <td class="btn-group border-0 "  >
                     <a href="<?=URL?>films/u/<?= $movie->getId()?>" class="btn btn-primary">Modifier</a>
                     <form action="<?=URL?>films/d/<?= $movie->getId()?>" method="post">
                         <button type="submit" name="remove" class="btn btn-danger">Supprimer</button>

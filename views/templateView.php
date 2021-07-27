@@ -27,7 +27,7 @@
     <header>
 <!--                add class navbar-transparent-->
         <nav class="navbar  navbar-expand-lg ">
-                    <a class="navbar-brand" href="<?= URL ?>accueil">
+                    <a class="navbar-brand" href="<?= !empty($_SESSION['user'])? URL.'accueil' : URL.'connexion' ?>">
                        <img src="<?= URL ?>/public/img/logos/logo.png"  width="100" height="30" alt="Fakeflix">
                     </a>
                     <?php if (!empty($_SESSION['user'])):?>
@@ -139,7 +139,8 @@
 
 
     <main>
-        <?php if (!isset($_GET['page'])  || $_GET['page'] != 'accueil'):?>
+        <?php if (isset($_GET['page']) && $_GET['page'] != 'accueil'):?>
+
         <h1 class="text-center mb-5 mt-5"><?= $h1?></h1>
         <?php endif;?>
 
