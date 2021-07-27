@@ -13,9 +13,9 @@ ob_start();
             </div>
         <?php endif;?>
 
-        <table class="table table-striped table-bordered bg-light" >
+        <table class="table table-striped table-bordered bg-light text-center" >
             <thead>
-            <tr class="text-center">
+            <tr >
                 <th scope="col">Nom</th>
                 <th scope="col">Action</th>
             </tr>
@@ -23,7 +23,7 @@ ob_start();
             <tbody>
             <?php if ($categories):?>
                 <?php foreach ($categories as $category):?>
-                    <tr class="text-center">
+                    <tr >
                         <th><a href="<?= URL ?>categories/<?= $category->getId()?>"><?= $category->getName()?></a></th>
                         <td class="btn-group">
                             <a href="<?=URL?>categories/u/<?= $category->getId()?>" class="btn btn-primary">Modifier</a>

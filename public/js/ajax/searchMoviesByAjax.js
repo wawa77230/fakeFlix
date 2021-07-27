@@ -71,12 +71,6 @@ window.onload = function() {
                 //Retire les bordures blanche des card de la class Bootstrap
                 card.style.border = "none";
 
-                // const cardBody = document.createElement('div')
-                // cardBody.classList = 'card-body';
-                //
-                // const txtCard = document.createElement('h5');
-                // txtCard.innerText = arr[i].name;
-
 
                 const imgCard = document.createElement('img');
                 imgCard.classList = 'card-img-top thumbnail';
@@ -90,9 +84,6 @@ window.onload = function() {
                 linkPage.appendChild(card);
                 card.appendChild(imgCard);
 
-                // card.appendChild(cardBody);
-
-                // cardBody.appendChild(txtCard);
                 div.appendChild(linkPage);
 
             }

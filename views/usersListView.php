@@ -1,7 +1,8 @@
 <?php
 ob_start();
 ?>
-    <table class="table table-striped table-bordered bg-light text-center">
+    <div class="mt-5 mb-5 bg-light p-5 rounded">
+            <table class="table table-striped table-bordered bg-light text-center">
         <thead>
         <tr>
             <th scope="col">Nom</th>
@@ -45,7 +46,7 @@ ob_start();
         <?php endforeach;?>
         </tbody>
     </table>
-
+    </div>
 <?php
 $content =ob_get_clean();
 

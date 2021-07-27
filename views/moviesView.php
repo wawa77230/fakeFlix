@@ -12,12 +12,8 @@ ob_start();
             <?=$_SESSION['alert']['msg']?>
         </div>
     <?php endif;?>
-<<<<<<< HEAD
-    <table class="table table-striped table-bordered bg-light">
-=======
 
     <table class="table table table-striped table-bordered">
->>>>>>> fix data table  & img in list
         <thead>
         <tr class="text-center">
             <th scope="col">Nom</th>
