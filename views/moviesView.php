@@ -1,7 +1,7 @@
 <?php
 ob_start();
 ?>
-<div class="mt-5 mb-5">
+<div class="mt-5 mb-5 bg-light p-5 rounded">
 
      <a href="<?= URL?>films/c" class="btn btn-success mb-5">
             <i class="fas fa-plus"></i>&nbsp;Ajouter un film
@@ -13,7 +13,7 @@ ob_start();
         </div>
     <?php endif;?>
 
-    <table >
+    <table class="table table table-striped table-bordered">
         <thead>
         <tr class="text-center">
             <th scope="col">Nom</th>
@@ -35,7 +35,7 @@ ob_start();
                 <td><?= $movie->getRank()?></td>
                 <td><?= substr($movie->getDescription(),0,20).'...'?></td>
                 <td><?= $movie->getYear()?></td>
-                <td class="img-list" ><img src="./public/img/movies/<?= $movie->getPicture()?>" alt="<?= $movie->getName()?>"></td>
+                <td class="img-list" ><img src="./public/img/movies/<?= $movie->getPicture()?>" alt="<?= $movie->getName()?>" class="thumbnail"></td>
                 <td><?= $movie->getIframe()?></td>
                 <td class="btn-group">
                     <a href="<?=URL?>films/u/<?= $movie->getId()?>" class="btn btn-primary">Modifier</a>
