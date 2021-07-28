@@ -78,7 +78,6 @@ class CategoryController extends TemplatingTools
         //Oblige à passer par la methode POST pour supprimer un film bien que l'id soit envoyé par l'url
         if (isset($_POST['remove'])){
             $title =$this->categoryManager->getCategoryById($id)->getName();
-
             $this->categoryManager->deleteCategoryBd($id);
             $this->flashBag('success',$title, 'remove');
         }

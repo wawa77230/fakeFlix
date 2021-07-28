@@ -89,11 +89,6 @@ class UserManager  extends  Database
                 return $user;
             }
         }
-//        for ($i = 0; $i< count($this->users);$i++){
-//            if ($this->users[$i]->getId() === $id){
-//                return $this->users[$i];
-//            }
-//        }
         throw new Exception("L'utilisateur n'existe pas");
     }
 

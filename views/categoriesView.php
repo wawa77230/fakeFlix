@@ -25,7 +25,7 @@ ob_start();
                 <?php foreach ($categories as $category):?>
                     <tr >
                         <th><a href="<?= URL ?>categories/<?= $category->getId()?>"><?= $category->getName()?></a></th>
-                        <td class="btn-group">
+                        <td class="btn-group border-0">
                             <a href="<?=URL?>categories/u/<?= $category->getId()?>" class="btn btn-primary">Modifier</a>
                             <form action="<?=URL?>categories/d/<?= $category->getId()?>" method="post">
                                 <button type="submit" name="remove" class="btn btn-danger">Supprimer</button>

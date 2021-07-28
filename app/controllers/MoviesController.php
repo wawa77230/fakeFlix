@@ -119,11 +119,11 @@ class MoviesController extends TemplatingTools
 
             $this->moviesManager->updateMovieBd($_POST['id'],$_POST['name'],$_POST['rank'],$_POST['description'],$_POST['year'],$nameImage,$_POST['iframe'],$_POST['categoryId']);
 
-            $this->flagBag('success',$_POST['name'], 'update');
+            $this->flashBag('success',$_POST['name'], 'update');
             header("Location:".URL."films");
         }
         else{
-            $this->flagBag('danger', 'Erreur lors de la modification de'.$_POST['name'].'!');
+            $this->flashBag('danger', 'Erreur lors de la modification de'.$_POST['name'].'!');
             header("Location:".URL."films/u/".$_POST['id']);
         }
 
@@ -142,8 +142,10 @@ class MoviesController extends TemplatingTools
     {
         //Oblige à passer par la methode POST pour supprimer un film bien que l'id soit envoyé par l'url
         if (isset($_POST['remove'])){
+            //Définir le chemin où trouver l'image à supprimer
             $title =$this->moviesManager->getMovieById($id)->getName();
-
+            $image = $this->moviesManager->getMovieById($id)->getPicture();
+            unlink("./public/img/movies/".$image);
             $this->moviesManager->deleteMovieBd($id);
             $this->flashBag('success',$title, 'remove');
         }
