@@ -27,7 +27,7 @@ ob_start();
                         <th><a href="<?= URL ?>categories/<?= $category->getId()?>"><?= $category->getName()?></a></th>
                         <td class="btn-group border-0">
                             <a href="<?=URL?>categories/u/<?= $category->getId()?>" class="btn btn-primary">Modifier</a>
-                            <button type="submit" name="remove" class="btn btn-danger remove" data-url="<?=URL?>ajax/categories/d" data-id="<?= $category->getId()?>" data-cat="<?= $category->getName()?>">Supprimer</button>
+                            <button type="submit" name="remove" class="btn btn-danger remove" data-url="<?=URL?>ajax/categories/d" data-id="<?= $category->getId()?>" data-name="<?= $category->getName()?>">Supprimer</button>
                         </td>
                     </tr>
                 <?php endforeach;?>

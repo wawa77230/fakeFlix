@@ -85,6 +85,7 @@ class CategoryManager extends Database
 
     public function deleteCategoryBd($id)
     {
+
         $req="DELETE FROM categories WHERE id = :idCategory";
         $stmt = $this->getBdd()->prepare($req);
         $stmt->bindValue(':idCategory',$id,PDO::PARAM_INT);

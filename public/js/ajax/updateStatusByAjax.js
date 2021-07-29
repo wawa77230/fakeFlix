@@ -9,11 +9,16 @@ function onChangeStatus(){
         let status = this.attributes["data-status"].value;
         console.log(url, id);
 
-        let data = new FormData();
-        data.set('id[]',id);
-        data.set('url[]',url);
-        data.set('status[]',status);
+        // let data = new FormData();
+        // data.set('id[]',id);
+        // data.set('url[]',url);
+        // data.set('status[]',status);
         // data.toString()
+
+        let data = new FormData();
+        data.set('id',id);
+        data.set('url',url);
+        data.set('status',status);
 
         var myHeaders = new Headers();
 

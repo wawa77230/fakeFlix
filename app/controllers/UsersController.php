@@ -93,4 +93,9 @@ class UsersController extends TemplatingTools
         require "./views/usersListView.php";
     }
 
+    public function deleteUser($id)
+    {
+        $this->userManager->deleteUserBd($id);
+    }
+
 }

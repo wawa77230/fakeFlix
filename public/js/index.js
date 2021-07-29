@@ -27,7 +27,7 @@ function disconnect(e) {
 function onRemove(e){
     e.preventDefault();
     // console.log('coucou');
-    let cat = this.attributes["data-cat"].value;
+    let name = this.attributes["data-name"].value;
 
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
@@ -38,8 +38,8 @@ function onRemove(e){
     })
 
     swalWithBootstrapButtons.fire({
-        title: `Êtes vous sûr de vouloir supprimer <strong>${cat}</strong>  ?`,
-        // text: `Cela concerne la catégorie `,
+        title: `Êtes vous sûr de vouloir supprimer <strong>${name}</strong>  ?`,
+        // text: ``,
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Oui !',
@@ -55,8 +55,8 @@ function onRemove(e){
             // console.log(id);
 
             let data = new FormData();
-            data.set('id[]',id);
-            data.set('url[]',url);
+            data.set('id',id);
+            data.set('url',url);
 
             var myHeaders = new Headers();
 
@@ -71,7 +71,7 @@ function onRemove(e){
 
             swalWithBootstrapButtons.fire(
                 'Supprimé!',
-                `La catégorie ${cat} a été supprimée !`,
+                `${name} a été supprimée !`,
                 'success'
             )
         } else if (
@@ -80,7 +80,7 @@ function onRemove(e){
         ) {
             swalWithBootstrapButtons.fire(
                 'Annulé',
-                'La catégorie n\'a pas été supprimée !!',
+                'Fausse alerte!!',
                 'error'
             )
         }

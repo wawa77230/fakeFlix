@@ -75,12 +75,6 @@ class CategoryController extends TemplatingTools
 
     public function deleteCategory($id)
     {
-        var_dump($id);
-        die();
-//        $title =$this->categoryManager->getCategoryById($id)->getName();
         $this->categoryManager->deleteCategoryBd($id);
-//        $this->flashBag('success',$title, 'remove');
-//
-//        header("Location:".URL."categories");
     }
 }

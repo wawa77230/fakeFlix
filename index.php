@@ -110,6 +110,10 @@ try {
                             $moviesByAjax->search($url[3]);
                         }elseif ($url[2] === "query"){
                             $moviesByAjax->search($url[3]);
+                        }elseif ($url[2] === "d" && $_POST){
+
+                            $id = $_POST['id'];
+                            $moviesController->deleteMovie($id);
                         }
                     }elseif ($url[1] === "users") {
 
@@ -119,15 +123,15 @@ try {
                             $usersByAjax->changeAdminStatus();
                         }elseif ($url[2] === "updateIsBlockedStatus"){
                             $usersByAjax->changeIsBlockedStatus();
+                        } elseif ($url[2] === "d" && $_POST){
+                            $id = $_POST['id'];
+                            $usersController->deleteUser($id);
                         }
                     }elseif ($url[1] === "categories") {
 
-                        if ($url[2] === "d"){
-
+                        if ($url[2] === "d" && $_POST){
                             $id = $_POST['id'];
                             $categoryController->deleteCategory($id);
-                        }elseif ($url[2] === "updateIsBlockedStatus"){
-//                            $usersByAjax->changeIsBlockedStatus();
                         }
                     }
 
