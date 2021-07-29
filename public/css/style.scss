@@ -64,7 +64,7 @@ h1 {
   color: #E50914;
 }
 
-button {
+.bouton {
   background-color: #E50914;
   color: white;
   padding: 15px;
@@ -87,17 +87,7 @@ input[type="email"], input[type="password"], input[type="text"] {
   margin-bottom: 15px;
 }
 
-button {
-  background-color: #E50914;
-  color: white;
-  padding: 15px;
-  width: 100%;
-  font-size: 1em;
-  font-weight: bold;
-  border-radius: 5px;
-  border: 0;
-  cursor: pointer;
-}
+
 
 #option {
   color: #b3b3b3;
@@ -132,13 +122,13 @@ button {
 }
 
 //ALERT
-.success {
-  background-color: green;
-}
-
-.error {
-  background-color: red;
-}
+//.success {
+//  background-color: green;
+//}
+//
+//.error {
+//  background-color: red;
+//}
 //
 //.container {
 //  width: 1000px;
@@ -378,7 +368,7 @@ nav{
 //          margin-right:1em;
 //        }
 //      }
-//      .logout i{
+//      #logout i{
 //        color: $white;
 //        margin-left: 10px;
 //      }

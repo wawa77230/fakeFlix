@@ -52,7 +52,7 @@ h1 {
   color: #E50914;
 }
 
-button {
+.bouton {
   background-color: #E50914;
   color: white;
   padding: 15px;
@@ -73,18 +73,6 @@ input[type=email], input[type=password], input[type=text] {
   color: #b3b3b3;
   background-color: #333333;
   margin-bottom: 15px;
-}
-
-button {
-  background-color: #E50914;
-  color: white;
-  padding: 15px;
-  width: 100%;
-  font-size: 1em;
-  font-weight: bold;
-  border-radius: 5px;
-  border: 0;
-  cursor: pointer;
 }
 
 #option {
@@ -117,14 +105,6 @@ button {
   margin: 30px 0;
   color: white;
   border-radius: 5px;
-}
-
-.success {
-  background-color: green;
-}
-
-.error {
-  background-color: red;
 }
 
 @media screen and (min-width: 1031px) {

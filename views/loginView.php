@@ -14,7 +14,7 @@ ob_start();
             <?php endif;?>
             <input type="email" name="email" placeholder="Votre adresse email" required />
             <input type="password" name="pwd" placeholder="Mot de passe" required />
-            <button type="submit">S'identifier</button>
+            <button type="submit" class="bouton">S'identifier</button>
             <label id="option"><input type="checkbox" name="auto"/>&nbsp;&nbsp;Se souvenir de moi</label>
         </form>
 

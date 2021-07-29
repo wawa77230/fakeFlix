@@ -40,7 +40,7 @@ ob_start();
                 <td class="btn-group border-0 "  >
                     <a href="<?=URL?>films/u/<?= $movie->getId()?>" class="btn btn-primary">Modifier</a>
                     <form action="<?=URL?>films/d/<?= $movie->getId()?>" method="post">
-                        <button type="submit" name="remove" class="btn btn-danger">Supprimer</button>
+                        <button type="submit" name="remove" class="btn btn-danger remove">Supprimer</button>
                     </form>
                 </td>
             </tr>

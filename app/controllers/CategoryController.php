@@ -55,7 +55,7 @@ class CategoryController extends TemplatingTools
 
         if ($_POST && isset($_POST['name']) && strlen(trim($_POST['name']))> 1){
 
-            $this->categoryManager->addCategoryDb($_POST['name']);
+            $this->categoryManager->updateCategoryBd($_POST['id'] ,$_POST['name']);
 
             $this->flashBag('success',$_POST['name'], 'update');
             header("Location:".URL."categories");
@@ -75,12 +75,12 @@ class CategoryController extends TemplatingTools
 
     public function deleteCategory($id)
     {
-        //Oblige à passer par la methode POST pour supprimer un film bien que l'id soit envoyé par l'url
-        if (isset($_POST['remove'])){
-            $title =$this->categoryManager->getCategoryById($id)->getName();
-            $this->categoryManager->deleteCategoryBd($id);
-            $this->flashBag('success',$title, 'remove');
-        }
-        header("Location:".URL."categories");
+        var_dump($id);
+        die();
+//        $title =$this->categoryManager->getCategoryById($id)->getName();
+        $this->categoryManager->deleteCategoryBd($id);
+//        $this->flashBag('success',$title, 'remove');
+//
+//        header("Location:".URL."categories");
     }
 }

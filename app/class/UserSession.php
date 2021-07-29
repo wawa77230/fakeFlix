@@ -49,16 +49,16 @@ class UserSession
         }
     }
 
-    public function isAdmin():bool
-    {
-        if ($_SESSION["user"]["isAdmin"] && $_SESSION["user"]["webSite"] === 'fakeFlix'){
-            return true;
-        }else{
-            throw  new Exception('La page n\'existe pas');
-
-//            return false;
-        }
-    }
+//    public function isAdmin():bool
+//    {
+//        if ($_SESSION["user"]["isAdmin"] && $_SESSION["user"]["webSite"] === 'fakeFlix'){
+//            return true;
+//        }else{
+//            throw  new Exception('La page n\'existe pas');
+//
+////            return false;
+//        }
+//    }
 
     public function singIn(){
         if ($this->isAuthenticated()){

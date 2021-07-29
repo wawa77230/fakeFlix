@@ -24,6 +24,14 @@ class UsersController extends TemplatingTools
 
             if ($this->userManager->findByEmailAndCheckPassword($email, $pwd)){
 
+                //Si le compte de l'utlisateur est bloqué, il est averti, bloqué et redirigé dans sur la page de connexion .
+                if ( $this->userManager->findByEmailAndCheckPassword($email, $pwd)->getIsBlocked()){
+                    $this->flashBag('danger','Votre compte a été suspendu, veuillez contacter l\'administrateur du site .');
+
+                    $this->userSession->redirection();
+                    die();
+                }
+
                 $id = $this->userManager->findByEmailAndCheckPassword($email, $pwd)->getId();
                 $firstName = $this->userManager->findByEmailAndCheckPassword($email, $pwd)->getFirstName();
                 $lastName = $this->userManager->findByEmailAndCheckPassword($email, $pwd)->getLastName();
@@ -33,6 +41,8 @@ class UsersController extends TemplatingTools
                 $this->userSession->createUserSession($id, $firstName, $lastName, $email, $isAdmin, $secret );
 
                 header("Location:".URL."accueil");
+                $this->removeFlashBag();
+
             }else{
                 $this->flashBag('danger','Utilisateur inconnu !');
 

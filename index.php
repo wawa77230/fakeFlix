@@ -120,6 +120,15 @@ try {
                         }elseif ($url[2] === "updateIsBlockedStatus"){
                             $usersByAjax->changeIsBlockedStatus();
                         }
+                    }elseif ($url[1] === "categories") {
+
+                        if ($url[2] === "d"){
+
+                            $id = $_POST['id'];
+                            $categoryController->deleteCategory($id);
+                        }elseif ($url[2] === "updateIsBlockedStatus"){
+//                            $usersByAjax->changeIsBlockedStatus();
+                        }
                     }
 
                     break;

@@ -39,7 +39,7 @@ ob_start();
                 </td>
                 <td>
                     <form action="<?=URL?>utilisateurs/d/<?= $user->getId()?>" method="post">
-                        <button type="submit" name="remove" class="btn btn-danger"><i class="far fa-trash-alt"></i> Supprimer</button>
+                        <button type="submit" name="remove" class="btn btn-danger remove"><i class="far fa-trash-alt"></i> Supprimer</button>
                     </form>
                 </td>
             </tr>
