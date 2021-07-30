@@ -6,27 +6,24 @@ function disconnect(e) {
 
         Swal.fire({
             title: 'Êtes vous sûr de vouloir vous déconnecter?',
-            text: "You won't be able to revert this!",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
+            confirmButtonColor: '#28a745',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Oui',
+            cancelButtonText: 'Non'
         }).then((result) => {
             if (result.isConfirmed) {
-                Swal.fire(
-                    'Deleted!',
-                    'Your file has been deleted.',
-                    'success'
-                )
+
+
+                //Redirection via la récupération de l'attribue href de la balise a#logout
+                window.location = this.href;
             }
         })
-
 }
 
 function onRemove(e){
     e.preventDefault();
-    // console.log('coucou');
     let name = this.attributes["data-name"].value;
 
     const swalWithBootstrapButtons = Swal.mixin({
@@ -39,7 +36,6 @@ function onRemove(e){
 
     swalWithBootstrapButtons.fire({
         title: `Êtes vous sûr de vouloir supprimer <strong>${name}</strong>  ?`,
-        // text: ``,
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Oui !',
@@ -51,9 +47,7 @@ function onRemove(e){
             let url = this.attributes["data-url"].value;
             let id = this.attributes["data-id"].value;
 
-            // console.log(url);
-            // console.log(id);
-
+            //Envoie des datas en $_POST pour effectuer la suppression
             let data = new FormData();
             data.set('id',id);
             data.set('url',url);
@@ -65,7 +59,6 @@ function onRemove(e){
                 body: data
             };
 
-
             //Requete ajax de suppression
             fetch(`${url}`,myInit)
 
@@ -75,7 +68,6 @@ function onRemove(e){
                 'success'
             )
         } else if (
-            /* Read more about handling dismissals below */
             result.dismiss === Swal.DismissReason.cancel
         ) {
             swalWithBootstrapButtons.fire(
@@ -86,23 +78,13 @@ function onRemove(e){
         }
     })
 
-
-
-
-
-
-    // fetch(`${url}`,myInit
-    // ).then(resp => resp.json()).then((reponse)=> {
-    //     console.log(reponse)
-    // })
-
-
 }
 
 window.onload = function() {
 
+
     let logout = document.querySelector('#logout');
-    logout.addEventListener('click', disconnect)
+        logout.addEventListener('click', disconnect)
 
     let removeButtons = document.querySelectorAll('.remove');
     removeButtons.forEach(function (button){

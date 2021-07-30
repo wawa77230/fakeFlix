@@ -127,7 +127,7 @@
                                 <img class="user-img" src="<?= URL ?>/public/img/site/avatar.png"  width="50" height="50"/>
                                     <p id="user-name" class="align-items-center"><?= $_SESSION['user']['firstName']?></p>
                                     &nbsp;
-                                    <a href="<?= URL?>authentification/logout" id="logout" onclick="return confirm('Êtes vous sûrs de vouloir vous déconnecter ?');"><i class="fas fa-unlink"></i></a>
+                                    <a href="<?= URL?>authentification/logout" id="logout"><i class="fas fa-unlink"></i></a>
                             </div>
                         </div>
 
@@ -182,6 +182,7 @@
     <!--Script SweetAlert 2    -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!--    <script src="sweetalert2.all.min.js"></script>-->
+
 
     <script src="public/js/index.js"></script>
 

@@ -47,8 +47,6 @@ try {
                         $moviesController->updateMovie($url[2]);
                     }elseif ($url[1] === "updateValidation"){
                         $moviesController->updateMovieValidation();
-                    }elseif ($url[1] === "d"){
-                        $moviesController->deleteMovie($url[2]);
                     }
                     else {
                         throw  new Exception('La page n\'existe pas');
@@ -65,8 +63,6 @@ try {
                         $categoryController->updateCategory($url[2]);
                     }elseif ($url[1] === "updateValidation"){
                         $categoryController->updateCategoryValidation();
-                    }elseif ($url[1] === "d"){
-                        $categoryController->deleteCategory($url[2]);
                     }
                     else {
                         throw  new Exception('La page n\'existe pas');
@@ -111,7 +107,6 @@ try {
                         }elseif ($url[2] === "query"){
                             $moviesByAjax->search($url[3]);
                         }elseif ($url[2] === "d" && $_POST){
-
                             $id = $_POST['id'];
                             $moviesController->deleteMovie($id);
                         }
