@@ -20,6 +20,18 @@ ob_start();
         </div>
         <?php endif;?>
     <?php endforeach;?>
+
+    <?php if ($moviesC):?>
+        <h3>Divers</h3>
+
+        <div class="multiple-items">
+            <?php foreach ($moviesC as $movie):?>
+                <img src="./public/img/movies/<?= $movie->getPicture()?>" alt="<?= $movie->getName()?>" data-url="<?= URL ?>film/<?= $movie->getId()?>"/>
+            <?php endforeach;?>
+        </div>
+    <?php endif;?>
+
+
 <?php
 $content =ob_get_clean();
 

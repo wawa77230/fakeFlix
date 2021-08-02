@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  sam. 17 juil. 2021 à 22:39
--- Version du serveur :  5.7.26
--- Version de PHP :  7.3.5
+-- Généré le : lun. 02 août 2021 à 11:19
+-- Version du serveur :  5.7.31
+-- Version de PHP : 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `fakeflix`
+-- Base de données : `fakeflix`
 --
 
 -- --------------------------------------------------------
@@ -33,17 +32,20 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Déchargement des données de la table `categories`
 --
 
 INSERT INTO `categories` (`id`, `name`) VALUES
-(1, 'Dessin animé'),
+(1, 'Dessin-animé'),
 (2, 'Action'),
 (3, 'Comédie'),
-(4, 'Horreur');
+(4, 'Horreur'),
+(7, 'Comédie'),
+(8, 'Thriller'),
+(9, 'Drame');
 
 -- --------------------------------------------------------
 
@@ -60,9 +62,10 @@ CREATE TABLE IF NOT EXISTS `movies` (
   `year` int(11) NOT NULL,
   `picture` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `iframe` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `categoryId` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `categoryId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `categoryId` (`categoryId`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Déchargement des données de la table `movies`
@@ -92,16 +95,28 @@ CREATE TABLE IF NOT EXISTS `users` (
   `isAdmin` tinyint(1) NOT NULL,
   `secret` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `createAt` timestamp NOT NULL,
+  `isBlocked` int(11) DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_uindex` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`id`, `firstName`, `lastName`, `email`, `pwd`, `isAdmin`, `secret`, `createAt`) VALUES
-(1, 'Warenn', 'Neves', 'fake@mail.fr', '$2y$10$tYMoPI72xffgV6RXSh7eNOMNC5pYsTn/eSZ.GBcXVnIyFx23J2Ym6', 1, '$2y$10$KQ442ZhU4XBe339Z9/AFUu.lziMGP2M4bLWn4MFg8URYQdeA.YjfS', '2021-06-02 14:42:08');
+INSERT INTO `users` (`id`, `firstName`, `lastName`, `email`, `pwd`, `isAdmin`, `secret`, `createAt`, `isBlocked`) VALUES
+(1, 'Warenn', 'Neves', 'fake@mail.fr', '$2y$10$tYMoPI72xffgV6RXSh7eNOMNC5pYsTn/eSZ.GBcXVnIyFx23J2Ym6', 1, '$2y$10$KQ442ZhU4XBe339Z9/AFUu.lziMGP2M4bLWn4MFg8URYQdeA.YjfS', '2021-06-02 14:42:08', 0),
+(2, 'Tom', 'Test', 'fake@mail.com', '$2y$10$.QXwnVPKFvX0kqPh82mANOBV5VNxfIFgBaiT1em7UWWrGwNmVLyv.', 0, '$2y$10$b2hBZ/.XvIJwVr4ak7mDEeIgAS543M3SRzvi5IO9khk4qgZ2VzrhK', '2021-07-19 10:20:10', 1);
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `movies`
+--
+ALTER TABLE `movies`
+  ADD CONSTRAINT `update Cat movie` FOREIGN KEY (`categoryId`) REFERENCES `categories` (`id`) ON DELETE SET NULL;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

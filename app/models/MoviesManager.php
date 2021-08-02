@@ -65,8 +65,21 @@ class MoviesManager extends Database
     {
         $movies = [];
         foreach ($this->movies as $movie){
-            if ($movie->getCategoryId() === $id){
+            if ($movie->getCategoryId() === $id ){
                  $movies[] = $movie ;
+            }
+        }
+        return $movies;
+
+        throw new Exception("Le film n'existe pas");
+    }
+
+    public function getMovieWithNullCat()
+    {
+        $movies = [];
+        foreach ($this->movies as $movie){
+            if ($movie->getCategoryId() === null ){
+                $movies[] = $movie ;
             }
         }
         return $movies;
