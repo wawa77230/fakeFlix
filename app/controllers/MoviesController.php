@@ -159,13 +159,12 @@ class MoviesController extends TemplatingTools
         //Oblige à passer par la methode POST pour supprimer un film bien que l'id soit envoyé par l'url
         if (isset($_POST['remove'])){
             //Définir le chemin où trouver l'image à supprimer
-            $title =$this->moviesManager->getMovieById($id)->getName();
+            $title = $this->moviesManager->getMovieById($id)->getName();
             $image = $this->moviesManager->getMovieById($id)->getPicture();
             unlink("./public/img/movies/".$image);
             $this->moviesManager->deleteMovieBd($id);
             $this->flashBag('success',$title, 'remove');
         }
-        header("Location:".URL."films");
     }
 
     public function search(){

@@ -80,6 +80,12 @@ class UserManager  extends  Database
 
     public function getUserById($id)
     {
+        //Si je devais faire la requete "classique"
+        //$req = $this->getBdd()->prepare("SELECT id, firstName, lastName, email, isAdmin,secret, createAt, isBlocked  FROM users WHERE id = :id");
+        //$req->execute(["id" => $id]);
+        //$user = $req->fetch(PDO::FETCH_ASSOC);
+        //$req->closeCursor();
+
         foreach ($this->users as $user){
             if ($user->getId() === $id){
                 return $user;

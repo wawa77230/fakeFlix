@@ -45,6 +45,12 @@ class MoviesManagerByAjax extends Database
 
     public function getMovieById($id)
     {
+        //Si je devais faire la requete "classique"
+        //$req = $this->getBdd()->prepare("SELECT id, name, rank, description, year, picture, iframe, categoryId FROM movies WHERE id = :id");
+        //$req->execute(["id" => $id]);
+        //$movie = $req->fetch(PDO::FETCH_ASSOC);
+        //$req->closeCursor();
+
         foreach ($this->movies as $movie){
             if ($movie->getId() === $id){
                 return $movie;

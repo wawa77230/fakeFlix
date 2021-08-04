@@ -44,6 +44,12 @@ class CategoryManager extends Database
 
     public function getCategoryById($id)
     {
+        //Si je devais faire la requete "classique"
+        //$req = $this->getBdd()->prepare("SELECT id, name FROM categories WHERE id = :id");
+        //$req->execute(["id" => $id]);
+        //$category = $req->fetch(PDO::FETCH_ASSOC);
+        //$req->closeCursor();
+
         foreach ($this->categories as $category){
             if ($category->getId() === $id){
                 return $category;
@@ -55,6 +61,13 @@ class CategoryManager extends Database
 
     public function getCategoryNameById($id)
     {
+        //Si je devais faire la requete "classique"
+        //$req = $this->getBdd()->prepare("SELECT id, name FROM categories WHERE id = :id");
+        //$req->execute(["id" => $id]);
+        //$category = $req->fetch(PDO::FETCH_ASSOC);
+        //$category['name'];
+        //$req->closeCursor();
+
         foreach ($this->categories as $category){
             if ($category->getId() === $id){
                 return $category->getName();
