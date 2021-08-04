@@ -14,7 +14,7 @@ class CategoryController extends TemplatingTools
 
     public function showCategories(){
         $categories = $this->categoryManager->getCategories();
-
+        var_dump(URL);
         require "./views/categoriesView.php";
         //Permet de supprimer les alertes gardées en session aprés les redirections du CRUD
         $this->removeFlashBag();
@@ -25,7 +25,6 @@ class CategoryController extends TemplatingTools
        return  $this->categoryManager->getCategoryNameById($id);
 
     }
-
 
     public function addCategoryValidation()
     {

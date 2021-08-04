@@ -4,7 +4,6 @@ require_once PATH."models/CategoryManager.php";
 require_once PATH."class/TemplatingTools.php";
 
 
-
 class MoviesController extends TemplatingTools
 {
     private $moviesManager;
@@ -32,9 +31,15 @@ class MoviesController extends TemplatingTools
 
     public function showMoviesByCategorie($catId)
     {
-        $categorieName = $this->categoryManager->getCategoryById($catId)->getName();
-        $movies = $this->moviesManager->getMovieByCatId($catId);
+        // Si l'id en parametre un 0 alors les données envoyé seront les films dont la catégories est null sinon traitement par id
+        if ($catId == 0){
+            $categorieName = "Divers";
+            $movies = $this->moviesManager->getMovieWithNullCat();
 
+        }else{
+            $categorieName = $this->categoryManager->getCategoryById($catId)->getName();
+            $movies = $this->moviesManager->getMovieByCatId($catId);
+        }
         require "./views/movieByCategoryView.php";
     }
 
@@ -52,9 +57,15 @@ class MoviesController extends TemplatingTools
             && isset($_POST['rank']) && ctype_digit($_POST['rank'])
             && isset($_POST['description']) && strlen(trim($_POST['description']))>99
             && isset($_POST['year']) && ctype_digit($_POST['year'])
-            && isset($_POST['iframe']) && strlen(trim($_POST['name']))>9
+            && isset($_POST['iframe']) && strlen(trim($_POST['iframe']))>9
             && isset($_POST['categoryId']) && ctype_digit($_POST['categoryId'])
         ){
+//            Si sa valeur est 0 alors il sera enregistré en bd en null afin de faire parti de la catégorie Divers
+            if ($_POST['categoryId'] == 0){
+                $_POST['categoryId'] = null;
+            }
+
+            $iframe = $this->cleanLink($_POST['iframe']);
 
             $nameImage = null;
             $file = $_FILES['image'];
@@ -68,7 +79,7 @@ class MoviesController extends TemplatingTools
                 $nameImage = $this->addImage($file, $directory);
             }
 
-            $this->moviesManager->addMovieDb($_POST['name'],$_POST['rank'],$_POST['description'],$_POST['year'],$nameImage,$_POST['iframe'],$_POST['categoryId']);
+            $this->moviesManager->addMovieDb($_POST['name'],$_POST['rank'],$_POST['description'],$_POST['year'],$nameImage,$iframe,$_POST['categoryId']);
 
 
             $this->flashBag('success',$_POST['name'], 'add');
@@ -102,6 +113,12 @@ class MoviesController extends TemplatingTools
             && isset($_POST['categoryId']) && ctype_digit($_POST['categoryId'])
         ){
 
+            //Si sa valeur est 0 alors il sera enregistré en bd en null afin de faire parti de la catégorie Divers
+            if ($_POST['categoryId'] == 0){
+                $_POST['categoryId'] = null;
+            }
+
+            $iframe = $this->cleanLink($_POST['iframe']);
 
             //Récupere l'image
             $currentImage = $this->moviesManager->getMovieById($_POST['id'])->getPicture();
@@ -117,7 +134,7 @@ class MoviesController extends TemplatingTools
                 $nameImage = $currentImage;
             }
 
-            $this->moviesManager->updateMovieBd($_POST['id'],$_POST['name'],$_POST['rank'],$_POST['description'],$_POST['year'],$nameImage,$_POST['iframe'],$_POST['categoryId']);
+            $this->moviesManager->updateMovieBd($_POST['id'],$_POST['name'],$_POST['rank'],$_POST['description'],$_POST['year'],$nameImage,$iframe,$_POST['categoryId']);
 
             $this->flashBag('success',$_POST['name'], 'update');
             header("Location:".URL."films");
@@ -126,7 +143,6 @@ class MoviesController extends TemplatingTools
             $this->flashBag('danger', 'Erreur lors de la modification de'.$_POST['name'].'!');
             header("Location:".URL."films/u/".$_POST['id']);
         }
-
     }
 
     public function createMovie()

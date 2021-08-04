@@ -18,5 +18,4 @@ class MoviesControllerByAjax
         echo $this->moviesManager->getMovies();
     }
 
-
 }

@@ -11,8 +11,6 @@ $grey: rgb(145,145,145);
   padding: 0;
 }
 
-
-
 html {
   scroll-behavior: smooth;
   padding: 0;
@@ -34,7 +32,6 @@ body {
   min-height: 100%;
 }
 
-
 a {
   color: $black;
   text-decoration: none;
@@ -49,7 +46,6 @@ section {
 
 h1 {
   font-size: 2em;
-  //margin: 0 0 30px 0;
   color: $white;
 }
 
@@ -87,8 +83,6 @@ input[type="email"], input[type="password"], input[type="text"] {
   margin-bottom: 15px;
 }
 
-
-
 #option {
   color: #b3b3b3;
   margin-top: 10px;
@@ -121,24 +115,6 @@ input[type="email"], input[type="password"], input[type="text"] {
   border-radius: 5px;
 }
 
-//ALERT
-//.success {
-//  background-color: green;
-//}
-//
-//.error {
-//  background-color: red;
-//}
-//
-//.container {
-//  width: 1000px;
-//  margin: 0 auto;
-//}
-
-
-
-
-
 @media screen and (min-width:1031px) {
   nav{
     padding: 2rem!important;
@@ -150,11 +126,8 @@ input[type="email"], input[type="password"], input[type="text"] {
     height: 175px;
     width: 311px;
   }
-
-    //footer a {
-    //margin-right: 50px;
-    //}
 }
+
 @media screen and (min-width: 992px) {
   nav{
     padding: 1.5rem!important;
@@ -174,7 +147,6 @@ input[type="email"], input[type="password"], input[type="text"] {
   }
 }
 @media screen and (min-width: 830px) {
-  //.container { width: 800px!important; }
 
   li{
     display: flex;
@@ -198,7 +170,6 @@ input[type="email"], input[type="password"], input[type="text"] {
 
   #us {
     display: flex!important;
-    //justify-content: center;
     a{
       width: 30%;
       display: flex;
@@ -209,9 +180,8 @@ input[type="email"], input[type="password"], input[type="text"] {
 
 }
 
-
-//.container { width: 580px; }
 header { text-align: center; padding-left: 20px; }
+
 nav{
   padding: 3rem!important;
   .nav-link{
@@ -221,7 +191,6 @@ nav{
 }
 
 img{
-  //margin:0 .30em;
   .img-list{
     max-width: 140px;
     max-height: 95px;
@@ -248,16 +217,9 @@ h3{
 }
 
 
-
-
 //Navbar
 header{
   padding-left: 0;
-  //button{
-  //  background-color: $black!important;
-  //  border-color: $black !important;
-
-  //}
 }
 nav{
   color: $white;
@@ -274,13 +236,8 @@ nav{
       color: $white;
     }
   }
-  //#user{
-  //  margin: 10px auto 0;
-  //}
   form{
-    //width: 100%!important;
     margin-bottom: 10px;
-
   }
   #user-name{
     font-size: 1.5rem;
@@ -307,74 +264,6 @@ nav{
     font-weight:bold;
   }
 }
-//header{
-//
-//  #brand img {
-//    height: 45px;
-//  }
-//  background-color: rgba(0,0,0,.7);
-//  padding: 30px;
-//  //margin-bottom: 100px;
-//
-//  background-size:cover;
-//  display:flex;
-//  flex-direction:column;
-//  nav{
-//    color:$white;
-//    display:flex;
-//    align-items:center;
-//    #logo{
-//      width:6.5em;
-//      margin-right:2em;
-//    }
-//    .left-menu{
-//      display:flex;
-//      align-items:baseline;
-//      p, a{
-//        font-size: 18px;
-//        color: $white;
-//        text-decoration: none;
-//        cursor:pointer;
-//        margin:0 1em;
-//        &:hover{
-//          color:$main-color;
-//        }
-//      }
-//      i{
-//        text-decoration: none;
-//      }
-//    }
-//    .right-menu{
-//      display:flex;
-//      justify-content:space-between;
-//      align-items:center;
-//      margin-left:auto;
-//      h5{
-//        cursor:pointer;
-//        &:hover{
-//          color:$main-color;
-//        }
-//      }
-//      .fa-search{
-//        margin-right:.50em;
-//      }
-//      .user{
-//        display:flex;
-//        align-items:center;
-//        margin:0 19px 15px;
-//        img{
-//          width:3em;
-//          height:3em;
-//          margin-right:1em;
-//        }
-//      }
-//      #logout i{
-//        color: $white;
-//        margin-left: 10px;
-//      }
-//    }
-//  }
-//}
 
 //Home page
 main{
@@ -473,10 +362,6 @@ main{
     }
   }
 }
-//.thumbnail {
-//  height: 222.15px;
-//  width: 395px;
-//}
 
 //FOOTER
 footer  {
@@ -489,13 +374,10 @@ footer  {
     color: $grey;
   }
 
-
   #us {
-    //display: flex;
     margin: 0 auto;
     width: 100%;
     a{
-      //width: 30%;
       text-align: center;
       font-size: 0.7em;
       color: $grey;
@@ -507,7 +389,6 @@ footer  {
   }
 
 }
-
 
 .thumbnail {
   height: 175px;
@@ -538,11 +419,9 @@ span{
   height: 400px;
   margin-bottom: 2rem;
   iframe {
-    //position: relative;
     height: 100%; width: 100%;
   }
 }
-
 
 .category{
   border: solid;
@@ -561,4 +440,3 @@ span{
       text-decoration: none;
     }
 }
-

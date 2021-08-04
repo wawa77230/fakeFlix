@@ -41,14 +41,12 @@ class UserManager  extends  Database
             if($e->getCode() == 23000)
             {
                 echo '<small>Cette adresse mail existe deja</small> ';
-
             }
             else
             {
                 throw $e ;
             }
         }
-
     }
 
     public function findAllUsers(){
@@ -79,8 +77,6 @@ class UserManager  extends  Database
             }
         }
     }
-
-
 
     public function getUserById($id)
     {

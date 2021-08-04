@@ -23,7 +23,7 @@ ob_start()
                 </select>
             </div>
             <div class="form-group">
-                <label for="date">Description</label>
+                <label for="description">Description</label>
                 <textarea class="form-control bg-light" rows="3" id="description" name="description" data-minlength="100"></textarea>
             </div>
             <div class="form-group">
@@ -37,11 +37,13 @@ ob_start()
             </div>
             <div class="form-group">
                 <label for="image">Affiche</label>
-                <input type="file" class="form-control-file" name="image" id="image" >
+                <input type="file" class="form-control-file" name="image" id="image"  >
             </div>
             <div class="form-group">
                 <label for="iframe">Lien Youtube</label>
-                <input type="text" class="form-control bg-light" id="iframe"  name="iframe" data-minlength="10"  >
+                <input type="text" class="form-control bg-light" id="iframe"  name="iframe" data-minlength="10" aria-describedby="iframeHelp" >
+                <small id="iframeHelp" class="form-text text-muted">Copier le lien Iframe complet sur Youtube</small>
+
             </div>
             <div class="form-group">
                 <label for="category">Catégorie</label>
@@ -50,6 +52,8 @@ ob_start()
                     <?php foreach ($categories as $category):?>
                         <option value="<?= $category->getId()?>"><?= $category->getName()?></option>
                     <?php endforeach;?>
+                        <option value="0">Divers</option>
+
                 </select>
             </div>
 

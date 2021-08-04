@@ -7,7 +7,7 @@ ob_start();
                     <div class="input-group-prepend">
                         <button class="btn btn-outline-light" id="submit" type="submit"><i class="fas fa-search"></i></button>
                     </div>
-                    <input type="text" id="search" name="search" value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']): ''?>" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" required>
+                    <input type="text" id="search" name="search" value="<?= isset($_GET['search']) ? $_GET['search']: ''?>" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" required>
                 </div>
             </form>
 
@@ -20,8 +20,6 @@ ob_start();
 
         <div id="result" class="mt-5">
         </div>
-
-
 
     </div>
 <?php

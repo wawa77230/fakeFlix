@@ -6,8 +6,6 @@ function FormValidator(form) {
 
     this.form = form;
     this.allErrors = [];
-
-
 }
 
 FormValidator.prototype.checkRequired = function()

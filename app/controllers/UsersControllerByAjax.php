@@ -1,7 +1,8 @@
 <?php
 require_once PATH."models/UserManagerByAjax.php";
+require_once PATH."class/TemplatingTools.php";
 
-class UsersControllerByAjax
+class UsersControllerByAjax extends TemplatingTools
 {
     private $userManagerByAjax;
 
@@ -13,20 +14,20 @@ class UsersControllerByAjax
     public function changeAdminStatus(){
         if (ctype_digit($_POST['id']) && ctype_digit($_POST['status']) ){
             //La valeur $_POST['status'] a envoyer doit etre l'opposé (booléen) de celui recu
-            $this->userManagerByAjax->updateAdminStatusUserBd($_POST['id'], !$_POST['status']);
+            $newStatus = $this->switch($_POST['status']);
+
+            $this->userManagerByAjax->updateAdminStatusUserBd($_POST['id'], $newStatus);
 
         }
     }
 
     public function changeIsBlockedStatus(){
 
-        var_dump($_POST);
-        if (($_POST['id']) && ($_POST['status']) ){
-            var_dump('coucou');
-            var_dump(!$_POST['status']);
-                die();
+        if (ctype_digit($_POST['id']) && ctype_digit($_POST['status'])){
             //La valeur $_POST['status'] a envoyer doit etre l'opposé (booléen) de celui recu
-            $this->userManagerByAjax->updateBlockedStatusUserBd($_POST['id'], !$_POST['status']);
+            $newStatus = $this->switch($_POST['status']);
+
+            $this->userManagerByAjax->updateBlockedStatusUserBd($_POST['id'], $newStatus);
         }
     }
 

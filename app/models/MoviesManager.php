@@ -87,8 +87,6 @@ class MoviesManager extends Database
         throw new Exception("Le film n'existe pas");
     }
 
-
-
     public function updateMovieBd($id,$name, $rank, $description, $year, $picture, $iframe, $categoryId)
     {
         $req ="UPDATE movies

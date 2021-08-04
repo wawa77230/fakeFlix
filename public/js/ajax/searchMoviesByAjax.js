@@ -1,6 +1,5 @@
 'use strict';
 
-
 window.onload = function() {
 
     const div = document.createElement('div');
@@ -12,9 +11,6 @@ window.onload = function() {
     const inputForm = document.querySelector('#search');
     const h1 = document.querySelector('h1');
 
-
-
-
     function getMovies(e){
 
         refreshContent();
@@ -23,7 +19,6 @@ window.onload = function() {
 
         e.preventDefault();
         const search = document.querySelector('#search').value;
-
 
         //Afin d'éviter de récupérer toutes les entrées de la base de donnée
         if (search.length > 0) {
@@ -71,7 +66,6 @@ window.onload = function() {
                 //Retire les bordures blanche des card de la class Bootstrap
                 card.style.border = "none";
 
-
                 const imgCard = document.createElement('img');
                 imgCard.classList = 'card-img-top thumbnail';
                 imgCard.src = arr[i].picture;
@@ -89,12 +83,10 @@ window.onload = function() {
             }
         }else {
 
-
             const respText = document.createElement('h5');
             respText.classList = 'text-center text-light'
             respText.innerText = 'Aucun film trouvé';
             div.appendChild(respText)
-
         }
         result.appendChild(div)
     }

@@ -1,16 +1,12 @@
 <?php
-//var_dump($user->isAuthenticated());
-
 ob_start();
 ?>
 
-
-
-        <?php if ($_SESSION['user']['isAdmin']):?>
-            <div class="col-1 align-self-end">
-                <a href="<?=URL?>films/u/<?= $movie->getId()?>" class="btn btn-success">Modifier</a>
-            </div>
-        <?php endif;?>
+<?php if ($_SESSION['user']['isAdmin']):?>
+    <div class="col-1 align-self-end">
+        <a href="<?=URL?>films/u/<?= $movie->getId()?>" class="btn btn-success">Modifier</a>
+    </div>
+<?php endif;?>
     <div class=" row m-5 justify-content-between">
         <div class="col-md-6" id="video">
             <iframe
@@ -19,7 +15,6 @@ ob_start();
                     allow="accelerometer; autoplay; clipboard-write;
                     encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen>
-
             </iframe>
         </div>
 

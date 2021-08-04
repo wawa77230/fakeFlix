@@ -24,7 +24,7 @@ try {
 
         $url = explode("/",filter_var($_GET['page']),FILTER_SANITIZE_URL);
 
-        require PATH.'controllers/MoviesController.php';
+        require_once PATH.'controllers/MoviesController.php';
         require_once PATH."controllers/CategoryController.php";
         require_once PATH."controllers/UsersController.php";
         $moviesController = new MoviesController();
@@ -33,7 +33,6 @@ try {
 
             switch ($url[0]){
                 case "accueil":
-                    //retirer accueil du chemin
                     $homeController->showMoviesByCat();
                     break;
                 case "films":
@@ -70,7 +69,7 @@ try {
                     break;
 
                 case "categorie":
-                    if (!empty($url[1]) && ctype_digit($url[1])){
+                    if (!empty($url[1]) && ctype_digit($url[1]) || $url[1] == 0){
                         $moviesController->showMoviesByCategorie($url[1]);
                     }
                     else {
@@ -129,12 +128,10 @@ try {
                             $categoryController->deleteCategory($id);
                         }
                     }
-
                     break;
 
                 case "auth":
-//
-                        if ($url[1] === "logout"){
+                    if ($url[1] === "logout"){
                         $user->kill();
                     }else {
                         throw  new Exception('La page n\'existe pas');
@@ -169,11 +166,8 @@ try {
 
                 case "connexion":
                     require 'views/loginView.php';
+                    unset($_SESSION['alert']);
                     break;
-
-//                case "accueil":
-//                    $user->redirection();
-//                    break;
 
                 case "authentification":
                     if (empty($url[1])){

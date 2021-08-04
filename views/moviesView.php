@@ -1,7 +1,7 @@
 <?php
 ob_start();
 ?>
-<div class="mt-5 mb-5 bg-light p-5 rounded">
+<div class="mt-5 mb-5 bg-light p-5 rounded table-responsive">
 
      <a href="<?= URL?>films/c" class="btn btn-success mb-5">
             <i class="fas fa-plus"></i>&nbsp;Ajouter un film

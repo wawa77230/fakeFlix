@@ -2,17 +2,16 @@
 ob_start();
 ?>
 
+<?php if ($movies):?>
+    <div class="multiple-items">
 
-        <?php if ($movies):?>
-        <div class="multiple-items">
-
-            <?php foreach ($movies as $movie):?>
-                <img src="<?= URL?>public/img/movies/<?= $movie->getPicture()?>" alt="<?= $movie->getName()?>" data-url="<?= URL ?>film/<?= $movie->getId()?>"/>
-            <?php endforeach;?>
-        </div>
+        <?php foreach ($movies as $movie):?>
+            <img src="<?= URL?>public/img/movies/<?= $movie->getPicture()?>" alt="<?= $movie->getName()?>" data-url="<?= URL ?>film/<?= $movie->getId()?>"/>
+        <?php endforeach;?>
+    </div>
         <?php else:?>
             <h5 class="text-center text-light">Aucun film trouvé</h5>
-        <?php endif;?>
+<?php endif;?>
 <?php
 $content =ob_get_clean();
 

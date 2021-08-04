@@ -23,13 +23,13 @@ class UsersController extends TemplatingTools
             $pwd = $_POST['pwd'];
 
             if ($this->userManager->findByEmailAndCheckPassword($email, $pwd)){
+                $isBlocked = $this->userManager->findByEmailAndCheckPassword($email, $pwd)->getIsBlocked();
 
                 //Si le compte de l'utlisateur est bloqué, il est averti, bloqué et redirigé dans sur la page de connexion .
-                if ( $this->userManager->findByEmailAndCheckPassword($email, $pwd)->getIsBlocked()){
+                if ($isBlocked){
                     $this->flashBag('danger','Votre compte a été suspendu, veuillez contacter l\'administrateur du site .');
-
                     $this->userSession->redirection();
-                    die();
+                    exit();
                 }
 
                 $id = $this->userManager->findByEmailAndCheckPassword($email, $pwd)->getId();
@@ -38,26 +38,17 @@ class UsersController extends TemplatingTools
                 $isAdmin = $this->userManager->findByEmailAndCheckPassword($email, $pwd)->getIsAdmin();
                 $secret = $this->userManager->findByEmailAndCheckPassword($email, $pwd)->getSecret();
 
-                $this->userSession->createUserSession($id, $firstName, $lastName, $email, $isAdmin, $secret );
-
-                header("Location:".URL."accueil");
-                $this->removeFlashBag();
-
-            }else{
-                $this->flashBag('danger','Utilisateur inconnu !');
-
+                $this->userSession->createUserSession($id, $firstName, $lastName, $email, $isAdmin, $secret, $isBlocked);
+            }
+            else{
                 //L'utilisateur est informé d'une mauvaise saisie ou que son compte n'existe pas
-                //A supprimer quand redirection faite
-                $this->userSession->redirection();
-                $this->removeFlashBag();
+                $this->flashBag('danger','Utilisateur inconnu !');
             }
         }else{
             $this->flashBag('danger','Un problème est survenu lors de votre authentification, veuillez réessayer ulterieurement.');
-            //A supprimer quand redirection faite
-            $this->userSession->redirection();
         }
-        //Futur redirection pour toute situation
-//        $this->userSession->redirection();
+
+        $this->userSession->redirection();
     }
 
     public function addUserValidation()
@@ -78,7 +69,6 @@ class UsersController extends TemplatingTools
             $createAt = date("Y-m-d H:i:s");
             $secret = password_hash(random_int(0,1000),PASSWORD_DEFAULT);
 
-//
             $this->userManager->addUserDb($firstName, $lastName, $email, $password, $isAdmin, $secret, $createAt);
             $this->flashBag('success',$firstName, 'addUser');
 

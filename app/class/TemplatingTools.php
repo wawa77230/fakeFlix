@@ -7,7 +7,6 @@ class TemplatingTools
     protected function addImage($file,$dir){
         if (!isset($file['name']) || empty($file['name']))
             throw new Exception("Vous devez indiquer une image");
-//              $file['name']= null;
 
         if (!file_exists($dir)) mkdir($dir,07777);
         $extension = strtolower(pathinfo($file['name'],PATHINFO_EXTENSION));
@@ -65,6 +64,31 @@ class TemplatingTools
         unset($_SESSION['alert']);
     }
 
+    protected function cleanLink($iframe){
 
+        //Suppression de touts les caractères avant le mot src
+        $iframe = strstr($iframe,'src');
+        //Suppression en debut de chaine de src et les guillemets ouvrant
+        $iframe = substr($iframe,4);
 
+        //Suppression de touts les caractères apres le premier espace
+        $iframe = strstr($iframe,' ',true);
+        //Suppression en fin de chaine de l'espace et les guillemets fermants
+        $iframe = substr($iframe,0,-1);
+
+        return $iframe;
+    }
+
+    protected function switch($value){
+// Permute les valeurs checkbox
+        switch ($value){
+            case 0:
+                $val = 1;
+                break;
+            case 1:
+                $val = 0;
+                break;
+        }
+        return $val;
+    }
 }

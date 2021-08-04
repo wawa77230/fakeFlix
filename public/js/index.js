@@ -3,7 +3,6 @@
 function disconnect(e) {
 
         e.preventDefault()
-
         Swal.fire({
             title: 'Êtes vous sûr de vouloir vous déconnecter?',
             icon: 'warning',
@@ -14,8 +13,6 @@ function disconnect(e) {
             cancelButtonText: 'Non'
         }).then((result) => {
             if (result.isConfirmed) {
-
-
                 //Redirection via la récupération de l'attribue href de la balise a#logout
                 window.location = this.href;
             }
@@ -80,16 +77,12 @@ function onRemove(e){
 
 }
 
-window.onload = function() {
-
-
     let logout = document.querySelector('#logout');
         logout.addEventListener('click', disconnect)
+
 
     let removeButtons = document.querySelectorAll('.remove');
     removeButtons.forEach(function (button){
         button.addEventListener('click',onRemove);
     });
 
-
-}

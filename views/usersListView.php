@@ -1,7 +1,7 @@
 <?php
 ob_start();
 ?>
-    <div class="mt-5 mb-5 bg-light p-5 rounded">
+    <div class="mt-5 mb-5 bg-light p-5 rounded table-responsive">
             <table class="table table-striped table-bordered bg-light text-center">
         <thead>
         <tr>
@@ -38,7 +38,9 @@ ob_start();
                     </form>
                 </td>
                 <td>
+                    <?php if($user->getId() != 1):?>
                     <button type="submit" name="remove" class="btn btn-danger remove"  data-url="<?=URL?>ajax/users/d" data-id="<?= $user->getId()?>" data-name="<?= $user->getFirstName()?> <?= $user->getLastName()?>"><i class="far fa-trash-alt"></i> Supprimer</button>
+                    <?php endif?>
                 </td>
             </tr>
         <?php endforeach;?>
