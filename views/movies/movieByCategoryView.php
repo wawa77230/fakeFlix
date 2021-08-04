@@ -25,5 +25,5 @@ $indexJsScript = sprintf($indexJsScript ,URL);
 $scripts = ["<script src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js'></script>",
     $indexJsScript];
 
-require "templateView.php";
+require "./views/templateView.php";
 

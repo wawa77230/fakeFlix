@@ -51,7 +51,7 @@ class UserSession
         if ($this->isAuthenticated()){
             header("Location:".URL."accueil");
         }else{
-            require 'views/singIn.php';
+            require 'views/users/singIn.php';
         }
     }
 

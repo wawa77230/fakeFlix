@@ -2,7 +2,7 @@
 ob_start();
 ?>
     <div class="text-center mt-5 container">
-            <form action="recherche" method="get">
+            <form action="../../index.php" method="get">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <button class="btn btn-outline-light" id="submit" type="submit"><i class="fas fa-search"></i></button>
@@ -32,4 +32,4 @@ $searchMovieByAjaxScript = sprintf($searchMovieByAjaxScript,URL);
 
 $scripts = [$searchMovieByAjaxScript];
 
-require "templateView.php";
+require "./views/templateView.php";

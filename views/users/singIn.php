@@ -34,4 +34,4 @@ $formValidator = "<script src='%spublic/js/form/FormValidator.class.js'></script
 $formValidator = sprintf($formValidator,URL);
 
 $scripts = [ $formValidator];
-require "templateView.php";
+require "./views/templateView.php";

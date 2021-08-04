@@ -24,7 +24,7 @@ ob_start();
             <?php if ($categories):?>
                 <?php foreach ($categories as $category):?>
                     <tr >
-                        <th><?= $category->getName()?></th>
+                        <th><a href=<?=URL?>categorie/<?= $category->getId()?>"><?= $category->getName()?></a></th>
                         <td class="btn-group border-0">
                             <a href="<?=URL?>categories/u/<?= $category->getId()?>" class="btn btn-primary">Modifier</a>
                             <button type="submit" name="remove" class="btn btn-danger remove" data-url="<?=URL?>ajax/categories/d" data-id="<?= $category->getId()?>" data-name="<?= $category->getName()?>">Supprimer</button>
@@ -59,4 +59,4 @@ $scripts = ["<script src='https://cdn.datatables.net/1.10.25/js/jquery.dataTable
 
 $links = ["<link rel='stylesheet' href='https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css'> "];
 
-require "templateView.php";
+require "./views/templateView.php";

@@ -165,7 +165,7 @@ try {
                     break;
 
                 case "connexion":
-                    require 'views/loginView.php';
+                    require 'views/users/loginView.php';
                     unset($_SESSION['alert']);
                     break;
 

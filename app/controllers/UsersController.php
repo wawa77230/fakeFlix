@@ -80,7 +80,7 @@ class UsersController extends TemplatingTools
 
     public function showUsers(){
         $users = $this->userManager->getUsers();
-        require "./views/usersListView.php";
+        require "./views/users/usersListView.php";
     }
 
     public function deleteUser($id)

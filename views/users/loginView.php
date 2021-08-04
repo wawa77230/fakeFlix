@@ -25,4 +25,4 @@ ob_start();
 $content =ob_get_clean();
 $title = "Connexion";
 $h1 = "Connexion";
-require "templateView.php";
+require "./views/templateView.php";

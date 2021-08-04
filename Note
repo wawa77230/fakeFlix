@@ -1,8 +1,9 @@
 Ranger les fichiers view dans leurs repertoires
 Verifier tout les liens
-Verifier tout les links
 Verifier erreur de la console
 Ajouter suppression ajax listPage
+
+Corriger navbar recherche par categorie
 
 Verifier l'attribut title Ifram dans movieView
     <!--                <img class="thumbnail" src="https://www.whats-on-netflix.com/wp-content/uploads/2015/11/ftwd-featured.jpg"/>-->

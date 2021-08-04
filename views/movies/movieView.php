@@ -39,4 +39,5 @@ ob_start();
 $h1 = $movie->getName() ;
 $content =ob_get_clean();
 $title = $movie->getName();
-require "templateView.php";
+var_dump(URL);
+require "./views/templateView.php";

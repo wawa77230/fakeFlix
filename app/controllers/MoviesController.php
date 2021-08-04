@@ -23,7 +23,7 @@ class MoviesController extends TemplatingTools
         $movies = $this->moviesManager->getMovies();
         $categories = $this->categoryManager;
 
-        require "./views/moviesView.php";
+        require "./views/movies/moviesListView.php";
 
         //Permet de supprimer les alertes gardées en session aprés les redirections du CRUD
         $this->removeFlashBag();
@@ -40,14 +40,14 @@ class MoviesController extends TemplatingTools
             $categorieName = $this->categoryManager->getCategoryById($catId)->getName();
             $movies = $this->moviesManager->getMovieByCatId($catId);
         }
-        require "./views/movieByCategoryView.php";
+        require "./views/movies/movieByCategoryView.php";
     }
 
     public function showMovie($id)
     {
         $movie = $this->moviesManager->getMovieById($id);
         $category = $this->categoryManager->getCategoryById($movie->getCategoryId());
-        require "./views/movieView.php";
+        require "./views/movies/movieView.php";
     }
 
     public function addMovieValidation()
@@ -170,6 +170,6 @@ class MoviesController extends TemplatingTools
 
     public function search(){
         //Les data sont renvoyés en ajax depuis le script searchMoviesByAjax.js
-        require "./views/searchView.php";
+        require "./views/movies/searchView.php";
     }
 }

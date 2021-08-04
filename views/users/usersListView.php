@@ -67,4 +67,4 @@ $scripts = ["<script src='https://cdn.datatables.net/1.10.25/js/jquery.dataTable
     $dataTableScript, $updateByAjaxScript];
 
 
-require "templateView.php";
+require "./views/templateView.php";
