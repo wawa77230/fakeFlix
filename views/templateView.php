@@ -127,7 +127,7 @@
                                 <img class="user-img" src="<?= URL ?>/public/img/site/avatar.png"  width="50" height="50"/>
                                     <p id="user-name" class="align-items-center"><?= $_SESSION['user']['firstName']?></p>
                                     &nbsp;
-                                    <a href="<?= URL?>authentification/logout" id="logout"><i class="fas fa-unlink"></i></a>
+                                    <a href="<?= URL?>auth/logout" id="logout"><i class="fas fa-unlink"></i></a>
                             </div>
                         </div>
 

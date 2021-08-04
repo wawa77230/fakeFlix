@@ -38,7 +38,7 @@ ob_start();
                     </form>
                 </td>
                 <td>
-                    <button type="submit" name="remove" class="btn btn-danger remove"  data-url="<?=URL?>ajax/users/d" data-id="<?= $user->getId()?>" data-name="<?= $user->getName()?>"><i class="far fa-trash-alt"></i> Supprimer</button>
+                    <button type="submit" name="remove" class="btn btn-danger remove"  data-url="<?=URL?>ajax/users/d" data-id="<?= $user->getId()?>" data-name="<?= $user->getFirstName()?> <?= $user->getLastName()?>"><i class="far fa-trash-alt"></i> Supprimer</button>
                 </td>
             </tr>
         <?php endforeach;?>

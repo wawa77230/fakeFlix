@@ -4,7 +4,7 @@
 class TemplatingTools
 {
 
-    public function addImage($file,$dir){
+    protected function addImage($file,$dir){
         if (!isset($file['name']) || empty($file['name']))
             throw new Exception("Vous devez indiquer une image");
 //              $file['name']= null;
@@ -28,7 +28,7 @@ class TemplatingTools
 
     }
 
-    public function flashBag($type, $message, $action =null ){
+    protected function flashBag($type, $message, $action =null ){
 
         switch ($type){
             case 'success':
@@ -61,7 +61,7 @@ class TemplatingTools
         return $_SESSION['alert'];
     }
 
-    public function removeFlashBag(){
+    protected function removeFlashBag(){
         unset($_SESSION['alert']);
     }
 

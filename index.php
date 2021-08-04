@@ -132,10 +132,8 @@ try {
 
                     break;
 
-                case "authentification":
-//                    if (empty($url[1])){
-//                        $user->connection();
-//                    }else
+                case "auth":
+//
                         if ($url[1] === "logout"){
                         $user->kill();
                     }else {

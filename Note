@@ -4,9 +4,6 @@ format
 ou
 996/562
 
-Ajouter du code pour changer les categories dans les movies lorque ceux ci sont effacéés.
-Créer les jointure SQL avec les contrainte
 ??Ajouter un warning pour la création d'un user
-Corriger les redirection lorsque user connecté et non connecté
 Créer une fonction qui recuperer le Iframe brut et qui garde seulement le link
 Ajouter page de creation et modification utilisateur

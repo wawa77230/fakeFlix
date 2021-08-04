@@ -9,7 +9,7 @@ ob_start();
 
         <div class="multiple-items">
             <?php foreach ($movies->getMovieByCatId($category->getId()) as $movie):?>
-                <img src="./public/img/movies/<?= $movie->getPicture()?>" alt="<?= $movie->getName()?>" data-url="<?= URL ?>film/<?= $movie->getId()?>"/>
+                <img src="<?= URL ?>public/img/movies/<?= $movie->getPicture()?>" alt="<?= $movie->getName()?>" data-url="<?= URL ?>film/<?= $movie->getId()?>"/>
     <!--                <img class="thumbnail" src="https://www.whats-on-netflix.com/wp-content/uploads/2015/11/ftwd-featured.jpg"/>-->
     <!--                <img src="https://pmcdeadline2.files.wordpress.com/2014/06/house-of-cards-seaosn-2__140603234815.jpg"/>-->
     <!--                <img src="http://www.underbellyofsunshine.com/wp-content/uploads/2015/04/Bojack%20Horseman.jpg"/>-->
@@ -26,7 +26,7 @@ ob_start();
 
         <div class="multiple-items">
             <?php foreach ($moviesC as $movie):?>
-                <img src="./public/img/movies/<?= $movie->getPicture()?>" alt="<?= $movie->getName()?>" data-url="<?= URL ?>film/<?= $movie->getId()?>"/>
+                <img src="<?= URL ?>public/img/movies/<?= $movie->getPicture()?>" alt="<?= $movie->getName()?>" data-url="<?= URL ?>film/<?= $movie->getId()?>"/>
             <?php endforeach;?>
         </div>
     <?php endif;?>
