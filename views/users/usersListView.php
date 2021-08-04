@@ -39,7 +39,7 @@ ob_start();
                 </td>
                 <td>
                     <?php if($user->getId() != 1):?>
-                    <button type="submit" name="remove" class="btn btn-danger remove"  data-url="<?=URL?>ajax/users/d" data-id="<?= $user->getId()?>" data-name="<?= $user->getFirstName()?> <?= $user->getLastName()?>"><i class="far fa-trash-alt"></i> Supprimer</button>
+                    <button type="submit" name="remove" class="btn btn-danger remove"  data-url="<?=URL?>ajax/users/d" data-id="<?= $user->getId()?>" data-name="<?= $user->getFirstName()?> <?= $user->getLastName()?>"><i class="far fa-trash-alt"></i>&nbsp;Supprimer</button>
                     <?php endif?>
                 </td>
             </tr>

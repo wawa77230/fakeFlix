@@ -276,6 +276,13 @@ main{
       margin:0;
       font-weight:200;
       color:$white;
+      a{
+        color: white;
+        &:hover{
+          color:$main-color;
+          text-decoration: none;
+         }
+      }
     }
     .multiple-items{
       position:relative;

@@ -48,12 +48,6 @@
                                         <a class="dropdown-item" href="<?= URL?>films/c">Ajouter</a>
                                         <a class="dropdown-item" href="<?= URL?>films">Liste des films</a>
                                     <?php endif;?>
-                                    <?php foreach ($categories as $category):?>
-                                        <a class="dropdown-item" href="<?=URL?>categorie/<?= $category->getId()?>"><?= $category->getName()?></a>
-                                        <div class="dropdown-divider"></div>
-                                    <?php endforeach;?>
-                                    <a class="dropdown-item" href="<?=URL?>categorie/0">Divers</a>
-
                                 </div>
                             </li>
 

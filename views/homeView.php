@@ -5,7 +5,7 @@ ob_start();
     <?php foreach ($categories as $category):?>
         <?php if ($movies->getMovieByCatId($category->getId())):?>
 
-        <h3><?= $category->getName()?></h3>
+        <h3><a href="<?=URL?>categorie/<?= $category->getId()?>"><?= $category->getName()?></a></h3>
 
         <div class="multiple-items">
             <?php foreach ($movies->getMovieByCatId($category->getId()) as $movie):?>
@@ -16,7 +16,7 @@ ob_start();
     <?php endforeach;?>
 
     <?php if ($moviesC):?>
-        <h3>Divers</h3>
+        <h3><a href="<?=URL?>categorie/0">Divers</a></h3>
 
         <div class="multiple-items">
             <?php foreach ($moviesC as $movie):?>

@@ -270,6 +270,13 @@ main section h3 {
   font-weight: 200;
   color: white;
 }
+main section h3 a {
+  color: white;
+}
+main section h3 a:hover {
+  color: #db0000;
+  text-decoration: none;
+}
 main section .multiple-items {
   position: relative;
   margin: 1em 0;

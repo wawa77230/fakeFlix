@@ -31,7 +31,10 @@ ob_start();
             <?php foreach ($movies as $movie):?>
             <tr>
                 <th><a href="<?= URL ?>film/<?= $movie->getId()?>"><?= $movie->getName()?></a></th>
-                <th><?= $categories->getCategoryNameById($movie->getCategoryId())?></th>
+                <th><a href="<?=URL?>categorie/<?= $categories->getCategoryById($movie->getCategoryId())->getId()
+                    ?>"><?=
+                        $categories->getCategoryNameById($movie->getCategoryId())
+                        ?></a>
                 <td><?= $movie->getRank()?></td>
                 <td><?= substr($movie->getDescription(),0,20).'...'?></td>
                 <td><?= $movie->getYear()?></td>
@@ -40,7 +43,7 @@ ob_start();
                 <td class="btn-group border-0 "  >
                     <a href="<?=URL?>films/u/<?= $movie->getId()?>" class="btn btn-primary">Modifier</a>
                     <form action="<?=URL?>films/d/<?= $movie->getId()?>" method="post">
-                        <button type="submit" name="remove" class="btn btn-danger remove" data-url="<?=URL?>ajax/movies/d" data-id="<?= $movie->getId()?>" data-name="<?= $movie->getName()?>">Supprimer</button>
+                        <button type="submit" name="remove" class="btn btn-danger remove" data-url="<?=URL?>ajax/movies/d" data-id="<?= $movie->getId()?>" data-name="<?= $movie->getName()?>"><i class="far fa-trash-alt"></i>&nbsp;Supprimer</button>
                     </form>
                 </td>
             </tr>
