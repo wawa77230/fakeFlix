@@ -9,7 +9,7 @@ ob_start();
 
         <div class="multiple-items">
             <?php foreach ($movies->getMovieByCatId($category->getId()) as $movie):?>
-                <img src="<?= URL ?>public/img/movies/<?= $movie->getPicture()?>" alt="<?= $movie->getName()?>" data-url="<?= URL ?>film/<?= $movie->getId()?>"/>
+                <img src="<?= URL ?>public/img/movies/<?= $movie->getPicture()?>" class="images" alt="<?= $movie->getName()?>" data-url="<?= URL ?>film/<?= $movie->getId()?>"/>
             <?php endforeach;?>
         </div>
         <?php endif;?>
@@ -20,7 +20,7 @@ ob_start();
 
         <div class="multiple-items">
             <?php foreach ($moviesC as $movie):?>
-                <img src="<?= URL ?>public/img/movies/<?= $movie->getPicture()?>" alt="<?= $movie->getName()?>" data-url="<?= URL ?>film/<?= $movie->getId()?>"/>
+                <img src="<?= URL ?>public/img/movies/<?= $movie->getPicture()?>" class="images" alt="<?= $movie->getName()?>" data-url="<?= URL ?>film/<?= $movie->getId()?>"/>
             <?php endforeach;?>
         </div>
     <?php endif;?>

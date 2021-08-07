@@ -16,7 +16,8 @@ window.onload = function() {
         prevArrow: '<i class="fa fa-chevron-left"></i>'
     });
 
-    let img = $('img');
+    //Afin de ne cibler que les images présent dans la page home, j'ai ajouté cette classe
+    let img = $('.images');
     img.css('cursor','pointer');
 
     img.click( function (){

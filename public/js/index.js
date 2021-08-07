@@ -1,5 +1,4 @@
 'use strict';
-
 function disconnect(e) {
 
         e.preventDefault()
@@ -19,70 +18,9 @@ function disconnect(e) {
         })
 }
 
-function onRemove(e){
-    e.preventDefault();
-    let name = this.attributes["data-name"].value;
-
-    const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-            confirmButton: 'btn btn-success',
-            cancelButton: 'btn btn-danger'
-        },
-        buttonsStyling: false
-    })
-
-    swalWithBootstrapButtons.fire({
-        title: `Êtes vous sûr de vouloir supprimer <strong>${name}</strong>  ?`,
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Oui !',
-        cancelButtonText: 'Non',
-        reverseButtons: true
-    }).then((result) => {
-        if (result.isConfirmed) {
-
-            let url = this.attributes["data-url"].value;
-            let id = this.attributes["data-id"].value;
-
-            //Envoie des datas en $_POST pour effectuer la suppression
-            let data = new FormData();
-            data.set('id',id);
-            data.set('url',url);
-
-            var myHeaders = new Headers();
-
-            var myInit = { method: 'POST',
-                headers: myHeaders,
-                body: data
-            };
-
-            //Requete ajax de suppression
-            fetch(`${url}`,myInit)
-
-            swalWithBootstrapButtons.fire(
-                'Supprimé!',
-                `${name} a été supprimée !`,
-                'success'
-            )
-        } else if (
-            result.dismiss === Swal.DismissReason.cancel
-        ) {
-            swalWithBootstrapButtons.fire(
-                'Annulé',
-                'Fausse alerte!!',
-                'error'
-            )
-        }
-    })
-
-}
 
     let logout = document.querySelector('#logout');
         logout.addEventListener('click', disconnect)
 
 
-    let removeButtons = document.querySelectorAll('.remove');
-    removeButtons.forEach(function (button){
-        button.addEventListener('click',onRemove);
-    });
 

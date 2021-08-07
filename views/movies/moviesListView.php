@@ -29,7 +29,7 @@ ob_start();
         <tbody>
         <?php if ($movies):?>
             <?php foreach ($movies as $movie):?>
-            <tr>
+            <tr class="removable-container">
                 <th><a href="<?= URL ?>film/<?= $movie->getId()?>"><?= $movie->getName()?></a></th>
                 <th><a href="<?=URL?>categorie/<?= $categories->getCategoryById($movie->getCategoryId())->getId()
                     ?>"><?=
@@ -65,11 +65,13 @@ $h1 = "Films";
 
 $dataTableScript = "<script src='%spublic/js/dataTables.js'></script>";
 $dataTableScript = sprintf($dataTableScript,URL);
+$ajaxRemoveScript = "<script src='%spublic/js/ajax/removeByAjax.js'></script>";
+$ajaxRemoveScript = sprintf($ajaxRemoveScript,URL);
 
 
 
 $scripts = ["<script src='https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js'></script>",
-            $dataTableScript,
+            $dataTableScript, $ajaxRemoveScript
             ];
 
 $links = ["<link rel='stylesheet' href='https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css'> "];

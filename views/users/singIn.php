@@ -18,7 +18,7 @@ ob_start();
             <input type="email" name="email" placeholder="Votre adresse email" required data-minlength="5"/>
             <input type="password" name="pwd" placeholder="Mot de passe" required data-minlength="8" />
             <input type="password" name="pwd-check" placeholder="Retapez votre mot de passe" required  data-minlength="8"/>
-            <button type="submit">S'inscrire</button>
+            <button type="submit" class="bouton">S'inscrire</button>
         </form>
 
         <p class="grey">Déjà sur Fakeflix ? <a href="<?= URL ?>connexion">Connectez-vous</a>.</p>
