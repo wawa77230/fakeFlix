@@ -16,7 +16,7 @@ ob_start();
         </thead>
         <tbody>
         <?php foreach ($users as $user):?>
-            <tr>
+            <tr class="removable-container">
                 <td><?= $user->getLastName()?></td>
                 <td><?= $user->getFirstName()?></td>
                 <td><?= $user->getEmail()?></td>
@@ -60,11 +60,14 @@ $dataTableScript = sprintf($dataTableScript,URL);
 $updateByAjaxScript = "<script src='%spublic/js/ajax/updateStatusByAjax.js'></script>";
 $updateByAjaxScript = sprintf($updateByAjaxScript,URL);
 
+$ajaxRemoveScript = "<script src='%spublic/js/ajax/removeByAjax.js'></script>";
+$ajaxRemoveScript = sprintf($ajaxRemoveScript,URL);
+
 $links = ["<link rel='stylesheet' href='https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css'> "];
 
 
 $scripts = ["<script src='https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js'></script>",
-    $dataTableScript, $updateByAjaxScript];
+    $dataTableScript, $updateByAjaxScript, $ajaxRemoveScript];
 
 
 require "./views/templateView.php";

@@ -23,7 +23,7 @@ ob_start();
             <tbody>
             <?php if ($categories):?>
                 <?php foreach ($categories as $category):?>
-                    <tr >
+                    <tr class="removable-container" >
                         <th><a href="<?=URL?>categorie/<?= $category->getId()?>"><?= $category->getName()?></a></th>
                         <td class="btn-group border-0">
                             <a href="<?=URL?>categories/u/<?= $category->getId()?>" class="btn btn-primary">Modifier</a>
@@ -48,13 +48,11 @@ $h1 = "Catégories";
 
 $dataTableScript = "<script src='%spublic/js/dataTables.js'></script>";
 $dataTableScript = sprintf($dataTableScript,URL);
-
-
-
-
+$ajaxRemoveScript = "<script src='%spublic/js/ajax/removeByAjax.js'></script>";
+$ajaxRemoveScript = sprintf($ajaxRemoveScript,URL);
 
 $scripts = ["<script src='https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js'></script>",
-    $dataTableScript,
+    $dataTableScript, $ajaxRemoveScript
 ];
 
 $links = ["<link rel='stylesheet' href='https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css'> "];
