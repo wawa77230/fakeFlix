@@ -118,7 +118,7 @@ class MoviesController extends TemplatingTools
                 $_POST['categoryId'] = null;
             }
 
-            $iframe = $this->cleanLink($_POST['iframe']);
+                $iframe = $this->cleanLink($_POST['iframe']);
 
             //Récupere l'image
             $currentImage = $this->moviesManager->getMovieById($_POST['id'])->getPicture();

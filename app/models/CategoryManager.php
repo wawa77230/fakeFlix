@@ -68,9 +68,13 @@ class CategoryManager extends Database
         //$category['name'];
         //$req->closeCursor();
 
-        foreach ($this->categories as $category){
-            if ($category->getId() === $id){
-                return $category->getName();
+        if ($id === null){
+            return "Divers";
+        }else{
+            foreach ($this->categories as $category){
+                if ($category->getId() === $id){
+                    return $category->getName();
+                }
             }
         }
 

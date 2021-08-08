@@ -17,7 +17,7 @@ ob_start()
 
                 <label for="rank">Note</label>
                 <select class="form-control bg-light" id="rank" name="rank" data-requiredselect="-1">
-                    <option value="-1" data-type="-1" >Veuillez sélectionner une année</option>
+                    <option value="-1" data-type="-1" >Veuillez attribuer une note</option>
                     <?php for ($i= 0; $i <6; $i++):?>
                         <option value="<?= $i?>" <?php echo ($i == $movie->getRank()) ? 'selected' : ''; ?>><?= $i?></option>
                     <?php endfor;?>
@@ -49,7 +49,7 @@ ob_start()
             </div>
             <div class="form-group">
                 <label for="iframe">Lien Youtube</label>
-                <input type="text" class="form-control bg-light" id="iframe"  name="iframe" data-minlength="10" aria-describedby="iframeHelp" >
+                <input type="text" class="form-control bg-light" id="iframe"  name="iframe" data-minlength="10" aria-describedby="iframeHelp" value="<?=$movie->getIframe()?>" >
                 <small id="iframeHelp" class="form-text text-muted">Copier le lien Iframe complet sur Youtube</small>
             </div>
 

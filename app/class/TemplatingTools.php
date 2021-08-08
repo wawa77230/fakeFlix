@@ -66,15 +66,18 @@ class TemplatingTools
 
     protected function cleanLink($iframe){
 
-        //Suppression de touts les caractères avant le mot src
-        $iframe = strstr($iframe,'src');
-        //Suppression en debut de chaine de src et les guillemets ouvrant
-        $iframe = substr($iframe,4);
+        if (!substr($iframe,0,5) ==="https"){
 
-        //Suppression de touts les caractères apres le premier espace
-        $iframe = strstr($iframe,' ',true);
-        //Suppression en fin de chaine de l'espace et les guillemets fermants
-        $iframe = substr($iframe,0,-1);
+            //Suppression de touts les caractères avant le mot src
+            $iframe = strstr($iframe,'src');
+            //Suppression en debut de chaine de src et les guillemets ouvrant
+            $iframe = substr($iframe,5);
+
+            //Suppression de touts les caractères apres le premier espace
+            $iframe = strstr($iframe,' ',true);
+            //Suppression en fin de chaine de l'espace et les guillemets fermants
+            $iframe = substr($iframe,0,-1);
+        }
 
         return $iframe;
     }

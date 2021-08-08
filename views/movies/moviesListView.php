@@ -31,10 +31,9 @@ ob_start();
             <?php foreach ($movies as $movie):?>
             <tr class="removable-container">
                 <th><a href="<?= URL ?>film/<?= $movie->getId()?>"><?= $movie->getName()?></a></th>
-                <th><a href="<?=URL?>categorie/<?= $categories->getCategoryById($movie->getCategoryId())->getId()
-                    ?>"><?=
-                        $categories->getCategoryNameById($movie->getCategoryId())
-                        ?></a>
+                <th><a href="<?=URL?>categorie/
+                <?=$movie->getCategoryId() ? $categories->getCategoryById($movie->getCategoryId())->getId(): "Divers" ?>">
+                 <?=  $categories->getCategoryNameById($movie->getCategoryId()) ?></a></th>
                 <td><?= $movie->getRank()?></td>
                 <td><?= substr($movie->getDescription(),0,20).'...'?></td>
                 <td><?= $movie->getYear()?></td>

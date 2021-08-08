@@ -7,6 +7,17 @@ J'ai utilisé plusieurs bibliotheques telle que Sweet Alert 2 pour rendre les al
 
 Vous trouverez a la racine le fichier Sql bien qu'il soit possible de créer un profil puis de se connecter par la suite.
 
+Identifiants:
+
+Compte admin :
+login: fake@mail.fr
+mdp : 123123123
+
+Compte user :
+
+login: fake@mail.com
+mdp : 123123123
+
 Bonne visite !!
 
     <!--                <img class="thumbnail" src="https://www.whats-on-netflix.com/wp-content/uploads/2015/11/ftwd-featured.jpg"/>-->

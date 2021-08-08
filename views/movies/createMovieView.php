@@ -16,7 +16,7 @@ ob_start()
             <div class="form-group">
                 <label for="rank">Note</label>
                 <select class="form-control bg-light" id="rank" name="rank"  data-requiredselect="-1">
-                    <option value="-1" data-type="-1" >Veuillez sélectionner une année</option>
+                    <option value="-1" data-type="-1" >Veuillez attribuer une note</option>
                     <?php for ($i= 0; $i <6; $i++):?>
                         <option value="<?= $i?>"><?= $i?></option>
                     <?php endfor;?>
