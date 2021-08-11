@@ -38,5 +38,8 @@ $indexJsScript = sprintf($indexJsScript ,URL);
 $scripts = ["<script src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js'></script>",
             $indexJsScript];
 
+$links = ["<link rel='stylesheet' type='text/css' href='//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css'/>"];
+
+
 require "templateView.php";
 
