@@ -19,7 +19,7 @@ function disconnect(e) {
 }
 
 
-    let logout = document.querySelector('#logout');
+    const logout = document.querySelector('#logout');
         logout.addEventListener('click', disconnect)
 
 
