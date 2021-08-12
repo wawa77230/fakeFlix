@@ -56,7 +56,7 @@ class UserManager  extends  Database
         $req->closeCursor();
 
         foreach ($users as $user){
-            $u = new User($user['id'], $user['firstName'],$user['lastName'],$user['email'],$user['pwd'],$user['isAdmin'],$user['secret'], $user['createAt'],  $user['isBlocked']);
+            $u = new User($user['id'], htmlspecialchars($user['firstName']),htmlspecialchars($user['lastName']),htmlspecialchars($user['email']),$user['pwd'],$user['isAdmin'],$user['secret'], $user['createAt'],  $user['isBlocked']);
             $this->addUser($u);
         }
     }

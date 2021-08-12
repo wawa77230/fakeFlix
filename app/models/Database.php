@@ -1,6 +1,5 @@
 <?php
 
-
 abstract class Database
 {
     private static $pdo;
