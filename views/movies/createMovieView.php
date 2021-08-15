@@ -37,7 +37,7 @@ ob_start()
             </div>
             <div class="form-group">
                 <label for="image">Affiche</label>
-                <input type="file" class="form-control-file" name="image" id="image"  >
+                <input type="file" class="form-control-file" name="image" id="image" data-requiredfile >
             </div>
             <div class="form-group">
                 <label for="iframe">Lien Youtube</label>

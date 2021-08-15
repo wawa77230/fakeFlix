@@ -4,7 +4,7 @@
 function onRemoveButtonClick(e){
     e.preventDefault();
     let name = this.attributes["data-name"].value;
-    let container = this.closest('.removable-container')
+    const container = this.closest('.removable-container')
 
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
@@ -74,7 +74,7 @@ function onRemoved(el)
     })();
 }
 
-let removeButtons = document.querySelectorAll('.remove');
+const removeButtons = document.querySelectorAll('.remove');
 removeButtons.forEach(function (button){
     button.addEventListener('click',onRemoveButtonClick);
 });

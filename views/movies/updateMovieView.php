@@ -60,7 +60,7 @@ ob_start()
                     <?php foreach ($categories as $category):?>
                         <option value="<?= $category->getId()?>" <?php echo ($category->getId() === $movie->getCategoryId()) ? 'selected' : ''; ?>><?= $category->getName()?></option>
                     <?php endforeach;?>
-                    <option value="null">Divers</option>
+                    <option value="null" <?php echo ($movie->getCategoryId()) === null ? 'selected' : ''; ?>>Divers</option>
                 </select>
             </div>
 

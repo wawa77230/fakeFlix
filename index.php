@@ -36,6 +36,7 @@ try {
                     $homeController->showMoviesByCat();
                     break;
                 case "films":
+                    $user->controlAccess();
                     if (empty($url[1])){
                         $moviesController->showMovies();
                     }elseif ($url[1] === "c"){
@@ -52,6 +53,7 @@ try {
                     }
                     break;
                 case "categories":
+                    $user->controlAccess();
                     if (empty($url[1])){
                         $categoryController->showCategories();
                     }elseif ($url[1] === "c"){
@@ -86,6 +88,7 @@ try {
                      }
                     break;
                 case "utilisateurs":
+                    $user->controlAccess();
                     if (empty($url[1])){
                         $usersController->showUsers();
                     }else {
@@ -106,10 +109,13 @@ try {
                         }elseif ($url[2] === "query"){
                             $moviesByAjax->search($url[3]);
                         }elseif ($url[2] === "d" && $_POST){
+
+                            $user->controlAccess();
                             $id = $_POST['id'];
                             $moviesController->deleteMovie($id);
                         }
                     }elseif ($url[1] === "users") {
+                        $user->controlAccess();
 
                         require_once PATH."controllers/UsersControllerByAjax.php";
                         $usersByAjax = new UsersControllerByAjax();
@@ -122,6 +128,7 @@ try {
                             $usersController->deleteUser($id);
                         }
                     }elseif ($url[1] === "categories") {
+                        $user->controlAccess();
 
                         if ($url[2] === "d" && $_POST){
                             $id = $_POST['id'];
@@ -157,8 +164,7 @@ try {
                     }
                     else if($url[1] === "creation"){
                         $userController->addUserValidation();
-                        header("Location:".URL."connexion");
-                    }
+                        }
                     else {
                         throw  new Exception('La page n\'existe pas');
                     }

@@ -29,7 +29,7 @@ ob_start();
                     <?php endfor;?>
                 </div>
                     <p class="infos"><?= $movie->getYear()?></p>
-                    <p class="infos category"><?= $category->getName()?></p>
+                    <p class="infos category"><?= $categoryName?></p>
             </div>
             <p class="description mt-5"><?= $movie->getDescription()?></p>
         </div>

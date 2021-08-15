@@ -36,22 +36,20 @@
                         </span>
                     </button>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="collapse navbar-collapse <?=!$_SESSION['user']['isAdmin']? 'justify-content-end':''?>" id="navbarSupportedContent">
 
+                        <?php if ($_SESSION['user']['isAdmin']):?>
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item dropdown ">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Films
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <?php if ($_SESSION['user']['isAdmin']):?>
                                         <a class="dropdown-item" href="<?= URL?>films/c">Ajouter</a>
                                         <a class="dropdown-item" href="<?= URL?>films">Liste des films</a>
-                                    <?php endif;?>
                                 </div>
                             </li>
 
-                            <?php if ($_SESSION['user']['isAdmin']):?>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Utilisateur
@@ -60,20 +58,19 @@
                                         <a class="dropdown-item" href="<?= URL?>utilisateurs">Liste des utilisateurs</a>
                                 </div>
                             </li>
-                            <?php endif;?>
 
-                            <?php if ($_SESSION['user']['isAdmin']):?>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Catégories
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="<?= URL?>categories/c">Ajouter</a>
-                                        <a class="dropdown-item" href="<?= URL?>categories">Liste des catégories</a>
-                                    </div>
-                                </li>
-                            <?php endif;?>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="<?= URL?>categories/c">Ajouter</a>
+                                    <a class="dropdown-item" href="<?= URL?>categories">Liste des catégories</a>
+                                </div>
+                            </li>
                         </ul>
+                        <?php endif;?>
+
 
                         <div class="row col-xl-6 col-lg-7 col-12  justify-content-between align-items-center" id="user-portal">
 

@@ -66,8 +66,10 @@ class TemplatingTools
 
     protected function cleanLink($iframe){
 
+        $firstLetters = substr($iframe,0,5);
+
         //Si l'iframe ne commence pas par https c'est qu'il doit etre formaté
-        if (!substr($iframe,0,5) ==="https"){
+        if ( $firstLetters !="https"){
 
             //Suppression de touts les caractères avant le mot src
             $iframe = strstr($iframe,'src');

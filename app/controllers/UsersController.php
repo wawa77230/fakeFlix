@@ -74,6 +74,9 @@ class UsersController extends TemplatingTools
 
         }else{
             $this->flashBag('danger','Un problème est survenu lors de la création de votre profil! Veuillez réessayer ulterieurement.');
+            header("Location:".URL."inscription");
+            die();
+
         }
         $this->userSession->redirection();
     }

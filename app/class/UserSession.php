@@ -1,7 +1,8 @@
 <?php
 
+require_once PATH."class/TemplatingTools.php";
 
-class UserSession
+class UserSession extends TemplatingTools
 {
     public function __construct()
     {
@@ -52,6 +53,8 @@ class UserSession
             header("Location:".URL."accueil");
         }else{
             require 'views/users/singIn.php';
+            //Permet de supprimer les alertes gardées en session aprés les redirections du CRUD
+            $this->removeFlashBag();
         }
     }
 
@@ -61,6 +64,13 @@ class UserSession
             header("Location:".URL."accueil");
         }else{
             header("Location:".URL."connexion");
+        }
+    }
+
+    public function controlAccess(){
+        //Si l'utilisateur n'est pas admin il sera redirigé vers une page d'erreur
+        if (!$_SESSION["user"]['isAdmin']){
+            throw  new Exception('La page n\'existe pas');
         }
     }
 

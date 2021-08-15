@@ -8,22 +8,6 @@ function FormValidator(form) {
     this.allErrors = [];
 }
 
-FormValidator.prototype.checkRequired = function()
-{
-    let classThis = this ;
-    this.form.find("[data-required]").each(function ()
-    {
-        let  value = $(this).val().trim();
-        if (value == "")
-        {
-            classThis.allErrors.push({
-                domElement : $(this),
-                message : "Veuillez remplir ce champs",
-            }) ;
-        }
-    });
-}
-
 FormValidator.prototype.checkRequiredSelect = function()
 {
     let classThis = this ;
@@ -43,42 +27,25 @@ FormValidator.prototype.checkRequiredSelect = function()
     });
 }
 
-/*----------------------------------------------------------------------------------------------------------------------*/
-FormValidator.prototype.checkDataType = function()
+FormValidator.prototype.checkFileFields = function()
 {
     let classThis = this ;
-    this.form.find("[data-type]").each(function ()
+    this.form.find("[data-requiredfile]").each(function ()
     {
-        let  value = $(this).val().trim();
-        let type = $(this).data("type");
-        let optional = $(this).data("optional") ;
-        switch (type)
-        {
-            case "float":
-                if ( (optional && isNaN(value)) ||  (!optional && (value=="" || isNaN(value))) )
-                {
-                    classThis.allErrors.push({
-                        domElement : $(this),
-                        message : "Veuillez entrer un nombre",
-                    }) ;
-                }
-                break;
 
-            case "integer":
-                if ((optional && (isNaN(value) || value % 1 != 0)) ||(!optional &&  (value == "" || isNaN(value) || value % 1 != 0)) )
-                {
-                    classThis.allErrors.push({
-                        domElement : $(this),
-                        message : "Veuillez entrer seulement des nombres entier",
-                    }) ;
-                }
-                break;
+        let value = $(this)[0].value ;
+
+        if (!value){
+            let message = "Veuillez ajouter une image" ;
+            classThis.allErrors.push({
+                domElement : $(this),
+                message : message,
+            }) ;
         }
-
     });
+
 }
 
-/*-----------------------------------------------------------------------------------------------------------------------*/
 FormValidator.prototype.checkMinLength = function()
 {
     let classThis = this ;
@@ -117,26 +84,6 @@ FormValidator.prototype.checkEmail = function()
     });
 }
 
-FormValidator.prototype.checkMinChecked = function()
-{
-    let classThis = this ;
-    this.form.find("[data-minchecked]").each(function ()
-    {
-        let minChecked = $(this).data("minchecked") ;
-
-        let allchecked = $(this).find("input[type=checkbox]:checked") ;
-
-        if (allchecked.length < minChecked)
-        {
-            classThis.allErrors.push({
-                domElement : $(this),
-                message : "Veuillez cocher au moins "+minChecked+" cases.",
-            }) ;
-        }
-    });
-}
-
-
 FormValidator.prototype.checkEqualFields = function()
 {
     let classThis = this ;
@@ -154,7 +101,7 @@ FormValidator.prototype.checkEqualFields = function()
         {
             classThis.allErrors.push({
                 domElement : $(this),
-                message : "Ces champs doivent avoir la même valeur",
+                message : "Ce champ doit avoir la même valeur que le mot de passe",
             }) ;
         }
     });
@@ -166,8 +113,21 @@ FormValidator.prototype.displayAllErrors = function()
     if (this.allErrors.length > 0)
     {
         this.allErrors.forEach(function (error) {
-            let errorDiv = $("<div>");
-            errorDiv.addClass("form-error");
+
+           let errorDiv = $("<div>");
+
+
+            //Afin de distinquer toutes la page d'inscription où le text des erreur est rouge, je récupère  la derniere valeur de l'url pour changer la couleur en blanc des erreurs ( au lieu de rouge)
+            const adress = window.location.href;
+            const separator = adress.split('/');
+            const url = separator[4];
+
+            if (url === "inscription"){
+                errorDiv.addClass("text-white");
+
+            }else {
+                errorDiv.addClass("form-error");
+            }
             errorDiv.html(error.message);
             error.domElement.after(errorDiv);
 
@@ -177,16 +137,13 @@ FormValidator.prototype.displayAllErrors = function()
 
 FormValidator.prototype.onSubmit = function(event)
 {
-    // event.preventDefault();
     this.allErrors = [];
     $(".form-error").remove();
 
-    this.checkRequired();
     this.checkMinLength();
-    this.checkDataType();
     this.checkRequiredSelect();
-    this.checkMinChecked();
     this.checkEmail();
+    this.checkFileFields();
     this.checkEqualFields();
 
 
@@ -210,5 +167,6 @@ $(function () {
 
     let formVal = new FormValidator($("form[data-validate]"));
     formVal.form.on("submit", formVal.onSubmit.bind(formVal));
+
 
 });

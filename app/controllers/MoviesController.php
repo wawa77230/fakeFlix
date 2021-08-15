@@ -46,12 +46,18 @@ class MoviesController extends TemplatingTools
     public function showMovie($id)
     {
         $movie = $this->moviesManager->getMovieById($id);
-        $category = $this->categoryManager->getCategoryById($movie->getCategoryId());
+        if ($movie->getCategoryId()){
+            $category = $this->categoryManager->getCategoryById($movie->getCategoryId());
+            $categoryName = $category->getName();
+        }else{
+            $categoryName = "Divers";
+        }
         require "./views/movies/movieView.php";
     }
 
     public function addMovieValidation()
     {
+
         if ($_POST
             && isset($_POST['name']) && strlen(trim($_POST['name']))> 1
             && isset($_POST['rank']) && ctype_digit($_POST['rank'])
@@ -59,8 +65,10 @@ class MoviesController extends TemplatingTools
             && isset($_POST['year']) && ctype_digit($_POST['year'])
             && isset($_POST['iframe']) && strlen(trim($_POST['iframe']))>9
             && isset($_POST['categoryId']) && ctype_digit($_POST['categoryId'])
+            && $_FILES['image']['error'] == 0
         ){
-//            Si sa valeur est 0 alors il sera enregistré en bd en null afin de faire parti de la catégorie Divers
+
+            //Si sa valeur est 0 alors il sera enregistré en bd en null afin de faire parti de la catégorie Divers
             if ($_POST['categoryId'] == 0){
                 $_POST['categoryId'] = null;
             }

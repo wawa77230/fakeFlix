@@ -1,7 +1,7 @@
 <?php
 ob_start();
 ?>
-
+<?php if ($categories):?>
     <?php foreach ($categories as $category):?>
         <?php if ($movies->getMovieByCatId($category->getId())):?>
 
@@ -24,6 +24,7 @@ ob_start();
             <?php endforeach;?>
         </div>
     <?php endif;?>
+<?php endif;?>
 
 <?php
 $content =ob_get_clean();

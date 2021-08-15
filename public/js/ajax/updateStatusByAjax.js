@@ -27,7 +27,7 @@ function onChangeStatus(){
 
 window.onload = function() {
 
-    let inputs = document.querySelectorAll('.custom-control-input');
+    const inputs = document.querySelectorAll('.custom-control-input');
     inputs.forEach(function (input){
         input.addEventListener('click', onChangeStatus);
     })

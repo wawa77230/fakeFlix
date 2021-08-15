@@ -6,7 +6,7 @@ ob_start();
     <div class="multiple-items">
 
         <?php foreach ($movies as $movie):?>
-            <img src="<?= URL?>public/img/movies/<?= $movie->getPicture()?>" alt="<?= $movie->getName()?>" data-url="<?= URL ?>film/<?= $movie->getId()?>"/>
+            <img src="<?= URL?>public/img/movies/<?= $movie->getPicture()?>" alt="<?= $movie->getName()?>" class="images" data-url="<?= URL ?>film/<?= $movie->getId()?>"/>
         <?php endforeach;?>
     </div>
         <?php else:?>

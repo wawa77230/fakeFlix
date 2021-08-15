@@ -13,11 +13,11 @@ ob_start();
                 </div>
             <?php endif;?>
 
-            <input type="text" name="firstName" placeholder="Votre prénom" required data-minlength="2"/>
-            <input type="text" name="lastName" placeholder="Votre nom" required data-minlength="2" />
-            <input type="email" name="email" placeholder="Votre adresse email" required data-minlength="5"/>
-            <input type="password" name="pwd" placeholder="Mot de passe" required data-minlength="8" />
-            <input type="password" name="pwd-check" placeholder="Retapez votre mot de passe" required  data-minlength="8"/>
+            <input type="text" name="firstName" placeholder="Votre prénom"  data-minlength="2"/>
+            <input type="text" name="lastName" placeholder="Votre nom"  data-minlength="2" />
+            <input type="email" name="email" placeholder="Votre adresse email" data-email />
+            <input type="password" name="pwd" placeholder="Mot de passe" data-equalcopy="pwd"  data-minlength="8" />
+            <input type="password" name="pwd-check" placeholder="Retapez votre mot de passe" data-equal="pwd" />
             <button type="submit" class="bouton">S'inscrire</button>
         </form>
 
