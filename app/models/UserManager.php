@@ -35,16 +35,13 @@ class UserManager  extends  Database
                 $user = new User($this->getBdd()->lastInsertId(), $firstName, $lastName, $email, $pwd, $isAdmin, $secret, $createAt, 0);
                 $this->addUser($user);
             }
+            return true;
         }
         catch (Exception $e)
         {
             if($e->getCode() == 23000)
             {
-                echo '<small>Cette adresse mail existe deja</small> ';
-            }
-            else
-            {
-                throw $e ;
+                return false;
             }
         }
     }

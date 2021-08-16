@@ -69,16 +69,21 @@ class UsersController extends TemplatingTools
             $createAt = date("Y-m-d H:i:s");
             $secret = password_hash(random_int(0,1000),PASSWORD_DEFAULT);
 
-            $this->userManager->addUserDb($firstName, $lastName, $email, $password, $isAdmin, $secret, $createAt);
-            $this->flashBag('success',$firstName, 'addUser');
+            $result = $this->userManager->addUserDb($firstName, $lastName, $email, $password, $isAdmin, $secret, $createAt);
+
+            //Si le resultat renvoie faux, c'est qu'il y a eu un soucis (dans ce cas précis la duplication d'email est géré)
+            if (!$result){
+                $this->flashBag('danger','Adresse email déjà utilisé, merci d\'en choisir une autre.');
+                header("Location:".URL."inscription");
+            }else{
+                $this->flashBag('success',$firstName, 'addUser');
+                $this->userSession->redirection();
+            }
 
         }else{
             $this->flashBag('danger','Un problème est survenu lors de la création de votre profil! Veuillez réessayer ulterieurement.');
             header("Location:".URL."inscription");
-            die();
-
         }
-        $this->userSession->redirection();
     }
 
     public function showUsers(){
