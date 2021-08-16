@@ -160,7 +160,7 @@ try {
             switch ($url[0]){
                 case "inscription":
                     if (empty($url[1])){
-                        $user->singIn();
+                        $user->signUp();
                     }
                     else if($url[1] === "creation"){
                         $userController->addUserValidation();

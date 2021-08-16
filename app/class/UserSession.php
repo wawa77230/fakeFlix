@@ -48,11 +48,11 @@ class UserSession extends TemplatingTools
         }
     }
 
-    public function singIn(){
+    public function signUp(){
         if ($this->isAuthenticated()){
             header("Location:".URL."accueil");
         }else{
-            require 'views/users/singIn.php';
+            require 'views/users/signUp.php';
             //Permet de supprimer les alertes gardées en session aprés les redirections du CRUD
             $this->removeFlashBag();
         }
