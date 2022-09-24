@@ -1,6 +1,8 @@
 <?php
-require_once "Database.php";
-require_once "User.php";
+namespace App\Manager;
+
+use App\Manager\Database;
+use PDO;
 
 class UserManagerByAjax extends Database
 {

@@ -1,10 +1,15 @@
 <?php
-require_once "Database.php";
-require_once "User.php";
+
+namespace App\Manager;
+
+use Exception;
+use App\Manager\Database;
+use App\Model\User;
+use PDO;
 
 class UserManager  extends  Database
 {
-    private $users;
+    private array $users;
 
     public function addUser($user)
     {
@@ -58,7 +63,8 @@ class UserManager  extends  Database
         }
     }
 
-    public function getUsers(){
+    public function getUsers(): array
+    {
         return $this->users;
     }
 
@@ -91,6 +97,9 @@ class UserManager  extends  Database
         throw new Exception("L'utilisateur n'existe pas");
     }
 
+    /**
+     * @throws Exception
+     */
     public function updateUserBd($id, $firstName, $lastName, $email, $pwd, $isAdmin)
     {
         $req ="UPDATE users
@@ -120,6 +129,9 @@ class UserManager  extends  Database
         }
     }
 
+    /**
+     * @throws Exception
+     */
     public function deleteUserBd($id)
     {
         $req="DELETE FROM users WHERE id = :id";

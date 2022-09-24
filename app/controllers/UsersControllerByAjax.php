@@ -1,10 +1,13 @@
 <?php
-require_once PATH."models/UserManagerByAjax.php";
-require_once PATH."class/TemplatingTools.php";
+
+namespace App\Controller;
+
+use App\Manager\UserManagerByAjax;
+use App\Utility\TemplatingTools;
 
 class UsersControllerByAjax extends TemplatingTools
 {
-    private $userManagerByAjax;
+    private UserManagerByAjax $userManagerByAjax;
 
     public function __construct()
     {

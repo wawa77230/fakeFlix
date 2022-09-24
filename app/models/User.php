@@ -1,17 +1,18 @@
 <?php
 
+namespace App\Model;
 
 class User
 {
-    private $id;
-    private $firstname;
-    private $lastname;
-    private $password;
-    private $email;
-    private $isAdmin;
-    private $secret;
-    private $createAt;
-    private $isBlocked;
+    private int $id;
+    private string $firstname;
+    private string $lastname;
+    private string $password;
+    private string $email;
+    private int $isAdmin;
+    private string $secret;
+    private string $createAt;
+    private int $isBlocked;
 
 
     public function __construct($id, $firstname, $lastname,$email, $password,  $isAdmin, $secret , $createAt, $isBlocked)
@@ -27,7 +28,7 @@ class User
         $this->isBlocked = $isBlocked;
     }
 
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }

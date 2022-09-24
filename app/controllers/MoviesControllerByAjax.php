@@ -1,9 +1,12 @@
 <?php
-require_once PATH."models/MoviesManagerByAjax.php";
+
+namespace App\Controller;
+
+use App\Manager\MoviesManagerByAjax;
 
 class MoviesControllerByAjax
 {
-    private $moviesManager;
+    private MoviesManagerByAjax $moviesManager;
 
     public function __construct()
     {

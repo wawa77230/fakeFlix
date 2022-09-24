@@ -1,6 +1,9 @@
 <?php
-require_once PATH."models/CategoryManager.php";
 
+namespace App\Controller;
+
+use App\Manager\CategoryManager;
+use App\Utility\TemplatingTools;
 
 class CategoryController extends TemplatingTools
 {

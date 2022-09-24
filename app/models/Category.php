@@ -1,10 +1,12 @@
 <?php
 
+namespace App\Model;
+
 
 class Category
 {
-    private $id;
-    private $name;
+    private int $id;
+    private string $name;
 
 
     public function __construct($id, $name)
@@ -14,7 +16,7 @@ class Category
     }
 
 
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
@@ -26,7 +28,7 @@ class Category
     }
 
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }

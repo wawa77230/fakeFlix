@@ -1,11 +1,15 @@
 <?php
-require_once "Database.php";
-require_once "Movie.php";
+
+namespace App\Manager;
+
+use App\Model\Movie;
+use Exception;
+use PDO;
 
 
 class MoviesManager extends Database
 {
-    private $movies; // Tableau des prestations
+    private array $movies; // Tableau des prestations
 
     public function addMovie($movie){
         $this->movies[] = $movie;
@@ -46,10 +50,14 @@ class MoviesManager extends Database
         }
     }
 
-    public function getMovies(){
+    public function getMovies(): array
+    {
         return $this->movies;
     }
 
+    /**
+     * @throws Exception
+     */
     public function getMovieById($id)
     {
         //Si je devais faire la requete "classique"
@@ -57,17 +65,15 @@ class MoviesManager extends Database
         //$req->execute(["id" => $id]);
         //$movie = $req->fetch(PDO::FETCH_ASSOC);
         //$req->closeCursor();
-
         foreach ($this->movies as $movie){
             if ($movie->getId() === $id){
                 return $movie;
             }
         }
-
         throw new Exception("Le film n'existe pas");
     }
 
-    public function getMovieByCatId($id)
+    public function getMovieByCatId($id): array
     {
 
         //Si je devais faire la requete "classique"

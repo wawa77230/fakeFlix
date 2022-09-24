@@ -1,11 +1,15 @@
 <?php
-require_once "Database.php";
-require_once "Movie.php";
+
+namespace App\Manager;
+
+use App\Manager\Database;
+use App\Model\Movie;
+use PDO;
 
 
 class MoviesManagerByAjax extends Database
 {
-    private $movies; // Tableau des prestations
+    private array $movies; // Tableau des prestations
 
     public function addMovie($movie){
         $this->movies[] = $movie;

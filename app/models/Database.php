@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Manager;
+
+use PDO;
+
 abstract class Database
 {
     private static $pdo;

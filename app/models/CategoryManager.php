@@ -1,10 +1,14 @@
 <?php
-require_once "Database.php";
-require_once "Category.php";
+namespace App\Manager;
+
+use App\Manager\Database;
+use App\Model\Category;
+use Exception;
+use PDO;
 
 class CategoryManager extends Database
 {
-    private $categories; // Tableau des prestations
+    private array $categories; // Tableau des prestations
 
     public function addCategory($category){
         $this->categories[] = $category;

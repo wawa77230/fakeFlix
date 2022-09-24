@@ -1,16 +1,17 @@
 <?php
 
+namespace App\Model;
 
 class Movie
 {
-    private $id;
-    private $name;
-    private $rank;
-    private $description;
-    private $year;
-    private $picture;
-    private $iframe;
-    private $categoryId;
+    private int $id;
+    private string $name;
+    private int $rank;
+    private string $description;
+    private int $year;
+    private string $picture;
+    private string $iframe;
+    private int $categoryId;
 
 
     public function __construct($id, $name, $rank, $description, $year, $picture, $iframe,$categoryId)
@@ -25,7 +26,7 @@ class Movie
         $this->categoryId = $categoryId;
     }
 
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
@@ -37,7 +38,7 @@ class Movie
     }
 
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }

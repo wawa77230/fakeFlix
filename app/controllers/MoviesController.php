@@ -1,13 +1,16 @@
 <?php
-require_once PATH."models/MoviesManager.php";
-require_once PATH."models/CategoryManager.php";
-require_once PATH."class/TemplatingTools.php";
+
+namespace App\Controller;
+
+use App\Manager\MoviesManager;
+use App\Manager\CategoryManager;
+use App\Utility\TemplatingTools;
 
 
 class MoviesController extends TemplatingTools
 {
-    private $moviesManager;
-    private $categoryManager;
+    private MoviesManager $moviesManager;
+    private CategoryManager $categoryManager;
 
     public function __construct()
     {

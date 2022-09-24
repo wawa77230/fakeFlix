@@ -1,12 +1,15 @@
 <?php
-require_once PATH."models/UserManager.php";
-require_once PATH."class/UserSession.php";
-require_once PATH."class/TemplatingTools.php";
+
+namespace App\Controller;
+
+use App\Manager\UserManager;
+use App\Session\UserSession;
+use App\Utility\TemplatingTools;
 
 class UsersController extends TemplatingTools
 {
-    private $userManager;
-    private $userSession;
+    private UserManager $userManager;
+    private UserSession $userSession;
 
     public function __construct()
     {

@@ -1,20 +1,25 @@
 <?php
+require 'vendor/autoload.php';
+
+use App\Controller\CategoryController;
+use App\Controller\HomeController;
+use App\Controller\MoviesController;
+use App\Controller\MoviesControllerByAjax;
+use App\Controller\UsersController;
+use App\Controller\UsersControllerByAjax;
+use App\Session\UserSession;
 
 //Permet de repartir depuis la racine
 define("URL",str_replace("index.php","",(isset($_SERVER['HTTPS']) ? "https" : "http").
     "://$_SERVER[HTTP_HOST]$_SERVER[PHP_SELF]"));
 
-define("PATH",__DIR__."/app/");
-
-require_once PATH."class/UserSession.php";
-require_once PATH."controllers/UsersController.php";
+const PATH = __DIR__ . "/app/";
 
 $user = new UserSession();
 $userController = new UsersController();
 
 try {
     if ($user->isAuthenticated()){
-        require_once PATH.'controllers/HomeController.php';
         $homeController = new HomeController();
 
         if (empty($_GET['page'])){
@@ -24,9 +29,6 @@ try {
 
         $url = explode("/",filter_var($_GET['page']),FILTER_SANITIZE_URL);
 
-        require_once PATH.'controllers/MoviesController.php';
-        require_once PATH."controllers/CategoryController.php";
-        require_once PATH."controllers/UsersController.php";
         $moviesController = new MoviesController();
         $categoryController = new CategoryController();
         $usersController = new UsersController();
@@ -80,8 +82,11 @@ try {
                     break;
 
                 case "film":
+                    //var_dump($url);die();
+
                      if (!empty($url[1]) && ctype_digit($url[1])){
-                        $moviesController->showMovie($url[1]);
+
+                        $moviesController->showMovie((int)$url[1]);
                      }
                      else {
                          throw  new Exception('La page n\'existe pas');
@@ -102,7 +107,6 @@ try {
                 case "ajax":
                     if($url[1] === "movies"){
 
-                        require_once PATH."controllers/MoviesControllerByAjax.php";
                         $moviesByAjax = new MoviesControllerByAjax();
                         if ($url[2] === "search"){
                             $moviesByAjax->search($url[3]);
@@ -117,7 +121,6 @@ try {
                     }elseif ($url[1] === "users") {
                         $user->controlAccess();
 
-                        require_once PATH."controllers/UsersControllerByAjax.php";
                         $usersByAjax = new UsersControllerByAjax();
                         if ($url[2] === "updateAdminStatus"){
                             $usersByAjax->changeAdminStatus();
